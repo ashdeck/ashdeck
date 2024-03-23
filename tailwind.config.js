@@ -1,6 +1,5 @@
 import { COLORS } from "./src/commons/utils"
 
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [

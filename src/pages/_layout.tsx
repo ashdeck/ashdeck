@@ -2,9 +2,9 @@ import { QUERY_KEYS } from "@utils"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { useLocalStorage } from "@hooks"
-import { router } from "@router"
+import { Outlet, router } from "@router"
 import { Toaster } from "react-hot-toast"
-import useUserStore from "@commons/store/userStore"
+import useUserStore from "@store/userStore"
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -14,7 +14,7 @@ const queryClient = new QueryClient({
 	},
 })
 
-function Providers({ children }) {
+function BaseLayout({ children }) {
 	const { getFromStorage } = useLocalStorage()
 
 	const { user, setUser } = useUserStore()
@@ -34,9 +34,9 @@ function Providers({ children }) {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Toaster position={"top-right"} />
-			{children}
+			<Outlet/>
 		</QueryClientProvider>
 	)
 }
 
-export default Providers
+export default BaseLayout

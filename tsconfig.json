@@ -1,22 +1,26 @@
 {
   "compilerOptions": {
-
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "allowImportingTsExtensions": false,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
     "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
+
+    /* Bundler mode */
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
 
+    /* Linting */
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": false,
+
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "@src/*": ["./src/*"],
@@ -28,9 +32,11 @@
       "@utils": ["./src/commons/utils"],
       "@interfaces": ["./src/commons/interfaces"],
       "@interfaces/*": ["./src/commons/interfaces/*"],
-      "@store": ["./src/commons/store"]
+      "@store": ["./src/commons/store"],
+      "@store/*": ["./src/commons/store/*"]
     }
+
   },
   "include": ["src"],
-
+  "references": []
 }

@@ -4,9 +4,9 @@ import { default as COLORS } from "./colors";
 
 
 
-export const cleanUrl = (url) => {
+export const cleanUrl = (url: string) => {
     const uri =  encodeURIComponent(url)
-    return uri.replaceAll("/", "%2F");
+    return uri.replace("/", "%2F");
 }
 
 

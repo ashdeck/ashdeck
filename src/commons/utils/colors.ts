@@ -1,6 +1,6 @@
 export default {
   // => primary
-  primary: "#163a67",
+  primary: "#4082bc",
   secondary: "#af7517",
   ["primary-50"] : "#163a6723",
   ["secondary-50"] : "#af751723",
