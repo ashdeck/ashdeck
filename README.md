@@ -1,30 +1,53 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+### How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. ```npm install```
 
-## Expanding the ESLint configuration
+2. ```npm run dev```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+Please try to study the code structure for easy collaboration.
+I included abstractions to mimic a Next.js file router by making use of generouted.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+If you need to read on generouted, please visit the [documentation](https://github.com/oedotme/generouted)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+I also included ready made components that are easy to use e.g:
+
+- CustomButton: Button component
+- FormInput: Input component for basic text. works well with React-hook-forms
+
+etc.
+
+## Packages:
+- Axios
+- Prettier
+- React-hook-forms
+- Icon -  IconSax
+- React hot toast
+- Zustand (Pleaseeee let's consider it.. it's very simple to use, check out the store folder)
+- Tanstack Query
+
+## Custom Wrappers/Abstractions
+- Custom Router (Wrapper around react-router-dom), the router is already setup to work with generouted. <br>Folder: ```commons/router```
+  <br> Usage:
+  ```jsx
+  import router from '@router';
+  // You can import eevry thing importable from react-router-dom from "@router"
+  
+  router.push('/users');
+  ```
+- API Object (Wrapper around Axios) <br>File: ```commons/utils/axiosProvider.ts```
+  <br>Usage:
+  ```jsx
+  import {api} from '@utils/axiosProvider';
+  api.get('/users').then((res) => console.log(res));
+  api.post('/users', {name:"William"}).then((res) => console.log(res));
+  ```
+
+
+
+
+
