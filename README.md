@@ -34,10 +34,13 @@ etc.
 - Custom Router (Wrapper around react-router-dom), the router is already setup to work with generouted. <br>Folder: ```commons/router```
   <br> Usage:
   ```jsx
-  import router from '@router';
+  import { useRouter } from '@router';
   // You can import eevry thing importable from react-router-dom from "@router"
   
+  const router = useRouter();
+  
   router.push('/users');
+  router.replace('/settings');
   ```
 - API Object (Wrapper around Axios) <br>File: ```commons/utils/axiosProvider.ts```
   <br>Usage:

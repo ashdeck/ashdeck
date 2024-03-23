@@ -2,7 +2,7 @@ import { QUERY_KEYS } from "@utils"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { useLocalStorage } from "@hooks"
-import { Outlet, router } from "@router"
+import { Outlet, useRouter } from "@router"
 import { Toaster } from "react-hot-toast"
 import useUserStore from "@store/userStore"
 
@@ -16,6 +16,7 @@ const queryClient = new QueryClient({
 
 function BaseLayout({ children }) {
 	const { getFromStorage } = useLocalStorage()
+	const router =  useRouter()
 
 	const { user, setUser } = useUserStore()
 

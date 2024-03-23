@@ -1,38 +1,49 @@
-import { useNavigate, useRoutes } from "react-router-dom";
-//export { Outlet, useSearchParams, useParams, useNavigate, BrowserRouter } from "react-router-dom";
-export * from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom"
+import { useEffect } from "react"
+import { Routes } from '@generouted/react-router'
 
-import { useEffect } from "react";
 
-let navigate = (path: string) => {};
+export * from "react-router-dom"
 
+
+
+export const RouterSetup = () => {
+
+	return <Routes/>
+}
 
 
 export const usePathname = () => {
-	return window.location.pathname;
-};
+	return window.location.pathname
+}
 
-export const router = {
-	push: (path: string) => {
-		navigate(path);
-	},
-	replace: (path: string) => {
-		navigate(path);
-	},
-};
 
 export const useRouter = () => {
-	return router;
-};
+	const navigate = useNavigate();
 
-export const redirect = (url: string) => {
+	const push = (path: string) => {
+		return navigate(path);
+	}
+
+	const replace = (path: string) => {
+		return navigate(path, { replace: true });
+	}
+
+	return {
+		push,
+		replace
+	}
+
+}
+
+/*export const redirect = (url: string) => {
 	return window.location.replace(url);
-};
+};*/
 
 export const setPageTitle = (title: string) => {
 	return useEffect(() => {
-		document.title = `${title} - AIChatbot`;
-	}, []);
-};
+		document.title = `${title} - AIChatbot`
+	}, [])
+}
 
-export default router;
+export default RouterSetup
