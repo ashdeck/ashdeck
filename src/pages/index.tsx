@@ -1,7 +1,7 @@
 import HomePage from "@src/pages/(dashboard)/home"
 
 function BasePage({}) {
-	return <HomePage />
+    return <HomePage/>
 }
 
 export default BasePage

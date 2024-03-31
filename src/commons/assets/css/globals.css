@@ -19,12 +19,12 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #540a67;
+    background: #144170;
     border-radius: 3px;
     width: 3px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #A015C2;
+    background: #1B5A9A;
 }

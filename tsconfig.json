@@ -30,6 +30,7 @@
       "@router/*": ["./src/commons/router/*"],
       "@hooks": ["./src/commons/hooks"],
       "@utils": ["./src/commons/utils"],
+      "@utils/*": ["./src/commons/utils/*"],
       "@interfaces": ["./src/commons/interfaces"],
       "@interfaces/*": ["./src/commons/interfaces/*"],
       "@store": ["./src/commons/store"],
@@ -40,3 +41,4 @@
   "include": ["src"],
   "references": []
 }
+

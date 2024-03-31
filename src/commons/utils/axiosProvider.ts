@@ -1,77 +1,102 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios"
+import { QUERY_KEYS } from "@utils/index"
 
 
-const axiosInstance = axios.create({});
-axios.defaults.withCredentials = true;
+let API_URL = import.meta.env.VITE_API_URL || "https://solgram-api-37a379be903b.herokuapp.com"
+
+
+
+const axiosInstance = axios.create({
+    baseURL: API_URL,
+})
+
+let token = null
+
+export const updateAuthToken = async (new_token: string, save?: boolean) => {
+    token = new_token
+
+    if (save) {
+        localStorage.setItem(QUERY_KEYS.access_token, new_token)
+    }
+    axiosInstance.defaults.headers.common.Authorization = "Bearer " + new_token
+    axiosInstance.defaults.headers.Authorization = "Bearer " + new_token
+}
+
 
 
 axiosInstance.interceptors.request.use(
-	//@ts-ignore
-	(config) => {
-		config.timeout = 50000;
-		config.withCredentials = true;
-		config.headers['Access-Control-Allow-Credentials'] = true;
-		//config.headers!["Authorization"] = "Bearer " + ACCESS_TOKEN;
+    async (config) => {
 
+        const fetch_token =  localStorage.getItem("solsgram_token")
+        if (fetch_token) {
+            await updateAuthToken(fetch_token, true)
+            config.headers.Authorization = `Bearer ${fetch_token}`
+        }
 
-		return config;
-	},
-	(error) => {
-		// Handle request errors here
-		return Promise.reject(error);
-	},
-);
+        return config
+    },
+    (error) => {
+        return Promise.reject(error)
+    }
+)
 
 // Response interceptor
 axiosInstance.interceptors.response.use(
-	(response) => {
-		// Modify the response data here (e.g., parse, transform)
+    (response) => {
+        return response
+    },
+    (error: AxiosError) => {
+        console.error(error?.toString())
 
-		//const { data } = response;
+        return Promise.reject(error)
+    }
+)
 
-		return response;
-	},
-	(error) => {
-		console.log(error);
-		// return error if response exists
-		if (error.response) return error?.response;
+export default axiosInstance
 
-		return Promise.reject(error);
-	},
-);
-
-export default axiosInstance;
+const makeRequest = async (
+    method: "get" | "post" | "patch" | "put" | "delete",
+    path: string,
+    data: any,
+    headers: any = {},
+) => {
+    const endpoint = path ? `${API_URL}${path.charAt(0) === "/" ? "" : "/"}${path}` : null
+    if (!endpoint) throw new Error("API request error: No endpoint provided")
 
 
-const API_URL = import.meta.env.VITE_API_URL;
+    let config: IAxiosRequestConfig = {
+        method: method,
+        url: endpoint,
+        data: data,
+        headers: {
+            "Content-Type": "application/json",
+            ...headers,
+        },
+    }
 
-const makeRequest = async (method: "get" | "post" | "patch" | "delete", path: string, data: any, headers: any = {} ) => {
+    console.debug(`🚀 Requesting Api: %c${config.method.toUpperCase()} ===> %c${config?.url}\n`, "color: yellow", "color: yellow")
 
-	const endpoint = path ? `${API_URL}${path}` : null;
-	if (!endpoint) throw new Error("API request error: No endpoint provided")
-
-	const config = {
-		method: method,
-		url: endpoint,
-		data: data,
-		withCredentials: true,
-		headers: {
-			"Content-Type": "application/json",
-			"access-key": import.meta.env.VITE_ACCESS_KEY,
-			...headers
-		},
-	}
-
-	console.log(`\n\nrequesting api: %c${config.method.toUpperCase()} ===> %c${config.url}`, 'color: yellow', 'color: yellow')
-
-	const { data: response, status } = await axiosInstance(config);
-	return response;
-
+    return await axiosInstance(config)
+        .then((res) => {
+            return res
+        })
+        .catch((err) => {
+            return Promise.reject(err)
+        })
 }
 
 export const api = {
-	get : async (path: string, data: any = {}) => await makeRequest("get", path, data),
-	post : async (path: string, data: any) => await makeRequest("post", path, data),
-	patch : async (path: string, data: any) => await makeRequest("patch", path, data),
-	delete : async (path: string, data: any) => await makeRequest("delete", path, data),
+    get: async (path: string, headers: any = {}) => await makeRequest("get", path, null, headers),
+    post: async (path: string, data: any, headers: any = {}) => await makeRequest("post", path, data, headers),
+    patch: async (path: string, data: any, headers: any = {}) => await makeRequest("patch", path, data, headers),
+    put: async (path: string, data: any, headers: any = {}) => await makeRequest("put", path, data, headers),
+    delete: async (path: string, data: any, headers: any = {}) => await makeRequest("delete", path, data, headers),
+}
+
+
+interface IAxiosRequestConfig {
+    method: "get" | "post" | "patch" | "put" | "delete"
+    url: string
+    headers: any
+    data?: any
 }

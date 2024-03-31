@@ -1,14 +1,18 @@
-import { create } from "zustand"
-import { IUser } from "@interfaces/user"
+import {create} from "zustand"
+import {IUser} from "@interfaces"
 
 interface UserState {
-	user: IUser
-	setUser: (userData: IUser) => void
+    balance: number
+    setBalance: (value: number) => void
+    user: IUser
+    setUser: (userData: IUser) => void
 }
 
 const useUserStore = create<UserState>((set) => ({
-	user: null,
-	setUser: (userData: IUser) => set((state) => ({ user: userData })),
+    balance: null,
+    setBalance: (value: number) => set((state) => ({ balance: value })),
+    user: null,
+    setUser: (userData: IUser) => set((state) => ({user: userData})),
 }))
 
 
