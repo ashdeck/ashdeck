@@ -1,9 +1,9 @@
 export default {
     // => primary
-    primary: "#1B5A9A",
-    ["primary-dark"]: "#0E1621",
+    primary: "#29a259",
+    secondary: "#29a259",
+    ["primary-dark"]: "#071a37",
     ["primary-dark-alt"]: "#162337",
-    secondary: "#af7517",
     ["primary-50"]: "#1B5A9A23",
     ["secondary-50"]: "#af751723",
 

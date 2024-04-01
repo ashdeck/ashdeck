@@ -11,6 +11,7 @@
   },
   "scripts": {
     "dev": "vite --host",
+    "mock:server": "npx json-server db.json5",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,0 +1,39 @@
+{
+  posts: [
+    {
+      id: '1',
+      title: 'a title',
+      views: 100
+    },
+    {
+      id: '2',
+      title: 'another title',
+      views: 200
+    },
+  ],
+  comments: [
+    {
+      id: '1',
+      text: 'a comment about post 1',
+      postId: '1'
+    },
+    {
+      id: '2',
+      text: 'another comment about post 1',
+      postId: '1'
+    },
+  ],
+  profile: {
+    id: "user1",
+    name: "jesulonimii",
+    email: "jesulonimii.will@gmail.com",
+    photo: "https://avatars.githubusercontent.com/u/70331030?v=4",
+    active_session: {
+      id: "session1",
+      device_id: "device1",
+      user_id: "user1",
+      start_time: "2024-03-31T12:00:00Z",
+      end_time: null,
+    },
+  }
+}

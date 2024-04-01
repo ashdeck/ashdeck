@@ -1,11 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
-import { useLocalStorage } from "@hooks"
 import { Outlet, useRouter } from "@router"
 import useUserStore from "@store/userStore"
 
 import { Toaster } from "react-hot-toast"
-import { QUERY_KEYS } from "@utils"
+import { useGlobalStore } from "@store"
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -18,20 +17,24 @@ const queryClient = new QueryClient({
 
 function BaseLayout({}) {
 
-	const { getFromStorage } = useLocalStorage()
 	const router = useRouter()
 
-	const { user, setUser } = useUserStore()
+	const { setUser } = useUserStore()
+	const { loading } = useGlobalStore()
 
 	useEffect(() => {
 
 
-		const stored_user_data = getFromStorage(QUERY_KEYS.user)
-		if (stored_user_data) {
-			setUser(stored_user_data)
-		} else {
-			router.replace("/login")
-		}
+		/*api.get("/users/me")
+			.then(({data})=>{
+				setUser(data)
+			})
+			.catch((err)=>{
+				//router.replace("/login")
+			})
+			.finally(()=>{
+
+			})*/
 
 
 	}, [])

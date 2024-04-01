@@ -27,7 +27,7 @@ export const updateAuthToken = async (new_token: string, save?: boolean) => {
 axiosInstance.interceptors.request.use(
     async (config) => {
 
-        const fetch_token =  localStorage.getItem("solsgram_token")
+		const fetch_token = localStorage.getItem("access_token")
         if (fetch_token) {
             await updateAuthToken(fetch_token, true)
             config.headers.Authorization = `Bearer ${fetch_token}`

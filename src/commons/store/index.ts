@@ -1,6 +1,11 @@
-import {create} from "zustand"
+import { create } from "zustand"
 
-export const useGlobalStore = create<any>((set) => ({
-    searchType: "users",
-    setSearchType: (searchType: any) => set((state) => ({searchType: searchType})),
+interface IGlobalState {
+	loading: boolean,
+	setLoading: (value: boolean) => void
+}
+
+export const useGlobalStore = create<IGlobalState>((set) => ({
+	loading: false,
+	setLoading: (value) => set((state) => ({ loading: value })),
 }))
