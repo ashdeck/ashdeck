@@ -2,11 +2,11 @@ import HeaderLayout from "@commons/components/layouts/Header.layout"
 import FooterLayout from "@commons/components/layouts/Footer.layout"
 import { Outlet } from "react-router-dom"
 
-function DashboardLayout({}) {
+function DashboardLayout({ children }) {
 	return (
 		<>
 			<HeaderLayout />
-			<Outlet />
+			{children ? children : <Outlet />}
 			<FooterLayout />
 		</>
 	)

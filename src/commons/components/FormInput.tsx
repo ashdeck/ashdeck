@@ -15,6 +15,8 @@ type FormInputProps = React.ComponentProps<"input"> & {
 	// onKeyDown?: KeyboardEventHandler<HTMLInputElement>
 }
 
+export const textFieldStyle = `bg-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 outline-0 focus:ring-2 border border-outline dark:border-0 ring-primary transition-200 bg-opacity-20 rounded-lg w-full`
+
 const FormInput = (props: FormInputProps) => {
 	const {
 		className = "",
@@ -31,17 +33,17 @@ const FormInput = (props: FormInputProps) => {
 		...rest
 	} = props
 
-	const textFieldClass = `bg-gray-400 text-white dark:text-gray-400 my-2 dark:autofill:bg-gray-900 autofill:bg-gray-500 p-3 ${
+	const textFieldClass = `${textFieldStyle} font-outfit text-black dark:text-gray-400 ${
 		startIcon && "pl-12"
 	} ${
 		endIcon && "pr-12"
-	} outline-0 focus:ring-2 border border-outline dark:border-0 ring-primary transition-200 font-outfit bg-opacity-20 rounded-lg w-full`
+	}`
 
 	if (label)
 		return (
-			<div className="my-4 w-full">
+			<div className="my-2 w-full">
 				<div className="flex gap-2">
-					<p className="font-outfit font-medium text-white dark:text-gray-500">{label}</p>
+					<p className="font-outfit font-medium text-gray-700 dark:text-gray-500">{label}</p>
 					{description && <em className="font-outfit text-gray-500 dark:text-gray-700">(*{description})</em>}
 				</div>
 				<div className="relative flex w-full items-center">
@@ -57,7 +59,7 @@ const FormInput = (props: FormInputProps) => {
 						{...rest}
 						{...register}
 						required
-						className={twMerge(`${textFieldClass} ${className} text-[#fff]`)}
+						className={twMerge(`${textFieldClass} ${className} `)}
 						// onKeyDown={onKeyDown}
 					/>
 					{embeddedComponent ? (

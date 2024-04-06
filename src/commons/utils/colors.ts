@@ -1,14 +1,14 @@
 export default {
     // => primary
     primary: "#29a259",
-    secondary: "#29a259",
-    ["primary-dark"]: "#071a37",
+    secondary: "#071a37",
+    ["primary-dark"]: "#0b321a",
     ["primary-dark-alt"]: "#162337",
     ["primary-50"]: "#1B5A9A23",
     ["secondary-50"]: "#af751723",
 
     accent: {
-        primary: "rgba(160,21,194,0.15)",
+        primary: "#295254",
         secondary: "rgba(41,171,135,0.15)",
     },
 

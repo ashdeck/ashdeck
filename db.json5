@@ -1,39 +1,81 @@
 {
-  posts: [
+  auth: [
     {
-      id: '1',
-      title: 'a title',
-      views: 100
-    },
-    {
-      id: '2',
-      title: 'another title',
-      views: 200
-    },
+      id: 'me',
+      name: 'jesulonimii',
+      email: 'jesulonimii.will@gmail.com',
+      photo: 'https://avatars.githubusercontent.com/u/70331030?v=4',
+      timezone: 'Africa/Lagos',
+      active_session: {
+        id: 'session1',
+        device_id: 'device1',
+        user_id: 'user1',
+        start_time: '2024-03-31T12:00:00Z',
+        end_time: null
+      }
+    }
   ],
-  comments: [
+  blocklists: [
     {
-      id: '1',
-      text: 'a comment about post 1',
-      postId: '1'
+      id: 1,
+      name: 'Social Media',
+      type: 'blacklist',
+      entries: [
+        'instagram.com',
+        'reddit.com',
+        'facebook.com',
+        'twitter.com'
+      ]
     },
     {
-      id: '2',
-      text: 'another comment about post 1',
-      postId: '1'
+      id: 2,
+      name: 'Entertainment',
+      type: 'blacklist',
+      entries: [
+        'netflix.com',
+        'youtube.com',
+        'spotify.com',
+        'tiktok.com'
+      ]
     },
-  ],
-  profile: {
-    id: "user1",
-    name: "jesulonimii",
-    email: "jesulonimii.will@gmail.com",
-    photo: "https://avatars.githubusercontent.com/u/70331030?v=4",
-    active_session: {
-      id: "session1",
-      device_id: "device1",
-      user_id: "user1",
-      start_time: "2024-03-31T12:00:00Z",
-      end_time: null,
+    {
+      id: 3,
+      name: 'Productivity',
+      type: 'whitelist',
+      entries: [
+        'gmail.com',
+        'slack.com',
+        'github.com',
+        'trello.com'
+      ]
     },
-  }
+    {
+      id: 4,
+      name: 'News',
+      type: 'whitelist',
+      entries: [
+        'bbc.com',
+        'cnn.com',
+        'aljazeera.com',
+        'npr.com'
+      ]
+    },
+    {
+      id: '8cc7',
+      entries: [
+        'google.com',
+        'facebook.com'
+      ],
+      name: 'Distractions',
+      type: 'blacklist'
+    },
+    {
+      id: '230f',
+      entries: [
+        'youtube.com'
+      ],
+      name: 'Gaming',
+      type: 'whitelist'
+    }
+  ]
 }

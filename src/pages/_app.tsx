@@ -5,6 +5,9 @@ import useUserStore from "@store/userStore"
 
 import { Toaster } from "react-hot-toast"
 import { useGlobalStore } from "@store"
+import { api } from "@utils/axiosProvider"
+import DialogLayout from "@commons/components/layouts/Dialog.layout"
+import LoadingSpinner from "@commons/components/LoadingSpinner"
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -20,27 +23,31 @@ function BaseLayout({}) {
 	const router = useRouter()
 
 	const { setUser } = useUserStore()
-	const { loading } = useGlobalStore()
+	const { loading, setLoading } = useGlobalStore()
 
 	useEffect(() => {
+		setLoading(true)
 
-
-		/*api.get("/users/me")
+		api.get("/auth/me")
 			.then(({data})=>{
 				setUser(data)
 			})
 			.catch((err)=>{
-				//router.replace("/login")
+				console.log(err)
+				router.replace("/login")
 			})
 			.finally(()=>{
-
-			})*/
+				setLoading(false)
+			})
 
 
 	}, [])
 
 	return (
 		<QueryClientProvider client={queryClient}>
+			<DialogLayout className={"w-fit aspect-square min-w-0 min-h-0"} show={loading}>
+				<LoadingSpinner className={"text-primary w-8 h-8"} />
+			</DialogLayout>
 			<Toaster position={"top-right"} />
 			<Outlet />
 		</QueryClientProvider>

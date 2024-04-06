@@ -15,12 +15,12 @@ const DialogLayout = (props: Props) => {
 		return (
 			<div
 				className={twMerge(
-					`fixed left-0 top-0 z-[6000] flex h-screen w-screen items-center justify-center bg-gray-700 bg-opacity-10 backdrop-blur-sm `,
+					`fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-gray-700 bg-opacity-10 backdrop-blur-sm `,
 				)}>
 				<div
 					className={twMerge(
 						`flex min-h-[30%] w-fit min-w-[30%] flex-col justify-center rounded-lg 
-                         bg-primary-dark p-8 dark:border-gray-800 dark:bg-bg-dark ${className} ${
+                         bg-white p-8 dark:border-gray-800 dark:bg-bg-dark ${className} ${
 								transparent && `border-0 bg-transparent dark:bg-transparent`
 							}`,
 					)}>

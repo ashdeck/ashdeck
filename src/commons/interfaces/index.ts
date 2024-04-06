@@ -16,7 +16,8 @@ export interface ISession {
 }
 
 export interface IBlockList {
-	tag: string;
+	id?: string;
+	name: string;
 	type: "whitelist" | "blacklist"
 	entries: string[];
 }

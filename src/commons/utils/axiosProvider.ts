@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios"
 import { QUERY_KEYS } from "@utils/index"
 
 
-let API_URL = import.meta.env.VITE_API_URL || "https://solgram-api-37a379be903b.herokuapp.com"
+let API_URL = import.meta.env.VITE_API_URL
 
 
 

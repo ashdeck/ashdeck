@@ -1,5 +1,5 @@
 import React from "react"
-import {twMerge} from "tailwind-merge"
+import { twMerge } from "tailwind-merge"
 import LoadingSpinner from "./LoadingSpinner"
 
 type CustomButtonProps =
@@ -44,8 +44,8 @@ const CustomButton = (props: CustomButtonProps) => {
 
     const classes = twMerge(
         ` hover:ring-2 ${variance[variant]} ${
-            disabled && "cursor-not-allowed"
-        } py-2 px-4 font-[500] flex justify-center items-center gap-1 text-sm cursor-pointer rounded-lg font-outfit relative overflow-hidden capitalize transition duration-500 ${className}`,
+            disabled && "cursor-not-allowed bg-gray-700"
+        } py-2 px-4 font-[500] flex justify-center items-center gap-1 cursor-pointer rounded-lg font-outfit relative overflow-hidden capitalize transition duration-500 ${className}`,
     )
 
     return (
