@@ -90,7 +90,7 @@ export const api = {
     post: async (path: string, data: any, headers: any = {}) => await makeRequest("post", path, data, headers),
     patch: async (path: string, data: any, headers: any = {}) => await makeRequest("patch", path, data, headers),
     put: async (path: string, data: any, headers: any = {}) => await makeRequest("put", path, data, headers),
-    delete: async (path: string, data: any, headers: any = {}) => await makeRequest("delete", path, data, headers),
+    delete: async (path: string, data?: any, headers: any = {}) => await makeRequest("delete", path, data, headers),
 }
 
 

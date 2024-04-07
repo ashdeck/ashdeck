@@ -8,6 +8,7 @@ import { useGlobalStore } from "@store"
 import { api } from "@utils/axiosProvider"
 import DialogLayout from "@commons/components/layouts/Dialog.layout"
 import LoadingSpinner from "@commons/components/LoadingSpinner"
+import ConfirmModal from "@commons/components/modals/Confirm.modal"
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -23,7 +24,7 @@ function BaseLayout({}) {
 	const router = useRouter()
 
 	const { setUser } = useUserStore()
-	const { loading, setLoading } = useGlobalStore()
+	const { loading, setLoading, showConfirmModal, setShowConfirmModal } = useGlobalStore()
 
 	useEffect(() => {
 		setLoading(true)
@@ -48,6 +49,7 @@ function BaseLayout({}) {
 			<DialogLayout className={"w-fit aspect-square min-w-0 min-h-0"} show={loading}>
 				<LoadingSpinner className={"text-primary w-8 h-8"} />
 			</DialogLayout>
+			<ConfirmModal />
 			<Toaster position={"top-right"} />
 			<Outlet />
 		</QueryClientProvider>

@@ -13,6 +13,7 @@ export interface ISession {
 	user_id: string;
 	start_time: string;
 	end_time: string | null;
+	block_list: IBlockList;
 }
 
 export interface IBlockList {

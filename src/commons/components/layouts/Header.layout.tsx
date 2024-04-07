@@ -14,7 +14,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
 
 
 	return (
-		<div className={"p-8 z-50 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
+		<div className={"p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
 			<Logo className={"text-white font-outfit"} />
 
 			<div className="">

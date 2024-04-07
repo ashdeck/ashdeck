@@ -8,6 +8,7 @@ import { IBlockList } from "@interfaces"
 import CustomButton from "@commons/components/CustomButton"
 import AddBlockListModal from "@src/pages/(dashboard)/dashboard/_components/AddList.modal"
 import { useState } from "react"
+import { useGlobalStore } from "@store"
 
 type Props = {
 	className?: string
@@ -27,10 +28,29 @@ const BlockLists = ({ className }: Props) => {
 		id: undefined,
 	})
 
+	const { setShowConfirmModal } = useGlobalStore()
+
 	const { data = [], refetch } = useQuery({
 		queryKey: [QUERY_KEYS.block_lists],
 		queryFn: () => api.get("/blocklists").then((res) => res.data),
 	})
+
+	const deleteList = async (item: IBlockList) => {
+
+		setShowConfirmModal(
+			{
+				show: true,
+				dangerous: true,
+				title: `Delete ${item?.name}?`,
+				message: "Are you sure you want to delete this blocklist?\n This action cannot be undone.",
+				action: async () => {
+					await api.delete(`/blocklists/${item?.id}`)
+					await refetch()
+				},
+			},
+		)
+
+	}
 
 	return (
 		<div className={twMerge("bg-white p-6 rounded-lg min-h-[60vh]", className)}>
@@ -82,8 +102,7 @@ const BlockLists = ({ className }: Props) => {
 							</CustomButton>
 
 							<CustomButton
-								onClick={() => {
-								}}
+								onClick={() => deleteList(item)}
 								variant="text"
 								className="hover:bg-red-500 hover:border-red-500 text-gray-500 hover:text-white">
 								<TrashIcon className="w-5 h-5 " />

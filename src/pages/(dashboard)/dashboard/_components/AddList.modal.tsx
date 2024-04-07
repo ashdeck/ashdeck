@@ -163,6 +163,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 
 
 				<DropdownSelect
+					label={"Select List Type"}
 					prompt={"List Type (Whitelist/Blacklist)"}
 					className="z-50"
 					items={listTypeOptions}
