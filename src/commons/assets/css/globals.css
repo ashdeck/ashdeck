@@ -28,3 +28,11 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #1B5A9A;
 }
+
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Disable default appearance */
+    appearance: none;
+    margin: 0; /* Optional: Remove default margin */
+}

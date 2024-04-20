@@ -38,9 +38,9 @@ const QuickActions = ({ className }: Props) => {
 			<div className="flex items-center gap-8 mb-4">
 
 				<div className="flex items-center gap-4">
-					<FormInput defaultValue={0} maxLength={2} className={"aspect-square text-center text-2xl w-14"} />
+					<FormInput defaultValue={0} maxLength={2} type={"number"} className={"aspect-square text-center text-2xl w-14"} />
 					<p className={"font-bold text-4xl w-fit"}>:</p>
-					<FormInput defaultValue={30} maxLength={2} className={"aspect-square text-center text-2xl w-14"} />
+					<FormInput defaultValue={30} maxLength={2} type={"number"} className={"aspect-square text-center text-2xl w-14"} />
 				</div>
 
 				<div className="flex w-full ">

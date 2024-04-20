@@ -11,8 +11,8 @@ export interface ISession {
 	id: string;
 	device_id: string;
 	user_id: string;
-	start_time: string;
-	end_time: string | null;
+	start_time: string | Date;
+	end_time: string | Date;
 	block_list: IBlockList;
 }
 

@@ -14,13 +14,13 @@ interface DropdownSelectItem {
 interface DropdownSelectProps {
 	className?: string;
 	noItemMessage?: string;
-	menuItemWidth?: string;
+	menuItemClassName?: string;
 	label?: string;
 	labelClassName?: string;
 	prompt?: string;
 	selector?: React.ReactNode;
 	disabled?: boolean;
-	items: (string | DropdownSelectItem)[];
+	items: (string | DropdownSelectItem | any)[];
 	onSelect?: (value: string) => void;
 	itemLabelKey?: string;
 	selected: any;
@@ -30,7 +30,7 @@ interface DropdownSelectProps {
 const DropdownSelect: React.FC<DropdownSelectProps> = ({
 														   className = "",
 														   noItemMessage = "No items",
-														   menuItemWidth = "100%",
+														   menuItemClassName = "100%",
 														   selector = null,
 														   disabled = false,
 														   label,
@@ -83,12 +83,12 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
 
 	const renderMenuItem = (item: string | DropdownSelectItem, i: number) => {
 		if (itemLabelKey) {
-			return <MenuItem key={i} onClick={() => handleItemClick(item)}>{item[itemLabelKey]}</MenuItem>
+			return <MenuItem className={menuItemClassName} key={i} onClick={() => handleItemClick(item)}>{item[itemLabelKey]}</MenuItem>
 		} else if (typeof item === "string") {
-			return <MenuItem key={i} onClick={() => handleItemClick(item)}>{item}</MenuItem>
+			return <MenuItem className={menuItemClassName} key={i} onClick={() => handleItemClick(item)}>{item}</MenuItem>
 		} else if (item?.label) {
 			return (
-				<MenuItem key={i} onClick={() => handleItemClick(item)}>
+				<MenuItem className={menuItemClassName} key={i} onClick={() => handleItemClick(item)}>
 					{item?.icon && typeof item?.icon === "string" ? (
 						<Avatar src={item?.icon} sx={{ width: 20, height: 20, marginRight: "0.5rem" }} />
 					) : item?.icon && React.isValidElement(item?.icon) ? (

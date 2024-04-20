@@ -1,5 +1,5 @@
 export {default as QUERY_KEYS} from "./query-keys"
-import {default as COLORS} from "./colors"
+import { default as COLORS } from "./colors"
 
 export const cleanUrl = (url: string) => {
     const uri = encodeURIComponent(url)
@@ -24,5 +24,15 @@ export const sortArrayByDate = (array: any[], key, order: "asc" | "desc" = "desc
         return array?.sort((a, b) => new Date(b[key]) - new Date(a[key]))
     } else return array
 }
+
+export const gradientColor = (color1 = COLORS.primary, color2 = COLORS.secondary, color3 = null) => {
+
+    if (color3) {
+        return `bg-gradient-to-r from-${color1} via-${color2} to-${color3}`
+    } else {
+        return `bg-gradient-to-r from-${color1} to-${color1}`
+    }
+}
+
 
 export {COLORS}

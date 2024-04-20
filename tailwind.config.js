@@ -10,7 +10,8 @@ export default {
   theme: {
     fontFamily: {
       'outfit': ["Outfit"],
-      'sans': ["Inter" ],
+      "sans": ["Poppins"],
+      "heading": ["Didact Gothic"],
     },
     extend: {
       colors: {

@@ -5,12 +5,91 @@
 	<script src="popup.js"></script>
 </head>
 <body>
-<h1>Website Blocker</h1>
-<p>Block websites:</p>
-<input id="websiteInput" placeholder="Enter website" type="text">
-<button id="blockButton">Block</button>
+<div id="root">
+	<div style="position: fixed; z-index: 9999; inset: 16px; pointer-events: none;"></div>
+	<div class="relative h-screen flex-col justify-between">
+		<div class="flex h-[10%] items-center justify-between border border-outline px-6 text-black">
+			<p class="font-outfit my-4 capitalize">Website Blocker</p>
+			<div class="relative">
+				<img alt="profile-image" class="aspect-square w-8 rounded-full bg-primary" src="/src/commons/assets/images/user-placeholder-image.png" />
+			</div>
+		</div>
+		<div class="h- h-[75%]">
+			<div class="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-secondary">
+				<div class="my-2 flex w-full flex-col gap-2">
+					<p class="font-outfit text-center font-medium text-gray-700 dark:text-gray-500">Choose blocklist for this session</p>
+					<div class="transition-200 z-50 my-0 flex w-full cursor-pointer flex-row items-center justify-between rounded-lg border border-outline bg-gray-400 bg-opacity-20 p-3 text-gray-700 outline-0 ring-primary autofill:bg-gray-500 focus:ring-2 dark:border-0 dark:autofill:bg-gray-900">
+						Select item
+						<svg aria-hidden="true" class="inline-block h-4 w-4" data-slot="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+					</div>
+				</div>
+				<button class="false false font-outfit relative flex w-full cursor-pointer items-center justify-center gap-1 overflow-hidden rounded-lg bg-primary px-4 py-4 font-[500] capitalize text-white transition duration-500 hover:ring-2">
+					<div class="flex items-center justify-center">
+            <span class="mr-2 flex h-5 w-5 items-center justify-center"
+            ><svg aria-hidden="true" class="text-white" data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" fill-rule="evenodd"></path></svg></span
+            >Start Focus Session
+					</div>
+				</button>
+				<div class="my-8 h-[1px] w-full bg-outline"></div>
+				<p>Want to further customize your focus session? Visit the
+					<a class="text-primary" href="#">dashboard</a></p>
+			</div>
+		</div>
+		<div class="flex h-[15%] w-full justify-between gap-4 border border-outline bg-secondary px-6 text-black">
+			<div class="flex w-full cursor-pointer flex-col items-center justify-center gap-2 text-secondary">
+        <span class="flex h-fit w-fit items-center justify-center rounded-xl bg-accent-primary p-4"
+        ><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Z" stroke="#29a259" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+            <path d="m7.33 14.49 2.38-3.09c.34-.44.97-.52 1.41-.18l1.83 1.44c.44.34 1.07.26 1.41-.17l2.31-2.98" stroke="#29a259" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg
+        ></span>
+			</div>
+			<div class="flex w-full cursor-pointer flex-col items-center justify-center gap-2 text-secondary">
+        <span class="flex h-fit w-fit items-center justify-center rounded-xl p-4"
+        ><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 8v5M12 22c-4.83 0-8.75-3.92-8.75-8.75S7.17 4.5 12 4.5s8.75 3.92 8.75 8.75" stroke="#29a259" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+            <path d="M9 2h6M14.9 18.5v-1.16c0-1.43 1.02-2.02 2.26-1.3l1 .58 1 .58c1.24.72 1.24 1.89 0 2.61l-1 .58-1 .58c-1.24.72-2.26.13-2.26-1.3V18.5Z" stroke="#29a259" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"></path></svg
+        ></span>
+			</div>
+		</div>
+	</div>
+</div>
 
-<h2>Blocked Websites:</h2>
-<ul id="blockedWebsites"></ul>
 </body>
+</html>
+
+########
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Website Blocker</title>
+	<!--<script src="popup.js"></script>-->
+</head>
+<body>
+
+<iframe id="iframe" src="http://localhost:8500/extension/popup/1"></iframe>
+
+</body>
+<style>
+    iframe {
+        width: 100%;
+        height: inherit;
+        min-height: inherit;
+        margin: 0 auto;
+        border: 0;
+    }
+
+    body {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        width: 350px;
+        min-height: 500px;
+        height: auto;
+    }
+</style>
 </html>

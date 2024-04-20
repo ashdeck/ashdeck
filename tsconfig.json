@@ -25,6 +25,9 @@
       "@/*": ["./*"],
       "@src/*": ["./src/*"],
       "@commons/*": ["./src/commons/*"],
+      "@components/*": [
+        "./src/commons/components/*"
+      ],
       "@assets/*": ["./src/commons/assets/*"],
       "@router": ["./src/commons/router"],
       "@router/*": ["./src/commons/router/*"],

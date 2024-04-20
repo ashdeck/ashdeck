@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { useEffect } from "react"
-import { Outlet, useRouter } from "@router"
+import { Outlet, usePathname, useRouter } from "@router"
 import useUserStore from "@store/userStore"
 
 import { Toaster } from "react-hot-toast"
@@ -35,7 +35,7 @@ function BaseLayout({}) {
 			})
 			.catch((err)=>{
 				console.log(err)
-				router.replace("/login")
+				router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
 			})
 			.finally(()=>{
 				setLoading(false)

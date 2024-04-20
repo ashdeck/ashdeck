@@ -1,5 +1,5 @@
 import React from "react"
-import useUserStore from "@store/userStore"
+import Link from "@router/link"
 
 type Props = {
 	className?: string
@@ -7,10 +7,44 @@ type Props = {
 
 const FooterLayout = ({ className = "" }: Props) => {
 
-	const { user } = useUserStore()
+	const links = [
+		{
+			name: "Terms of Use",
+			href: "#",
+		},
+		{
+			name: "Contact Us",
+			href: "#contact",
+		},
+		{
+			name: "Features",
+			href: "#features",
+		},
+		{
+			name: "How it works",
+			href: "#how-it-works",
+		},
+		{
+			name: "Login",
+			href: "/connect",
+		},
+	]
 
 	return (
-		<div className={"w-full bg-gray-400 h-[60vh]"}>
+		<div className={"min-h-[15vh] flex items-center bg-primary-dark-alt w-full"}>
+			<div className="w-full h-full flex justify-center gap-4 p-8">
+
+				{
+					links.map((item, index) => (
+						<Link
+							href={item.href}
+							className="text-gray-400 hover:text-primary">
+							{item.name}
+						</Link>))
+				}
+
+
+			</div>
 		</div>
 	)
 }
