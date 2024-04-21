@@ -31,7 +31,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 	]
 
 	return (
-		<div className={"min-h-[15vh] flex items-center bg-primary-dark-alt w-full"}>
+		<div className={"min-h-[15vh] flex flex-col items-center bg-primary-dark-alt w-full"}>
 			<div className="w-full h-full flex justify-center gap-4 p-8">
 
 				{
@@ -44,6 +44,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 				}
 
 
+			</div>
+
+			<div className="text-gray-500 text-xs">
+				Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
 			</div>
 		</div>
 	)

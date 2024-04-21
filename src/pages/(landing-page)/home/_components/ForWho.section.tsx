@@ -9,49 +9,47 @@ type Props = {
 }
 
 
-const DiscoverSection = ({ className }: Props) => {
+const ForWhoSection = ({ className }: Props) => {
 
 	const features = [
 		{
 			title: "Students",
 			description: "Accelerate your academic journey and achieve top grades while saving time and money.",
-			image: <p className={"text-[150px]"}>📚</p>,
-
+			image: <img className={"w-[30%] absolute"} src={"/images/student.png"} alt={""} />,
 		},
 		{
 			title: "Developers",
 			description: "Dive deep into your work without interruptions and deliver your best code yet.",
-			image: <p className={"text-[150px]"}>👨‍💻</p>,
-
+			image: <img className={"w-[35%] absolute"} src={"/images/pc.png"} alt={""} />,
 		},
 		{
 			title: "Marketers",
 			description: "Stay ahead of the competition by focusing on what truly matters.",
-			image: <p className={"text-[150px]"}>📈</p>,
+			image: <img className={"w-[25%] absolute"} src={"/images/megaphone.png"} alt={""} />,
 
 		},
 		{
 			title: "Writers",
 			description: "Let your creativity flow uninterrupted and produce your best work.",
-			image: <p className={"text-[150px]"}>✍️</p>,
+			image: <img className={"w-[40%] absolute"} src={"/images/papers.png"} alt={""} />,
 
 		},
 		{
 			title: "Entrepreneurs",
 			description: "Make time for strategic planning and watch your business thrive.",
-			image: <p className={"text-[150px]"}>🚀</p>,
+			image: <img className={"w-[25%] absolute"} src={"/images/coin.png"} alt={""} />,
 
 		},
 		{
 			title: "Freelancers",
 			description: "Take control of your workload and make productivity your norm.",
-			image: <p className={"text-[150px]"}>🚀</p>,
+			image: <img className={"w-[20%] absolute"} src={"/images/rocket.png"} alt={""} />,
 
 		},
 		{
 			title: "Product Designers",
 			description: "Carve out space for creativity and bring your ideas to life.",
-			image: <p className={"text-[150px]"}>🎨</p>,
+			image: <img className={"w-[25%] absolute"} src={"/images/palette.png"} alt={""} />,
 
 		},
 
@@ -66,7 +64,7 @@ const DiscoverSection = ({ className }: Props) => {
 				Control your Time and Boost your Productivity with Website Blocker for Achieving your Goals
 			</HeadingText>
 
-			<p className={"w-full md:max-w-[60%] text-center"}>
+			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
 				It's easy to set up and use.
 			</p>
 
@@ -75,7 +73,7 @@ const DiscoverSection = ({ className }: Props) => {
 			</CustomButton>
 
 
-			<div className="grid grid-cols-2 gap-12 w-full my-[20%]">
+			<div className="grid grid-cols-1 gap-24 w-full my-[20%]">
 
 
 				{
@@ -91,14 +89,14 @@ const DiscoverSection = ({ className }: Props) => {
 }
 
 
-export default DiscoverSection
+export default ForWhoSection
 
 
 const FeatureCard = ({ item, index = 0 }) => {
 	return (
-		<div className={"flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full flex-row justify-between relative"}>
+		<div className={`flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
 
-			<div className="w-[90%] flex flex-col px-16 py-10">
+			<div className="w-[50%] flex flex-col px-16 py-10">
 				<div className={"font-heading font-medium text-2xl"}>
 					{item?.title}
 				</div>
@@ -115,10 +113,10 @@ const FeatureCard = ({ item, index = 0 }) => {
 				</Link>
 			</div>
 
-			{/*<div className="aspect-square top-0 bottom-0 right-0 w-[10vh] h-[10vh] rounded-full absolute  flex flex-col px-16 py-10 items-center justify-center">
+			<div className="aspect-square flex flex-col px-16 py-10 items-center justify-center">
 				{item?.image}
 			</div>
-*/}
+
 
 		</div>
 	)

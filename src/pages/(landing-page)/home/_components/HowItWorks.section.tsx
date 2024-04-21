@@ -38,7 +38,7 @@ const HowItWorksSection = ({ className }: Props) => {
 				Are distracting websites eating away at your precious time?
 			</HeadingText>
 
-			<p className={"w-full md:max-w-[60%] text-center"}>
+			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
 				It's time to regain control and focus. Our powerful website blocker features puts you back in the driver's seat, allowing you to effortlessly block time-wasting sites, games, and applications.
 			</p>
 
