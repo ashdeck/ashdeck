@@ -22,7 +22,7 @@ const HeroSection = ({ className }: Props) => {
 			</p>
 
 			<Link className={"w-[40%]"} href={"/dashboard"}>
-				<CustomButton variant={"outlined"} className={"py-3.5 w-full text-"}>
+				<CustomButton variant={"primary"} className={"py-3.5 w-full text-white"}>
 					Start Your Productivity Journey Today for Free
 				</CustomButton>
 			</Link>

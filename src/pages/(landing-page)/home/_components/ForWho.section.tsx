@@ -69,7 +69,7 @@ const ForWhoSection = ({ className }: Props) => {
 			</p>
 
 			<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
-				Start Now
+				Start for FREE
 			</CustomButton>
 
 

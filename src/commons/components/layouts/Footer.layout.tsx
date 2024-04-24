@@ -46,7 +46,11 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 			</div>
 
-			<div className="text-gray-500 text-xs">
+			<div className="text-gray-300 my-3 text-sm">
+				Proudly owned by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Pelrio Analytica</a>
+			</div>
+
+			<div className="text-gray-500 mb-3 text-xs">
 				Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
 			</div>
 		</div>
