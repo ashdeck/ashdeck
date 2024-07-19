@@ -1,0 +1,50 @@
+.nav-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    /* Adjust the position */
+    left: 0;
+    width: 0;
+    height: 4px;
+    /* Adjust the thickness */
+    background-color: #29a259;
+    /* Adjust the color */
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-item-active::after {
+    width: 100%;
+}
+
+
+.scrollable-container {
+    max-height: 60vh;
+    /* Adjust this value as needed */
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 40px;
+    /* Space for the arrow */
+}
+
+.scroll-arrow {
+    position: absolute;
+    bottom: 30px;
+    /* Adjust this value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    /* font-size: 24px; */
+    color: #a27a29;
+    /* Match your theme color */
+    z-index: 20;
+    /* Ensure the arrow is above other elements */
+}
+
+.scroll-arrow.hidden {
+    display: none;
+}

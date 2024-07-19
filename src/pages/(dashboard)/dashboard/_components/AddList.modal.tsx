@@ -204,7 +204,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
 					{entries.map((entry, i) => (
 						<div key={i}
-							 className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
+							    className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
 							<div className="flex flex-col py-2">
 								<p className="cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark">
 									{i + 1}. {entry}

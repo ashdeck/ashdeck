@@ -35,6 +35,9 @@ const BlockLists = ({ className }: Props) => {
 		queryFn: () => api.get("/blocklists").then((res) => res.data),
 	})
 
+	// Ensure data is an array
+	const blockLists = Array.isArray(data) ? data : [];
+
 	const deleteList = async (item: IBlockList) => {
 
 		setShowConfirmModal(
@@ -56,10 +59,9 @@ const BlockLists = ({ className }: Props) => {
 		<div className={twMerge("bg-white p-6 rounded-lg min-h-[60vh]", className)}>
 			<AddBlockListModal options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
 
-
 			<div className="flex w-full justify-between items-center">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">
+					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl mb-2">
 						Block Lists
 					</p>
 					<p className="text-gray-500 dark:text-gray text-sm">
@@ -76,20 +78,17 @@ const BlockLists = ({ className }: Props) => {
 				</div>
 			</div>
 
-
 			<div className="w-full flex flex-col mt-8">
-
-				{data?.map((item: IBlockList, i: number) => (
+				{blockLists.map((item: IBlockList, i: number) => (
 					<div key={i}
-						 className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 py-4">
+						className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 py-4">
 						<div className="flex flex-col">
 							<p className="text-lg cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark font-medium capitalize">
 								{item.name}
 							</p>
 							<p className="text-gray-500 dark:text-gray text-sm normal-case">
 								{item.type === "blacklist" ? <span className={"text-status-error"}>Blocked</span> :
-									<span
-										className={"text-status-success"}>Allowed</span>} • {item?.entries?.length} websites
+									<span className={"text-status-success"}>Allowed</span>} • {item?.entries?.length} websites
 							</p>
 						</div>
 						<div className="flex items-center">
@@ -110,13 +109,9 @@ const BlockLists = ({ className }: Props) => {
 						</div>
 					</div>
 				))}
-
 			</div>
-
-
 		</div>
 	)
 }
-
 
 export default BlockLists
