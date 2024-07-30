@@ -1,5 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { useState, useEffect, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import "@assets/css/components.css";
 import SessionHistory from "./SessionHistory";
 import BlockLists from "../BlockLists";
@@ -7,9 +8,14 @@ import { SessionItem } from "../../types";
 import CurrentSessions from "./CurrnetSessions";
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import AddSession from "./AddSession";
+import { QUERY_KEYS } from "@/src/commons/utils";
+import { api } from "@/src/commons/utils/axiosProvider";
+import { IBlockList } from "@/src/commons/interfaces";
+import CustomButton from "@/src/commons/components/CustomButton";
 
 type Props = {
-  className?: string;
+    className?: string;
 };
 
 const sessions_res: Array<SessionItem> = [
@@ -23,8 +29,8 @@ const sessions_res: Array<SessionItem> = [
     recurring: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     blockList: [
-      { name: "First List", list: ["google.com", "facebook.com"] },
-      { name: "First List", list: ["google.com", "facebook.com"] },
+      	{ name: "First List", list: ["google.com", "facebook.com"] },
+      	{ name: "First List", list: ["google.com", "facebook.com"] },
     ],
   },
   {
@@ -61,6 +67,25 @@ const Sessions = ({ className }: Props) => {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isScrollable, setIsScrollable] = useState(false);
 
+	const [showEditDialog, setShowEditDialog] = useState<{
+		type?: "edit" | "create",
+		show: boolean,
+		data?: IBlockList,
+		id?: number,
+	}>({
+		type: "create",
+		show: false,
+		data: null,
+		id: undefined,
+	})
+
+
+	const { data = [], refetch } = useQuery({
+		queryKey: [QUERY_KEYS.block_lists],
+		queryFn: () => api.get("/blocklists").then((res) => res.data),
+	})
+
+
 	useEffect(() => {
 		const container = containerRef.current;
 		if (container) {
@@ -76,8 +101,9 @@ const Sessions = ({ className }: Props) => {
 	};
 
 	return (
-		<div className={twMerge(`custom-scrollbar bg-white pb-6 px-6 rounded-lg min-h-[60vh] max-h-[60vh] relative ${sessions.length > 0 ? "overflow-auto" : "overflow-hidden"}`, className)}>
-		<div className="sticky top-0 z-10 bg-white">
+		<div className={twMerge(`custom-scrollbar bg-gray-300 shadow-2xl pb-6 px-8 rounded-lg min-h-[60vh] max-h-[60vh] relative ${sessions.length > 0 ? "overflow-auto" : "overflow-hidden"}`, className)}>
+		<AddSession options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
+		<div className="sticky top-0 z-10 bg-gray-300">
 			<div className="flex w-full justify-between items-start pt-6">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
 				<div className="font-outfit text-primary-dark font-semibold capitalize justify-between">
@@ -104,8 +130,11 @@ const Sessions = ({ className }: Props) => {
 					<PlusCircleIcon className="cursor-pointer w-8 h-8 text-white" />
 					<p className="ml-1">Create Session</p>
 				</CustomButton> */}
-				<PlusCircleIcon className="cursor-pointer w-9 h-9 text-primary" />
-			</div>
+				{/* <PlusCircleIcon onClick={()=>setShowEditDialog({type: "create", show: true})} className="cursor-pointer w-9 h-9 text-primary" /> */}
+				<div className="" onClick={()=>setShowEditDialog({type: "create", show: true})}>
+					<CustomButton startIcon={<PlusCircleIcon />}>Create Session</CustomButton>
+				</div>
+				</div>
 		</div>
 
 		{/* {isScrollable && (

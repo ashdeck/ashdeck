@@ -31,7 +31,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 	]
 
 	return (
-		<div className={"min-h-[15vh] flex flex-col items-center bg-primary-dark-alt w-full"}>
+		<div className={"min-h-[15vh] flex flex-col items-center bg-primary-dark-alt w-full z-20"}>
 			<div className="w-full h-full flex justify-center gap-4 p-8">
 
 				{

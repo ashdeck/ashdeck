@@ -56,25 +56,29 @@ const BlockLists = ({ className }: Props) => {
 	}
 
 	return (
-		<div className={twMerge("bg-white p-6 rounded-lg min-h-[60vh]", className)}>
+		<div className={twMerge("bg-gray-300 shadow-2xl p-6 rounded-lg min-h-[60vh]", className)}>
 			<AddBlockListModal options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
 
-			<div className="flex w-full justify-between items-center">
-				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl mb-2">
-						Block Lists
-					</p>
-					<p className="text-gray-500 dark:text-gray text-sm">
+			<div className="">
+				<div className="flex flex-col gap-0.5">
+					<div className="flex justify-between items-start">
+						<p className="font-outfit text-primary-dark font-semibold capitalize text-xl mb-2">
+							Block Lists
+						</p>
+						<div onClick={() => {
+								setShowEditDialog({
+									type: "create",
+									show: true,
+								})
+							}} className="">
+							{/* <PlusCircleIcon className="w-9 h-9 text-white" />
+							<h6 className="font-semibold text-sm">Add Block List</h6> */}
+							<CustomButton startIcon={<PlusCircleIcon className="h-8 w-8" />}>Add Block List</CustomButton>
+						</div>
+					</div>
+					<p className="text-gray-500 dark:text-gray text-sm max-w-[70%]">
 						Create and manage your list of websites to block during your sessions.
 					</p>
-				</div>
-				<div className="max-w-[30%]">
-					<PlusCircleIcon onClick={() => {
-						setShowEditDialog({
-							type: "create",
-							show: true,
-						})
-					}} className="w-8 h-8 text-primary cursor-pointer" />
 				</div>
 			</div>
 
