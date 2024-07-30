@@ -5,7 +5,7 @@ import Link from "@/src/commons/router/link"
 
 export default function DashboardSideBar(){
     return (
-        <div className="flex flex-col justify-between bg-gray-300 shadow-2xl rounded-lg w-full md:w-[20%] max-h-80">
+        <div className="flex flex-col justify-between bg-gray-300 shadow-2xl rounded-lg w-full md:max-w-[20rem] max-h-80">
 					<div className="px-4 mt-8 mx-2 gap-2 flex flex-col w-full">
 						<Link href="/dashboard">
 							<div className="bg-opacity-80 flex gap-2 items-center rounded-md px-2 py-2 w-full cursor-pointer">

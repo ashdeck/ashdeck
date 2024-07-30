@@ -13,10 +13,10 @@ export default function FocusMode(){
     return (
         <div className={"bg-gray-300 w-full h-full min-h-screen flex flex-col"}>
 
-            <div className="py-16 md:max-w-full flex gap-8 justify-center">
+            <div className="p-16 md:max-w-full flex gap-8 justify-center">
                 <DashboardSideBar />
-                <div className="max-w-[70%]">
-                    <div className="flex flex-col mx-8 max-w-[80%]">
+                <div className="max-w-[80%]">
+                    <div className="flex flex-col mr-8">
                     <div>
                         <h1 className="font-semibold text-4xl text-[#071a37]">Focus Mode</h1>
                         <p className="text-[#525353] pt-2">Use focus mode with break intervals to avoid distractions. Create a blocklist and add multiple websites to it.
