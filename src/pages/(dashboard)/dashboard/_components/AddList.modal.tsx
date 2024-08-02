@@ -10,6 +10,7 @@ import DropdownSelect from "@commons/components/DropdownSelect"
 import { PlusCircleIcon } from "@heroicons/react/24/solid"
 import { api } from "@utils/axiosProvider"
 import toast from "react-hot-toast"
+import { BlockList } from "../types"
 
 
 interface IListTypeOptions {
@@ -18,7 +19,7 @@ interface IListTypeOptions {
 }
 
 interface Props {
-	options: { type?: "edit" | "create", show: boolean, data?: IBlockList, id?: number };
+	options: { type?: "edit" | "create", show: boolean, data?: BlockList, id?: number };
 	setOptions: any;
 	refetch: () => void;
 }
@@ -48,7 +49,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				setValue(key, options?.data[key])
 			})
 			setListType(listTypeOptions.find((item) => item.value === options?.data?.type))
-			setEntries(options?.data?.entries)
+			setEntries(options?.data?.list)
 		} else {
 			resetModal()
 		}

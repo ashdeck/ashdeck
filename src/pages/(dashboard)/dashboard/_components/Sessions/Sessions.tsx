@@ -29,8 +29,8 @@ const sessions_res: Array<SessionItem> = [
     recurring: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     blockList: [
-      	{ name: "First List", list: ["google.com", "facebook.com"] },
-      	{ name: "First List", list: ["google.com", "facebook.com"] },
+      	{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
+      	{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
     ],
   },
   {
@@ -42,7 +42,7 @@ const sessions_res: Array<SessionItem> = [
 	paused: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     recurring: false,
-    blockList: [{ name: "First List", list: ["google.com", "facebook.com"] }],
+    blockList: [{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" }],
   },
    {
     id: "someId1",
@@ -54,8 +54,8 @@ const sessions_res: Array<SessionItem> = [
     recurring: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     blockList: [
-      { name: "First List", list: ["google.com", "facebook.com"] },
-      { name: "First List", list: ["google.com", "facebook.com"] },
+      { name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
+      { name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
     ],
   }
   // ... more sessions
@@ -132,7 +132,7 @@ const Sessions = ({ className }: Props) => {
 				</CustomButton> */}
 				{/* <PlusCircleIcon onClick={()=>setShowEditDialog({type: "create", show: true})} className="cursor-pointer w-9 h-9 text-primary" /> */}
 				<div className="" onClick={()=>setShowEditDialog({type: "create", show: true})}>
-					<CustomButton startIcon={<PlusCircleIcon />}>Create Session</CustomButton>
+					<CustomButton>Create Session</CustomButton>
 				</div>
 				</div>
 		</div>

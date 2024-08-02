@@ -2,10 +2,11 @@ import QuickActions from "../_components/QuickActions"
 import HeroView from "../_components/HeroView"
 import CustomButton from "@/src/commons/components/CustomButton"
 import TimerSetup from "../_components/focus_mode/TimerSetup"
-import { ArrowUpIcon, CheckIcon, PlusIcon } from "@heroicons/react/16/solid"
+import { ArrowUpIcon, CheckIcon, PlayCircleIcon, PlayIcon, PlusIcon } from "@heroicons/react/16/solid"
 import { useState } from "react"
-import { ArrowDown } from "iconsax-react"
+import { ArrowDown, PlayCircle } from "iconsax-react"
 import DashboardSideBar from "../_components/Sidebar"
+import FocusSoundSelect from "../_components/focus_mode/FocusSoundSelect"
 
 
 export default function FocusMode(){
@@ -34,10 +35,21 @@ export default function FocusMode(){
                         <TimerSetup metric_name="Focus Time" description="Simple description" initial_value={25}/>
                         <TimerSetup metric_name="Break Time" description="Simple description" initial_value={5}/>
                         <TimerSetup metric_name="Number of Cycles" description="Simple description" initial_value={1}/>
+                        <div className="flex bg-gray-300 justify-between items-center border-b first:pt-0 pt-4 pb-4 last:border-b-0 last:pb-0">
+                        <div className="">
+                            <h4 className="font-medium text-md">Focus Sound</h4>
+                            <p className="text-[#525353]">Some description about sound</p>
+                            </div>
+                            <div className="flex gap-1 items-center">
+                                <PlayIcon className="text-[#071a37] h-8 w-8"/>
+                                <FocusSoundSelect />
+                                {/* <input className="max-w-24 bg-[#071a37] text-white text-center py-2 px-4 rounded-md" min={1} type="number" name="focus_mode" id="" defaultValue="" /> */}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="mt-4">
-                        <h4 className="font-semibold text-lg mb-4">Whitelist</h4>
+                        <h4 className="font-semibold text-lg mb-4">Allowed Sites List</h4>
                         <div>
                             <div className="flex gap-4 rounded-md">
                                 <input type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border-2 border-[#071a370]" />

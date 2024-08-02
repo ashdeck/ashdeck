@@ -4,22 +4,26 @@ import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline"
 import { useQuery } from "@tanstack/react-query"
 import { api } from "@utils/axiosProvider"
 import { QUERY_KEYS } from "@utils"
-import { IBlockList } from "@interfaces"
+import { BlockList } from "../types"
 import CustomButton from "@commons/components/CustomButton"
 import AddBlockListModal from "@src/pages/(dashboard)/dashboard/_components/AddList.modal"
 import { useState } from "react"
 import { useGlobalStore } from "@store"
+import SingleBlockList from "./SingleBlockList"
+
 
 type Props = {
-	className?: string
+	className?: string,
+	blockLists: Array<BlockList>
 }
 
-const BlockLists = ({ className }: Props) => {
+
+const BlockLists = ({ className, blockLists }: Props) => {
 
 	const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
 		show: boolean,
-		data?: IBlockList,
+		data?: BlockList,
 		id?: number,
 	}>({
 		type: "create",
@@ -36,9 +40,28 @@ const BlockLists = ({ className }: Props) => {
 	})
 
 	// Ensure data is an array
-	const blockLists = Array.isArray(data) ? data : [];
+	const blockListsData = Array.isArray(data) ? data : [
+		{
+			id: "1",
+			name: "Jackson",
+			type: "blacklist",
+			list: ["facebook.com", "twitter.com"]
+		},
+		{
+			id: "2",
+			name: "Jackson",
+			type: "blacklist",
+			list: ["facebook.com", "twitter.com"]
+		},
+		{
+			id: "3",
+			name: "Jackson",
+			type: "whitelist",
+			list: ["facebook.com", "twitter.com"]
+		}
+	];
 
-	const deleteList = async (item: IBlockList) => {
+	const deleteList = async (item: BlockList) => {
 
 		setShowConfirmModal(
 			{
@@ -73,7 +96,7 @@ const BlockLists = ({ className }: Props) => {
 							}} className="">
 							{/* <PlusCircleIcon className="w-9 h-9 text-white" />
 							<h6 className="font-semibold text-sm">Add Block List</h6> */}
-							<CustomButton startIcon={<PlusCircleIcon className="h-8 w-8" />}>Add Block List</CustomButton>
+							<CustomButton>Add Block List</CustomButton>
 						</div>
 					</div>
 					<p className="text-gray-500 dark:text-gray text-sm max-w-[70%]">
@@ -82,36 +105,9 @@ const BlockLists = ({ className }: Props) => {
 				</div>
 			</div>
 
-			<div className="w-full flex flex-col mt-8">
-				{blockLists.map((item: IBlockList, i: number) => (
-					<div key={i}
-						className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 py-4">
-						<div className="flex flex-col">
-							<p className="text-lg cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark font-medium capitalize">
-								{item.name}
-							</p>
-							<p className="text-gray-500 dark:text-gray text-sm normal-case">
-								{item.type === "blacklist" ? <span className={"text-status-error"}>Blocked</span> :
-									<span className={"text-status-success"}>Allowed</span>} • {item?.entries?.length} websites
-							</p>
-						</div>
-						<div className="flex items-center">
-							<CustomButton onClick={() => setShowEditDialog({
-								type: "edit",
-								show: true,
-								data: item,
-							})} variant="text">
-								<PencilIcon className="w-5 h-5 text-gray-500" />
-							</CustomButton>
-
-							<CustomButton
-								onClick={() => deleteList(item)}
-								variant="text"
-								className="hover:bg-red-500 hover:border-red-500 text-gray-500 hover:text-white">
-								<TrashIcon className="w-5 h-5 " />
-							</CustomButton>
-						</div>
-					</div>
+			<div className="w-full flex flex-col mt-4 gap-1">
+				{blockListsData.map((item: BlockList, i: number) => (
+					<SingleBlockList blockList={item} />
 				))}
 			</div>
 		</div>
