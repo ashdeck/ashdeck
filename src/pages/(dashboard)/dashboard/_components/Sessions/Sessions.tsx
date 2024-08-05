@@ -122,7 +122,7 @@ const Sessions = ({ className }: Props) => {
 					</h3>
 					</div>
 				</div>
-				<p className="text-gray-500 dark:text-gray text-sm mb-2">
+				<p className="text-gray-500 dark:text-gray text-sm mb-2 hidden">
 					{selectedTab === "history" ? "View your past sessions" : "Create and manage your focus sessions here"}
 				</p>
 				</div>

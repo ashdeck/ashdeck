@@ -24,8 +24,9 @@ export default function FocusMode(){
                             Add websites you want to keep using in a white list.
                             We can add more to this copy over time so no problem at all.
                         </p>
-                        <div className="py-4">
+                        <div className="py-4 flex items-center gap-3">
                             <CustomButton>Start Focus Session</CustomButton>
+                            <CustomButton className="bg-[#071a37]">Redirect</CustomButton>
                         </div>
                     </div>
 

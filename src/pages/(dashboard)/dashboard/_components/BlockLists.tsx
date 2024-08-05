@@ -58,6 +58,12 @@ const BlockLists = ({ className, blockLists }: Props) => {
 			name: "Jackson",
 			type: "whitelist",
 			list: ["facebook.com", "twitter.com"]
+		},
+		{
+			id: "4",
+			name: "Jackson",
+			type: "blacklist",
+			list: ["facebook.com", "twitter.com"]
 		}
 	];
 
@@ -79,13 +85,13 @@ const BlockLists = ({ className, blockLists }: Props) => {
 	}
 
 	return (
-		<div className={twMerge("bg-gray-300 shadow-2xl p-6 rounded-lg min-h-[60vh]", className)}>
+		<div className={twMerge(`custom-scrollbar bg-gray-300 shadow-2xl pb-6 px-8 rounded-lg min-h-[60vh] max-h-[60vh] relative ${blockListsData.length > 0 ? "overflow-auto" : "overflow-hidden"}`, className)}>
 			<AddBlockListModal options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
 
 			<div className="">
-				<div className="flex flex-col gap-0.5">
+				<div className="flex flex-col gap-0.5 pt-6">
 					<div className="flex justify-between items-start">
-						<p className="font-outfit text-primary-dark font-semibold capitalize text-xl mb-2">
+						<p className="font-outfit hidden text-primary-dark font-semibold capitalize text-xl mb-2">
 							Block Lists
 						</p>
 						<div onClick={() => {
@@ -99,7 +105,7 @@ const BlockLists = ({ className, blockLists }: Props) => {
 							<CustomButton>Add Block List</CustomButton>
 						</div>
 					</div>
-					<p className="text-gray-500 dark:text-gray text-sm max-w-[70%]">
+					<p className="hidden text-gray-500 dark:text-gray text-sm max-w-[70%]">
 						Create and manage your list of websites to block during your sessions.
 					</p>
 				</div>

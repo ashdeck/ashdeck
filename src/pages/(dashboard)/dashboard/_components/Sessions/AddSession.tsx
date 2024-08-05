@@ -8,6 +8,9 @@ import { IBlockList } from "@interfaces"
 import { useGlobalStore } from "@store"
 import DropdownSelect from "@commons/components/DropdownSelect"
 import { PlusCircleIcon } from "@heroicons/react/24/solid"
+import SingleTime from "./SessionTypes/SingleTime"
+import StartLaterSession from "./SessionTypes/StartLater"
+import RecurringSession from "./SessionTypes/Recurring"
 import { api } from "@utils/axiosProvider"
 import "@assets/css/components.css";
 import toast from "react-hot-toast"
@@ -156,43 +159,57 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 						onClick={() => setSelectedTab("recurring")}>Recurring</h3>
             </div>
 
+
 			<div className="flex flex-col text-black w-full my-8">
+				{selectedTab === "start_now" ? <SingleTime />: selectedTab === "recurring"? <RecurringSession />: <StartLaterSession />}
+				<div className="flex justify-between gap-4 mt-8">
+					<div className="bg-gray-300 rounded-lg w-[50%]">
+						<h4 className="p-4 font-semibold text-lg">Block Lists</h4>
+						<div className="flex w-full items-center mb-6 rounded-lg px-4 gap-4">
+							<div className="grid grid-cols-2 gap-2">
+								<div className="flex items-center gap-2">
+									<input className="" type="checkbox" name="" id="" />
+									<p>All</p>
+								</div>
 
-                <div className="flex bg-gray-300 w-full items-center justify-center py-2 rounded-lg px-4 gap-4">
-                    <div className="flex gap-2 items-center">
-                        <input className="w-12 h-8 text-center rounded-md text-black" type="number" name="minutes" id="minutes" defaultValue={0} min={0} max={60} />
-                        <p>Hrs</p>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <input className="w-12 h-8 rounded-md text-black text-center" max={60} type="number" name="hours" id="hours" defaultValue={0} min={0} />
-                        <p>Mins</p>
-                    </div>
-                    <CustomButton>Start</CustomButton>
-                </div>
+								<div className="flex items-center gap-2">
+									<input type="checkbox" name="" id="" />
+									<p>Socials</p>
+								</div>
 
-                <div className="bg-gray-300 mt-8 rounded-lg w-[60%]">
-                    <h4 className="p-4 font-semibold text-lg">Block Lists</h4>
-                    <div className="flex w-full items-center mb-6 rounded-lg px-4 gap-4">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="flex items-center gap-2">
-                                <input className="" type="checkbox" name="" id="" />
-                                <p>All</p>
-                            </div>
+								<div className="flex items-center gap-2">
+									<input type="checkbox" name="" id="" />
+									<p>Custom</p>
+								</div>
+							</div>
+						</div>
+					</div>
 
-                            <div className="flex items-center gap-2">
-                                <input type="checkbox" name="" id="" />
-                                <p>Socials</p>
-                            </div>
 
-                            <div className="flex items-center gap-2">
-                                <input type="checkbox" name="" id="" />
-                                <p>Custom</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+					<div className="bg-gray-300 rounded-lg w-[50%]">
+						<h4 className="p-4 font-semibold text-lg">White Lists</h4>
+						<div className="flex w-full items-center mb-6 rounded-lg px-4 gap-4">
+							<div className="grid grid-cols-2 gap-2">
+								<div className="flex items-center gap-2">
+									<input className="" type="checkbox" name="" id="" />
+									<p>Work</p>
+								</div>
 
+								<div className="flex items-center gap-2">
+									<input type="checkbox" name="" id="" />
+									<p>Business</p>
+								</div>
+
+								<div className="flex items-center gap-2">
+									<input type="checkbox" name="" id="" />
+									<p>Chills</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			{selectedTab !=="start_over" && <CustomButton>Save</CustomButton>}
 		</DialogLayout>
 	)
 }

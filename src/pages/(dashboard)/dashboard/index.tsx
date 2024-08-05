@@ -18,9 +18,10 @@ function LoginPage({}) {
 			<div className="flex flex-col md:flex-row gap-8 p-16">
 				<DashboardSideBar />
 
+				<BlockLists blockLists={[]} className={"w-full md:w-[40%]"} />
+
 				<Sessions className={"w-full md:w-[40%]"} />
 
-				<BlockLists className={"w-full md:w-[40%]"} />
 
 			</div>
 
