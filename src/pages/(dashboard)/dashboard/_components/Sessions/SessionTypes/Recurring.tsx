@@ -1,4 +1,5 @@
 import CustomButton from "@/src/commons/components/CustomButton"
+import RecurringDay from "./RecurringDay"
 
 export default function RecurringSession({}){
     return (
@@ -28,14 +29,14 @@ export default function RecurringSession({}){
                 </div>
             </div>
         </div>
-        <div className="flex gap-2 items-center">
-            <p>S</p>
-            <p>M</p>
-            <p>T</p>
-            <p>W</p>
-            <p>T</p>
-            <p>F</p>
-            <p>S</p>
+        <div className="flex gap-4 items-center pt-8 mx-auto w-full justify-center">
+            <RecurringDay day={"S"} />
+            <RecurringDay day={"M"} />
+            <RecurringDay day={"T"} />
+            <RecurringDay day={"W"} />
+            <RecurringDay day={"T"} />
+            <RecurringDay day={"F"} />
+            <RecurringDay day={"S"} />
         </div>
     </div>
 

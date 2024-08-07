@@ -152,7 +152,7 @@ const Sessions = ({ className }: Props) => {
 			</div>
 		)} */}
 
-		<div className="w-full flex flex-col h-full items-center mt-2" ref={containerRef}>
+		<div className="w-full flex flex-col h-full items-center mt-4" ref={containerRef}>
 			{selectedTab === "history" ? <SessionHistory sessions={sessions} /> : <CurrentSessions current_sessions={sessions} />}
 		</div>
 		</div>

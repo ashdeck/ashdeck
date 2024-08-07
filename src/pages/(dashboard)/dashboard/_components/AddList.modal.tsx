@@ -11,6 +11,9 @@ import { PlusCircleIcon } from "@heroicons/react/24/solid"
 import { api } from "@utils/axiosProvider"
 import toast from "react-hot-toast"
 import { BlockList } from "../types"
+import SiteCategories from "./SiteCategorie"
+
+const site_categories = ["Adult", "Sport", "Finance", "News", "Social", "Search", "Finance", "Education", "Science", "Tourism", "Travel"]
 
 
 interface IListTypeOptions {
@@ -163,14 +166,14 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				}
 
 
-				<DropdownSelect
+				{/* <DropdownSelect
 					label={"Select List Type"}
 					prompt={"List Type (Whitelist/Blacklist)"}
 					className="z-50"
 					items={listTypeOptions}
 					selected={listType}
 					setSelected={setListType}
-				/>
+				/> */}
 
 				<form onSubmit={addSite} className="flex flex-col">
 					<FormInput
@@ -193,19 +196,25 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							</p>
 						)
 					}
-					{
+					{/* {
 						!entries?.length && (
 							<p className="w-full text-center text-red-500 text-sm my-4 font-medium ">
 								Enter at least a site
 							</p>
 						)
-					}
+					} */}
+					<div className="rounded-lg p-4">
+						<h4 className="text-xl font-semibold mb-4">Categories</h4>
+						<div className="grid gap-4 grid-cols-3">
+							{site_categories.map(site => <SiteCategories category={site} />)}
+						</div>
+					</div>
 				</form>
 
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
 					{entries.map((entry, i) => (
 						<div key={i}
-							    className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
+							className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
 							<div className="flex flex-col py-2">
 								<p className="cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark">
 									{i + 1}. {entry}
@@ -215,7 +224,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							<CustomButton
 								onClick={() => deleteSite(i)}
 								variant="text"
-								className="peer hover:border-red-500 text-gray-500 hover:text-red-500">
+								className="peer hover:border-red-500 text-gray-500 hover:text-red-500 mr-2">
 								<TrashIcon className="w-5 h-5" />
 							</CustomButton>
 
