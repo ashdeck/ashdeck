@@ -135,7 +135,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 	}
 
 	return (
-		<DialogLayout className={"w-[40%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
+		<DialogLayout className={"w-[45%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
 			<div className="flex w-full justify-between items-center">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
 					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">
@@ -166,7 +166,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					<div className="bg-gray-300 rounded-lg w-[50%]">
 						<h4 className="p-4 font-semibold text-lg">Block Lists</h4>
 						<div className="flex w-full items-center mb-6 rounded-lg px-4 gap-4">
-							<div className="grid grid-cols-2 gap-2">
+							<div className="grid grid-cols-3 gap-2">
 								<div className="flex items-center gap-2">
 									<input className="" type="checkbox" name="" id="" />
 									<p>All</p>
@@ -186,10 +186,10 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					</div>
 
 
-					<div className="bg-gray-300 rounded-lg w-[50%]">
+					<div className="bg-gray-300 rounded-lg w-[50%] hidden">
 						<h4 className="p-4 font-semibold text-lg">White Lists</h4>
 						<div className="flex w-full items-center mb-6 rounded-lg px-4 gap-4">
-							<div className="grid grid-cols-2 gap-2">
+							<div className="grid grid-cols-3 gap-2">
 								<div className="flex items-center gap-2">
 									<input className="" type="checkbox" name="" id="" />
 									<p>Work</p>
@@ -209,7 +209,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					</div>
 				</div>
 			</div>
-			{selectedTab !=="start_over" && <CustomButton>Save</CustomButton>}
+			{selectedTab !== "start_now" && <CustomButton>Set Schedule</CustomButton>}
 		</DialogLayout>
 	)
 }

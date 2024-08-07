@@ -6,7 +6,7 @@ export default function RecurringDay({day}){
 
     return (
         <div onClick={()=>setSelected(!selected)} className={`cursor-pointer`}>
-            <div className={`border ${selected && "bg-primary text-white"} font-semibold rounded-full p-2 w-12 h-12 flex justify-center items-center`}>{day}</div>
+            <div className={`border ${selected && "bg-primary text-white"} rounded-full p-3 w-14 h-14 flex justify-center items-center`}>{day}</div>
         </div>
     )
 }
