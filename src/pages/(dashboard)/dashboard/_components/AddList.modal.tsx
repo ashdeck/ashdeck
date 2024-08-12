@@ -13,7 +13,7 @@ import toast from "react-hot-toast"
 import { BlockList } from "../types"
 import SiteCategories from "./SiteCategorie"
 
-const site_categories = ["Adult", "Sport", "Finance", "News", "Social", "Search", "Finance", "Education", "Science", "Tourism", "Travel"]
+const site_categories = ["Adult", "Sport", "News", "Social", "Search", "Gambling", "Shopping", "Gaming", "Streaming"]
 
 
 interface IListTypeOptions {
@@ -133,7 +133,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 	}
 
 	return (
-		<DialogLayout className={"w-[40%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
+		<DialogLayout className={"w-[55%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
 			<div className="flex w-full justify-between items-center">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
 					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">
@@ -149,21 +149,69 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 			</div>
 
 			<div className="flex flex-col text-black w-full my-8">
+				<div className="flex justify-between gap-4 items-start">
+					<div className="w-[50%] mr-8">
+						<div>
+							<FormInput
+								label={"Enter List Name"}
+								placeholder={"ex: John Doe"}
+								register={register("name", { required: true })}
+							/>
 
-				<FormInput
-					label={"Enter List Name"}
-					placeholder={"ex: John Doe"}
-					register={register("name", { required: true })}
-				/>
+							{
+								errors.name && (
+									<p className="text-red-500 text-sm mb-4 font-medium ">
+										Error:{" "}
+										{errors.name?.type === "required" && "List name is required"}
+									</p>
+								)
+							}
+						</div>
+						<div>
+							<form onSubmit={addSite} className="flex flex-col">
+								<FormInput
+									label={"Enter site address"}
+									placeholder={"ex: google.com, facebook.com"}
+									endIcon={<PlusCircleIcon onClick={addSite} className="w-6 h-6 text-primary cursor-pointer" />}
+									register={register("site", {
+										validate: (value) => {
+											if (entries.includes(value)) return "Site already added"
+											return true
+										},
+									})}
+								/>
 
-				{
-					errors.name && (
-						<p className="text-red-500 text-sm mb-4 font-medium ">
-							Error:{" "}
-							{errors.name?.type === "required" && "List name is required"}
-						</p>
-					)
-				}
+								{
+									errors.site && (
+										<p className="text-red-500 text-sm ">
+											{errors.site?.type === "validate" && "Site already added"}
+											{errors.site?.type === "required" && "Site is required"}
+										</p>
+									)
+								}
+								{/* {
+									!entries?.length && (
+										<p className="w-full text-center text-red-500 text-sm my-4 font-medium ">
+											Enter at least a site
+										</p>
+									)
+								} */}
+							<div className="rounded-lg p-4 hidden">
+								<h4 className="text-xl font-semibold mb-4">Categories</h4>
+								<div className="grid gap-4 grid-cols-3">
+									{site_categories.map(site => <SiteCategories category={site} />)}
+								</div>
+							</div>
+						</form>
+						</div>
+					</div>
+					<div className="rounded-lg">
+						<h4 className="mt-2 text-md font-medium  mb-4">Filter by category</h4>
+						<div className="grid gap-6 grid-cols-3">
+							{site_categories.map(site => <SiteCategories category={site} />)}
+						</div>
+					</div>
+				</div>
 
 
 				{/* <DropdownSelect
@@ -175,41 +223,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 					setSelected={setListType}
 				/> */}
 
-				<form onSubmit={addSite} className="flex flex-col">
-					<FormInput
-						label={"Enter site address"}
-						placeholder={"ex: google.com, facebook.com"}
-						endIcon={<PlusCircleIcon onClick={addSite} className="w-6 h-6 text-primary cursor-pointer" />}
-						register={register("site", {
-							validate: (value) => {
-								if (entries.includes(value)) return "Site already added"
-								return true
-							},
-						})}
-					/>
-
-					{
-						errors.site && (
-							<p className="text-red-500 text-sm ">
-								{errors.site?.type === "validate" && "Site already added"}
-								{errors.site?.type === "required" && "Site is required"}
-							</p>
-						)
-					}
-					{/* {
-						!entries?.length && (
-							<p className="w-full text-center text-red-500 text-sm my-4 font-medium ">
-								Enter at least a site
-							</p>
-						)
-					} */}
-					<div className="rounded-lg p-4">
-						<h4 className="text-xl font-semibold mb-4">Categories</h4>
-						<div className="grid gap-4 grid-cols-3">
-							{site_categories.map(site => <SiteCategories category={site} />)}
-						</div>
-					</div>
-				</form>
+				
 
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
 					{entries.map((entry, i) => (
