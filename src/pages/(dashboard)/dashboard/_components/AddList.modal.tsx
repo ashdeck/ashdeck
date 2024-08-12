@@ -148,8 +148,8 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				</div>
 			</div>
 
-			<div className="flex flex-col text-black w-full my-8">
-				<div className="flex justify-between gap-4 items-start">
+			<div className="flex flex-col text-black w-full my-4">
+				<div className="flex justify-between gap-4 items-start mb-12">
 					<div className="w-[50%] mr-8">
 						<div>
 							<FormInput
