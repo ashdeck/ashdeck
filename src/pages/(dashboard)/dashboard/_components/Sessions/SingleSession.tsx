@@ -19,7 +19,7 @@ const SingleCurrentSession = ({ session }: Props) => {
     useEffect(()=>{}, [showDetails])
 	return (
 		<div className="w-full bg-[#29a259] rounded-md">
-			<div onClick={()=>setShowDetails(!showDetails)} className="bg-gree text-white flex justify-between items-start py-4">
+			<div onClick={()=>setShowDetails(!showDetails)} className="bg-gree text-white flex justify-between items-start py-3">
 				<div>
 					<p className="font-medium text-xl">{session.name}</p>
 					<p className="text-xs">{session.recurring ? "Recurring": "One Time"}</p>

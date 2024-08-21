@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom"
 
 function LandingLayout({ children }) {
 	return (
-		<>
+		<div className="relative">
 			<HeaderLayout />
 			{children ? children : <Outlet />}
 			<FooterLayout />
-		</>
+		</div>
 	)
 }
 

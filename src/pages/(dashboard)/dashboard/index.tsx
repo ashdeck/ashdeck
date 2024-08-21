@@ -15,14 +15,12 @@ function LoginPage({}) {
 	return (
 		<div className={"bg-gray-300 w-full h-full min-h-screen flex flex-col"}>
 
-			<div className="flex flex-col md:flex-row gap-8 p-16">
+			<div className="flex flex-col md:flex-row gap-8 py-8 px-16 md:p-24">
 				<DashboardSideBar />
 
 				<BlockLists blockLists={[]} className={"w-full md:w-[40%]"} />
 
 				<Sessions className={"w-full md:w-[40%]"} />
-
-
 			</div>
 
 		</div>

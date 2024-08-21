@@ -25,9 +25,9 @@ export default function FocusMode(){
 		url: null,
 	})
     return (
-        <div className={"bg-gray-300 w-full h-full min-h-screen flex flex-col"}>
+        <div className={"bg-gray-300 w-full flex flex-col"}>
 
-            <div className="p-16 md:max-w-full flex gap-8 justify-center">
+            <div className="p-16 md:max-w-full flex gap-8 justify-center mb-44">
                 <DashboardSideBar />
                 <RedirectURL options={showEditDialog} setOptions={setShowEditDialog} />
                 <div className="max-w-[80%]">

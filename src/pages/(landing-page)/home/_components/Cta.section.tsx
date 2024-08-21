@@ -10,7 +10,7 @@ type Props = {
 const HeroSection = ({ className }: Props) => {
 	return (
 		<div
-			className={"flex flex-col h-fit w-full items-center gap-12 pb-36 px-[15%]"}>
+			className={"flex flex-col h-fit w-full items-center gap-12 pb-96 px-[15%]"}>
 
 			<HeadingText className="text-center mt-[10%] max-w-[90%] text-6xl drop-shadow-2xl shadow-primary">
 				Your Success Story Starts Here!
