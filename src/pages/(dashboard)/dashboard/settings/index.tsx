@@ -69,14 +69,18 @@ export default function Settings(){
 
                     <div className="">
                         <h3 className="text-xl bg-[#071a37] px-4 text-white block py-4 rounded-lg text-center uppercase">Account Information</h3>
-                        <div className="w-full flex gap-8 mt-8">
-                            <div className="w-full">
-                                <h5 className="text-primary font-semibold">First Name</h5>
-                                <input className="bg-transparent border-b-2 border-gray-500 outline-none w-full" type="text" />
+                        <div className="w-full sm:w-[50%] flex flex-col gap-4 mt-8">
+                            <div className="w-full flex">
+                                <h5 className="text-primary font-semibold w-44">Account type</h5>
+                                <p className="ml-4 md:ml-[50%] font-semibold">Basic</p>
                             </div>
-                            <div className="w-full">
-                                <h5 className="font-semibold text-primary">Last Name</h5>
-                                <input className="bg-transparent border-b-2 border-gray-500 outline-none w-full" type="text" />
+                            <div className="w-full flex">
+                                <h5 className="text-primary font-semibold w-44">Subscription Period</h5>
+                                <p className="ml-4 md:ml-[50%] font-semibold">Monthly</p>
+                            </div>
+                            <div className="w-full flex">
+                                <h5 className="text-primary font-semibold w-44">Subscription Expiry</h5>
+                                <p className="ml-4 md:ml-[50%] font-semibold">24/05/2024</p>
                             </div>
                         </div>
                     </div>
