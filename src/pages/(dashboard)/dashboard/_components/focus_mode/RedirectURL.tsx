@@ -31,7 +31,7 @@ export default function RedirectURL({ options = { type: "create", show: false },
 		</div>
         <p className="mt-2 text-sm w-[70%] xl:w-[80%] text-gray-600 hidden">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vero facilis quia illo repellat, amet alias.</p>
         <div className="mt-4 flex w-full gap-4 items-center">
-            <input type="text" defaultValue={"https://google.com"} className="border-2 lg:w-[80%] px-4 py-3 rounded-lg"  />
+            <input type="text" placeholder={"https://google.com"} className="border-2 lg:w-[80%] px-4 py-3 rounded-lg"  />
             <CustomButton onClick={closeModal} className="py-3">Add URL</CustomButton>
         </div>
     </DialogLayout>
