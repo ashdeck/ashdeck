@@ -1,8 +1,7 @@
-window.onload = function() {
-	const iframe = document.getElementById("iframe")
-
-
-}
+// window.onload = function() {
+// 	let iframe = document.getElementById("iframe")
+// 	console.log(iframe)
+// }
 
 
 

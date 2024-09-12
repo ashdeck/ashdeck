@@ -56,14 +56,14 @@ export default function Settings(){
                             </div>
                         </div>
 
-                        <div className="flex gap-2 flex-col mt-4">
+                        {/* <div className="flex gap-2 flex-col mt-4">
                             <h5 className="font-semibold text-primary">Theme</h5>
                             <select defaultValue={"Automatic"} className="w-full py-2 px-2 rounded-lg outline-none">
                                 <option value="automatic">Automatic</option>
                                 <option value="24">Dark</option>
                                 <option value="24">Light</option>
                             </select>
-                        </div>
+                        </div> */}
                         <CustomButton className="mt-4">Change</CustomButton>
                     </div>
 

@@ -12,6 +12,7 @@ import { api } from "@utils/axiosProvider"
 import toast from "react-hot-toast"
 import { BlockList } from "../types"
 import SiteCategories from "./SiteCategorie"
+import { tokens } from "@/src/commons/tokens"
 
 const site_categories = ["Adult", "Sport", "News", "Social", "Search", "Gambling", "Shopping", "Gaming", "Streaming"]
 
@@ -51,7 +52,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 			Object.keys(options?.data).forEach((key) => {
 				setValue(key, options?.data[key])
 			})
-			setListType(listTypeOptions.find((item) => item.value === options?.data?.type))
+			// setListType(listTypeOptions.find((item) => item.value === options?.data?.type))
 			setEntries(options?.data?.list)
 		} else {
 			resetModal()
@@ -65,7 +66,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 		if (!getValues("site")) return
 		if (entries.includes(getValues("site"))) return
 		getValues("site")
-		setEntries([...entries, getValues("site")])
+		setEntries([...entries, {"site_url": getValues("site")}])
 		setValue("site", "")
 	}
 
@@ -87,11 +88,11 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 		const compile: IBlockList = {
 			entries: entries,
 			name: data?.name,
-			type: listType?.value,
+			// type: listType?.value,
 		}
 
 		if (options?.type === "create") {
-			api.post("/blocklists", compile).then((res) => {
+			api.post("/blocklists", compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Block list created successfully")
 				setOptions({
 					type: "create",
@@ -106,7 +107,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				})
 				.finally(() => setLoading(false))
 		} else {
-			api.patch(`/blocklists/${options?.data?.id}`, compile).then((res) => {
+			api.patch(`/blocklists/${options?.data?.id}`, compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Block list updated successfully")
 				setOptions({
 					type: "create",
@@ -231,7 +232,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
 							<div className="flex flex-col py-2">
 								<p className="cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark">
-									{i + 1}. {entry}
+									{i + 1}. {entry.site_url}
 								</p>
 							</div>
 

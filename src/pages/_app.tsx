@@ -28,8 +28,9 @@ function BaseLayout({}) {
 
 	useEffect(() => {
 		setLoading(true)
+		const user_data = JSON.parse(localStorage.getItem("user_data"))
 
-		api.get("/auth/me")
+		api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
 			.then(({data})=>{
 				setUser(data)
 			})

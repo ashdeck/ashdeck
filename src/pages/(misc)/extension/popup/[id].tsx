@@ -78,7 +78,7 @@ function Popup({}) {
 				{renderScreen()}
 			</div>
 
-			<div className="h-[15%] gap-4 bg-secondary flex justify-between border border-outline px-6 text-black w-full">
+			<div className="h-[15%] gap-4 bg-secondary flex justify-between border border-outline px-6 text-black w-[50%]]">
 
 				{
 
@@ -204,7 +204,7 @@ const SetupScreen = ({}) => {
 					</div>
 
 					<DropdownSelect
-						className="z-50 text-white"
+						className="z-50 mx-auto text-white w-[50%]"
 						menuItemClassName={"w-[300px]"}
 						items={blockLists}
 						prompt="Select item"
@@ -219,7 +219,7 @@ const SetupScreen = ({}) => {
 						loading={loading}
 						onClick={handleSubmit(startFocusSession)}
 						startIcon={<PlayIcon className={"text-white"} />}
-						className={"py-4 w-full"}>
+						className={"py-4 w-[50%]"}>
 						Start Focus Session
 					</CustomButton>
 				</>

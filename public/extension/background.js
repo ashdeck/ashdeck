@@ -1,7 +1,7 @@
 let idCounter = 0 // Initialize a counter outside of the function
 
 async function init() {
-	const API_URL = "http://localhost:3000"
+	const API_URL = "http://localhost:8000"
 
 	//todo: replace with dynamic calls
 	const data = await fetch(`${API_URL}/active-session`, {

@@ -1,8 +1,8 @@
 export type BlockList = {
     id?: string; 
-    name: string;
-    list: Array<string>;
-    type: "whitelist" | "blacklist"
+    name?: string;
+    list?: Array<string>;
+    // type: "whitelist" | "blacklist"
 };
 
 export type SessionItem = {

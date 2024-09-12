@@ -7,9 +7,10 @@ import { QUERY_KEYS } from "@utils"
 import { BlockList } from "../types"
 import CustomButton from "@commons/components/CustomButton"
 import AddBlockListModal from "@src/pages/(dashboard)/dashboard/_components/AddList.modal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useGlobalStore } from "@store"
 import SingleBlockList from "./SingleBlockList"
+import { tokens } from "@/src/commons/tokens"
 
 
 type Props = {
@@ -36,36 +37,43 @@ const BlockLists = ({ className, blockLists }: Props) => {
 
 	const { data = [], refetch } = useQuery({
 		queryKey: [QUERY_KEYS.block_lists],
-		queryFn: () => api.get("/blocklists").then((res) => res.data),
+		queryFn: () => api.get("/blocklists", {"Authorization": `Bearer ${tokens.access_token}`}).then(
+			(res) => {
+				setBlockListData(res.data)
+				return res.data
+			}
+		),
 	})
 
+	const [blockListsData, setBlockListData] = useState([])
+
 	// Ensure data is an array
-	const blockListsData = Array.isArray(data) ? data : [
-		{
-			id: "1",
-			name: "Jackson",
-			type: "blacklist",
-			list: ["facebook.com", "twitter.com"]
-		},
-		{
-			id: "2",
-			name: "Jackson",
-			type: "blacklist",
-			list: ["facebook.com", "twitter.com"]
-		},
-		{
-			id: "3",
-			name: "Jackson",
-			type: "whitelist",
-			list: ["facebook.com", "twitter.com"]
-		},
-		{
-			id: "4",
-			name: "Jackson",
-			type: "blacklist",
-			list: ["facebook.com", "twitter.com"]
-		}
-	];
+	// const blockListsData = Array.isArray(data) ? data : [
+	// 	{
+	// 		id: "1",
+	// 		name: "Jackson",
+	// 		type: "blacklist",
+	// 		list: ["facebook.com", "twitter.com"]
+	// 	},
+	// 	{
+	// 		id: "2",
+	// 		name: "Jackson",
+	// 		type: "blacklist",
+	// 		list: ["facebook.com", "twitter.com"]
+	// 	},
+	// 	{
+	// 		id: "3",
+	// 		name: "Jackson",
+	// 		type: "whitelist",
+	// 		list: ["facebook.com", "twitter.com"]
+	// 	},
+	// 	{
+	// 		id: "4",
+	// 		name: "Jackson",
+	// 		type: "blacklist",
+	// 		list: ["facebook.com", "twitter.com"]
+	// 	}
+	// ];
 
 	const deleteList = async (item: BlockList) => {
 
@@ -76,11 +84,13 @@ const BlockLists = ({ className, blockLists }: Props) => {
 				title: `Delete ${item?.name}?`,
 				message: "Are you sure you want to delete this blocklist?\n This action cannot be undone.",
 				action: async () => {
-					await api.delete(`/blocklists/${item?.id}`)
+					await api.delete(`/blocklists/${item?.id}`, {"Authorization": `Bearer ${tokens.access_token}`})
 					await refetch()
 				},
 			},
 		)
+
+	useEffect(()=>{}, [blockListsData])
 
 	}
 
@@ -113,7 +123,11 @@ const BlockLists = ({ className, blockLists }: Props) => {
 
 			<div className="w-full flex flex-col mt-4 gap-1">
 				{blockListsData.map((item: BlockList, i: number) => (
-					<SingleBlockList blockList={item} />
+					<SingleBlockList blockList={item} handle_edit={setShowEditDialog({
+								type: "edit",
+								show: true,
+								data: blockListsData,
+						})} />
 				))}
 			</div>
 		</div>

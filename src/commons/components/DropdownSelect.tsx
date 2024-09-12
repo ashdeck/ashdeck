@@ -20,7 +20,7 @@ interface DropdownSelectProps {
 	prompt?: string;
 	selector?: React.ReactNode;
 	disabled?: boolean;
-	items: (string | DropdownSelectItem | any)[];
+	items?: (string | DropdownSelectItem | any)[];
 	onSelect?: (value: string) => void;
 	itemLabelKey?: string;
 	selected: any;
@@ -101,6 +101,8 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
 
 	}
 
+	console.log(items)
+
 	return (
 		<>
 
@@ -117,11 +119,12 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
 			>
-				{items?.length > 0 ? (
+				{Array.isArray(items) && items?.length > 0 ? (
 					items.map((item, i) => renderMenuItem(item, i))
 				) : (
 					<MenuItem onClick={handleClose}>{noItemMessage}</MenuItem>
 				)}
+				<MenuItem onClick={handleClose}>{noItemMessage}</MenuItem>
 			</Menu>
 		</>
 	)
