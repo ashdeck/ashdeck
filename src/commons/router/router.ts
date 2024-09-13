@@ -11,6 +11,7 @@ export type Path =
 	| `/extension/popup/:id`
 	| `/home`
 	| `/login`
+	| `/signup`
 
 export type Params = {
 	"/extension/popup/:id": { id: string }

@@ -4,7 +4,8 @@ import { tokens } from "../tokens"
 
 
 let API_URL = import.meta.env.VITE_API_URL
-API_URL = "http://localhost:8000"
+// API_URL = "http://localhost:8000"
+API_URL = "https://pow6lsqqba5qkfmlchfaagegpu0hsqxz.lambda-url.us-east-1.on.aws"
 
 
 
@@ -92,7 +93,7 @@ export const api = {
     post: async (path: string, data: any, headers: any = {}) => await makeRequest("post", path, data, headers),
     patch: async (path: string, data: any, headers: any = {}) => await makeRequest("patch", path, data, headers),
     put: async (path: string, data: any, headers: any = {}) => await makeRequest("put", path, data, headers),
-    delete: async (path: string, data?: any, headers: any = {}) => await makeRequest("delete", path, data, headers),
+    delete: async (path: string, headers: any = {}) => await makeRequest("delete", path, null, headers),
 }
 
 

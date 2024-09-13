@@ -23,7 +23,7 @@ interface IListTypeOptions {
 }
 
 interface Props {
-	options: { type?: "edit" | "create", show: boolean, data?: BlockList, id?: number };
+	options: { type?: "edit" | "create", show: boolean, data?: BlockList, id?: string };
 	setOptions: any;
 	refetch: () => void;
 }
@@ -200,7 +200,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							<div className="rounded-lg p-4 hidden">
 								<h4 className="text-xl font-semibold mb-4">Categories</h4>
 								<div className="grid gap-4 grid-cols-3">
-									{site_categories.map(site => <SiteCategories category={site} />)}
+									{site_categories?.map(site => <SiteCategories category={site} />)}
 								</div>
 							</div>
 						</form>
@@ -209,7 +209,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 					<div className="rounded-lg">
 						<h4 className="mt-2 text-md font-medium  mb-4">Filter by category</h4>
 						<div className="grid gap-6 grid-cols-3">
-							{site_categories.map(site => <SiteCategories category={site} />)}
+							{site_categories?.map(site => <SiteCategories category={site} />)}
 						</div>
 					</div>
 				</div>
@@ -227,7 +227,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				
 
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
-					{entries.map((entry, i) => (
+					{entries?.map((entry, i) => (
 						<div key={i}
 							className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
 							<div className="flex flex-col py-2">
