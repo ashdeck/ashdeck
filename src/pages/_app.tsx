@@ -23,6 +23,7 @@ function BaseLayout({}) {
 
 	const router = useRouter()
 	const pathName = usePathname()
+	console.log(pathName)
 
 	const { setUser } = useUserStore()
 	const { loading, setLoading, showConfirmModal, setShowConfirmModal } = useGlobalStore()
@@ -31,7 +32,7 @@ function BaseLayout({}) {
 		setLoading(true)
 		const user_data = JSON.parse(localStorage.getItem("user_data"))
 
-		if (user_data) {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
+		if (user_data && pathName !== "/") {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
 			.then(({data})=>{
 				setUser(data)
 			})
@@ -42,7 +43,7 @@ function BaseLayout({}) {
 			.finally(()=>{
 				setLoading(false)
 		})} else {
-			pathName !=="/signup" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
+			pathName !=="/signup" && pathName !== "/" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
 			setLoading(false)
 		}
 

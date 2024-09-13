@@ -25,9 +25,10 @@ function LoginPage() {
 
 		if (status == 200){
 			localStorage.setItem("user_data", JSON.stringify(data));
-			if (params.get("redirect")) {
-				window.location.replace(params.get("redirect"))
-			} else window.location.replace("/dashboard")
+			const redirectUrl = params.get("redirect") || "/dashboard"
+			window.location.replace(redirectUrl)
+		} else {
+			console.log("There is probably a problem")
 		}
 	}
 
