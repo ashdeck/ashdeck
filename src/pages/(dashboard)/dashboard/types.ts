@@ -1,7 +1,7 @@
 export type BlockList = {
     id?: string; 
     name?: string;
-    list?: Array<string>;
+    entries?: Array<any>;
     // type: "whitelist" | "blacklist"
 };
 

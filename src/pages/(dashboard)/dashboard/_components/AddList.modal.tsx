@@ -52,8 +52,9 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 			Object.keys(options?.data).forEach((key) => {
 				setValue(key, options?.data[key])
 			})
+			console.log(options.data, "this is the data")
 			// setListType(listTypeOptions.find((item) => item.value === options?.data?.type))
-			setEntries(options?.data?.list)
+			setEntries(options?.data?.entries)
 		} else {
 			resetModal()
 		}

@@ -21,7 +21,7 @@ export default function SingleBlockList({blockList, handle_edit, handle_delete}:
 								{blockList.name}
 							</p>
 							<p className="text-gray-300 dark:text-gray text-sm normal-case">
-								<span className={"text-red-100"}>Blocked</span> websites
+								<span>{`${blockList.entries.length}`} Blocked</span> website(s)
 							</p>
 						</div>
 						<div className="flex items-center gap-4">
