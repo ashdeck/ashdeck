@@ -32,7 +32,7 @@ function BaseLayout({}) {
 		setLoading(true)
 		const user_data = JSON.parse(localStorage.getItem("user_data"))
 
-		if (user_data && pathName !== "/") {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
+		if (user_data && pathName !== "/" && pathName !== "/join-our-waitlist") {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
 			.then(({data})=>{
 				setUser(data)
 			})
