@@ -45,11 +45,18 @@ const HeaderLayout = ({ className = "" }: Props) => {
 				})}
 			</div>
 
-			<div className="w-[20%]">
+			{/* <div className="w-[20%]">
 				<CustomButton endIcon={<PuzzlePieceIcon className={""} />}>
 					Install Extension
 				</CustomButton>
-			</div>
+			</div> */}
+				<div className="w-[20%]">
+					<Link href="/join-our-waitlist">
+						<CustomButton className="border-0 hover-border-0">
+							Join Our Waitlist
+						</CustomButton>
+					</Link>
+				</div>
 
 		</div>
 	)

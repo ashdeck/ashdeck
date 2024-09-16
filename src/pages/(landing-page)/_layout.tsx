@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 
 function LandingLayout({ children }) {
 	return (
-		<div className="relative">
+		<div className="relative min-h-screen bg-primary-dark-alt">
 			<HeaderLayout />
 			{children ? children : <Outlet />}
 			<FooterLayout />

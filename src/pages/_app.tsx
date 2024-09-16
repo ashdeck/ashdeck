@@ -38,12 +38,18 @@ function BaseLayout({}) {
 			})
 			.catch((err)=>{
 				console.log(err)
-				router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
+				let login_redirect = pathName
+				if (login_redirect == "/login"){
+					login_redirect = "/login"
+				} else {
+					login_redirect = `/login?redirect=${encodeURIComponent(usePathname())}`
+				}
+				router.replace(login_redirect)
 			})
 			.finally(()=>{
 				setLoading(false)
 		})} else {
-			pathName !=="/signup" && pathName !== "/" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
+			pathName !=="/signup" && pathName !== "/" && pathName !== "/join-our-waitlist" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
 			setLoading(false)
 		}
 

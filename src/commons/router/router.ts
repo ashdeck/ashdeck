@@ -10,6 +10,7 @@ export type Path =
 	| `/dashboard/settings`
 	| `/extension/popup/:id`
 	| `/home`
+	| `/join-our-waitlist`
 	| `/login`
 	| `/signup`
 
