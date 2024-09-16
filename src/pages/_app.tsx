@@ -39,7 +39,7 @@ function BaseLayout({}) {
 			.catch((err)=>{
 				console.log(err)
 				let login_redirect = pathName
-				if (login_redirect == "/login"){
+				if (login_redirect == "/login" || login_redirect == "/join-our-waitlist"){
 					login_redirect = "/login"
 				} else {
 					login_redirect = `/login?redirect=${encodeURIComponent(usePathname())}`
