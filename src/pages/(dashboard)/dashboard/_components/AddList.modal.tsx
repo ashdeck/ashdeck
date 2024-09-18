@@ -88,8 +88,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 
 		const compile: IBlockList = {
 			entries: entries,
-			name: data?.name,
-			// type: listType?.value,
+			name: data?.name
 		}
 
 		if (options?.type === "create") {
@@ -135,14 +134,14 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 	}
 
 	return (
-		<DialogLayout className={"w-[55%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
+		<DialogLayout className={"w-[60%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
 			<div className="flex w-full justify-between items-center">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
 					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">
 						Create Block List
 					</p>
 					<p className="text-gray-500 dark:text-gray ">
-						Fill in the details to create a new block list.
+						Fill in the details to create a new block list or select from the existing categories.
 					</p>
 				</div>
 				<div className="max-w-[30%]">
@@ -151,7 +150,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 			</div>
 
 			<div className="flex flex-col text-black w-full my-4">
-				<div className="flex justify-between gap-4 items-start mb-12">
+				<div className="flex justify-between gap-4 items-start my-4">
 					<div className="w-[50%] mr-8">
 						<div>
 							<FormInput
@@ -207,10 +206,13 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 						</form>
 						</div>
 					</div>
-					<div className="rounded-lg">
-						<h4 className="mt-2 text-md font-medium  mb-4">Filter by category</h4>
-						<div className="grid gap-6 grid-cols-3">
-							{site_categories?.map(site => <SiteCategories category={site} />)}
+					<div className="rounded-lg border-2">
+						<div className="py-4 px-4">
+							<h4 className="text-md font-medium mb-4">Create from Categories</h4>
+							<p className="text-sm font-light mb-4 hidden">You can also create blocklists from categories we have made for you</p>
+							<div className="grid gap-6 grid-cols-3">
+								{site_categories?.map(site => <SiteCategories category={site} />)}
+							</div>
 						</div>
 					</div>
 				</div>

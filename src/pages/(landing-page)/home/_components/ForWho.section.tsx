@@ -68,9 +68,15 @@ const ForWhoSection = ({ className }: Props) => {
 				It's easy to set up and use.
 			</p>
 
-			<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
+			{/* <CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
 				Start for FREE
-			</CustomButton>
+			</CustomButton> */}
+
+			<Link href="/join-our-waitlist">
+				<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
+					Join Our Waitlist
+				</CustomButton>
+			</Link>
 
 
 			<div className="grid grid-cols-1 gap-24 w-full my-[20%]">

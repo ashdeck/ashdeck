@@ -31,18 +31,19 @@ const BlockLists = ({ className, blockLists }: Props) => {
     });
 
     const { setShowConfirmModal } = useGlobalStore();
+    const [blockListsData, setBlockListData] = useState<Array<BlockList>>([]);
 
     const { data = [], refetch } = useQuery({
         queryKey: [QUERY_KEYS.block_lists],
         queryFn: () => api.get("/blocklists", { "Authorization": `Bearer ${tokens.access_token}` }).then(
             (res) => {
                 setBlockListData(res.data);
+                localStorage.setItem("block_lists",JSON.stringify(res.data))
                 return res.data;
             }
         ),
     });
 
-    const [blockListsData, setBlockListData] = useState<Array<BlockList>>([]);
 
     // Handle delete action
     const deleteList = async (item: BlockList) => {

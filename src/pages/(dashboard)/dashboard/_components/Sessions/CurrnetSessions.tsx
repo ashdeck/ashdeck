@@ -1,11 +1,11 @@
 import "@assets/css/components.css"
 import { useState, useEffect, useRef } from "react"
-import { SessionItem } from "../../types"
+import { ISession } from "@/src/commons/interfaces"
 import SingleCurrentSession from "./SingleSession"
 
 
 type Props = {
-	current_sessions?: Array<SessionItem>
+	current_sessions?: Array<ISession>
 }
 
 // return sessions for the day, if a session is recurring, it should only occur on the current day.

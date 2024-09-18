@@ -1,8 +1,8 @@
 let idCounter = 0 // Initialize a counter outside of the function
 
 async function init() {
-	// const API_URL = "http://localhost:8000"
-	const API_URL = "https://pow6lsqqba5qkfmlchfaagegpu0hsqxz.lambda-url.us-east-1.on.aws"
+	const API_URL = "http://localhost:8000"
+	// const API_URL = "https://pow6lsqqba5qkfmlchfaagegpu0hsqxz.lambda-url.us-east-1.on.aws"
 
 	//todo: replace with dynamic calls
 	const data = await fetch(`${API_URL}/active-session`, {

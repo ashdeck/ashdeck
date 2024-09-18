@@ -5,12 +5,13 @@ import { useEffect } from "react"
 import { PlayCircleIcon, PauseCircleIcon, ShieldCheckIcon, WindowIcon, LockClosedIcon, PencilSquareIcon, ArrowUpCircleIcon } from "@heroicons/react/16/solid"
 import { Arrow, ArrowUp, ArrowUp3 } from "iconsax-react"
 import { ArrowUpIcon } from "@heroicons/react/24/outline"
+import { ISession } from "@/src/commons/interfaces"
 // import { CloseCircle } from "iconsax-react"
 
 
 
 type Props = {
-	session?: SessionItem
+	session?: ISession
 }
 
 const SingleCurrentSession = ({ session }: Props) => {
@@ -22,7 +23,7 @@ const SingleCurrentSession = ({ session }: Props) => {
 			<div onClick={()=>setShowDetails(!showDetails)} className="bg-gree text-white flex justify-between items-start py-3">
 				<div>
 					<p className="font-medium text-xl">{session.name}</p>
-					<p className="text-xs">{session.recurring ? "Recurring": "One Time"}</p>
+					<p className="text-xs">{session.type == "recurring" ? "Recurring": <>{session.type == "start_later"? "Upcoming": "Running"}</>}</p>
 				</div>
 
 				<div className="">
@@ -40,9 +41,9 @@ const SingleCurrentSession = ({ session }: Props) => {
 						<div className="flex justify-between items-start">
 							<p className="text-white w-20">Block Lists</p>
 							<div className="px-2">
-								{session.blockList.map(item=><div className="flex items-center gap-1">
+								{session.block_lists.map(item=><div className="flex items-center gap-1">
 									<ShieldCheckIcon className="h-7 w-7" />
-									<p className="font-small">{item.name}</p>
+									<p className="font-small">{item}</p>
 								</div>)}
 							</div>
 						</div>

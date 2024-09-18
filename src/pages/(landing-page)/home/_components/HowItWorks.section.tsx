@@ -42,9 +42,15 @@ const HowItWorksSection = ({ className }: Props) => {
 				It's time to regain control and focus. Our powerful website blocker features puts you back in the driver's seat, allowing you to effortlessly block time-wasting sites, games, and applications.
 			</p>
 
-			<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
+			{/* <CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
 				Start for FREE
-			</CustomButton>
+			</CustomButton> */}
+
+			<Link href="/join-our-waitlist">
+				<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
+					Join Our Waitlist
+				</CustomButton>
+			</Link>
 
 
 			<div className="grid grid-cols-2 gap-6 w-full my-[10%]">

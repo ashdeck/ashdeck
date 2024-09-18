@@ -1,10 +1,10 @@
 import "@assets/css/components.css"
 import { useState } from "react"
-import { SessionItem } from "../../types"
+import { ISession } from "@/src/commons/interfaces"
 
 
 type Props = {
-	sessions?: Array<SessionItem>
+	sessions?: Array<ISession>
 }
 
 const SessionHistory = ({ sessions }: Props) => {

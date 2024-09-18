@@ -27,9 +27,9 @@ const HeroSection = ({ className }: Props) => {
 				WebsiteBlocker, a productivity extension for Google Chrome, empowers you to maintain focus on your tasks. By limiting your access to time-wasting websites, it facilitates efficient work habits and boosts productivity.
 			</p>
 
-			<Link className={"w-[30%]"} href={"/dashboard"}>
+			<Link className={"w-[30%]"} href={"/join-our-waitlist"}>
 				<CustomButton className={"py-3.5 px-6 w-full"}>
-					Start for Free
+					Join Our Waitlist
 				</CustomButton>
 			</Link>
 

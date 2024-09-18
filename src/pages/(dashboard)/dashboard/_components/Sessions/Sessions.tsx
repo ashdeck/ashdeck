@@ -11,8 +11,9 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import AddSession from "./AddSession";
 import { QUERY_KEYS } from "@/src/commons/utils";
 import { api } from "@/src/commons/utils/axiosProvider";
-import { IBlockList } from "@/src/commons/interfaces";
+import { IBlockList, ISession } from "@/src/commons/interfaces";
 import CustomButton from "@/src/commons/components/CustomButton";
+import { tokens } from "@/src/commons/tokens";
 
 type Props = {
     className?: string;
@@ -29,8 +30,8 @@ const sessions_res: Array<SessionItem> = [
     recurring: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     blockList: [
-      	{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
-      	{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
+      	{ name: "First entries", entries: ["google.com", "facebook.com"]},
+      	{ name: "First entries", entries: ["google.com", "facebook.com"]},
     ],
   },
   {
@@ -42,7 +43,7 @@ const sessions_res: Array<SessionItem> = [
 	paused: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     recurring: false,
-    blockList: [{ name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" }],
+    blockList: [{ name: "First entries", entries: ["google.com", "facebook.com"]}],
   },
    {
     id: "someId1",
@@ -54,23 +55,23 @@ const sessions_res: Array<SessionItem> = [
     recurring: false,
 	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
     blockList: [
-      { name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
-      { name: "First List", list: ["google.com", "facebook.com"], type: "blacklist" },
+      	{ name: "First entries", entries: ["google.com", "facebook.com"] },
+      	{ name: "First entries", entries: ["google.com", "facebook.com"] },
     ],
-  }
+  	}
   // ... more sessions
 ];
 
 const Sessions = ({ className }: Props) => {
 	const [selectedTab, setSelectedTab] = useState('sessions');
-	const [sessions, setSessions] = useState(sessions_res);
+	const [sessions, setSessions] = useState<Array<ISession>>([]);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isScrollable, setIsScrollable] = useState(false);
 
 	const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
 		show: boolean,
-		data?: IBlockList,
+		data?: ISession,
 		id?: number,
 	}>({
 		type: "create",
@@ -81,8 +82,14 @@ const Sessions = ({ className }: Props) => {
 
 
 	const { data = [], refetch } = useQuery({
-		queryKey: [QUERY_KEYS.block_lists],
-		queryFn: () => api.get("/blocklists").then((res) => res.data),
+		queryKey: [QUERY_KEYS.sessions],
+		queryFn: () => api.get("/sessions", {"Authorization": `Bearer ${tokens.access_token}`}).then((res) =>{
+			res.data
+			setSessions(res.data)
+			console.log(sessions)
+			return res.data
+		}
+		),
 	})
 
 
@@ -153,7 +160,7 @@ const Sessions = ({ className }: Props) => {
 		)} */}
 
 		<div className="w-full flex flex-col h-full items-center mt-4" ref={containerRef}>
-			{selectedTab === "history" ? <SessionHistory sessions={sessions} /> : <CurrentSessions current_sessions={sessions} />}
+			{selectedTab === "history" ? <SessionHistory sessions={sessions.length > 0 ? sessions: []} /> : <CurrentSessions current_sessions={sessions.length > 0 ? sessions: []} />}
 		</div>
 		</div>
 	);
