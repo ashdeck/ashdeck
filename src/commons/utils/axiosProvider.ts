@@ -4,8 +4,8 @@ import { tokens } from "../tokens"
 
 
 let API_URL = import.meta.env.VITE_API_URL
-API_URL = "http://localhost:8000"
-// API_URL = "https://pow6lsqqba5qkfmlchfaagegpu0hsqxz.lambda-url.us-east-1.on.aws"
+// API_URL = "http://localhost:8000"
+API_URL = "https://pow6lsqqba5qkfmlchfaagegpu0hsqxz.lambda-url.us-east-1.on.aws"
 
 
 
