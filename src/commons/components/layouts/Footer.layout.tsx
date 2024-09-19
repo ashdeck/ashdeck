@@ -47,7 +47,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 				</div>
 
-				<div className="text-gray-300 my-3 text-sm">
+				<div className="text-gray-300 my-3 text-sm hidden">
 					Proudly owned by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Pelrio Analytica</a>
 				</div>
 
