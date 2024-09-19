@@ -109,7 +109,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 				{selectedTab === "start_now" ? 
 				<SingleTime block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} />
 				: selectedTab === "recurring" ? 
-				<RecurringSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/> : <StartLaterSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} />}
+				<RecurringSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/> : <StartLaterSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/>}
 				<div className="flex justify-between gap-4 mt-8">
 					<div className="bg-gray-300 rounded-lg">
 						{block_lists()?.length > 0 ? (

@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import CustomButton from "@/src/commons/components/CustomButton";
-import RecurringDay from "./RecurringDay";
 import { ISession } from "@/src/commons/interfaces";
-import { api } from "@/src/commons/utils/axiosProvider";
-import { tokens } from "@/src/commons/tokens";
+
 
 interface Props {
     block_lists: string[];
