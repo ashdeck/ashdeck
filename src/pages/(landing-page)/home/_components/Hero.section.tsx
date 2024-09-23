@@ -12,19 +12,19 @@ type Props = {
 const HeroSection = ({ className }: Props) => {
 	return (
 		<div
-			className={"flex flex-col bg-secondary h-[90vh] w-full items-center gap-12 relative px-[15%]"}>
+			className={"flex flex-col bg-secondary h-[90vh] w-full items-center gap-8 relative px-[15%]"}>
 			<HeroBgPattern className={"w-full absolute"} />
 
 			<div className="items-center flex flex-col">
-				<HeadingText className="text-center text-white mt-[10%] text-7xl font-bold">
-					Limit Distractions, Improve Productivity & Focus with Website Blocker
+				<HeadingText className="text-center text-white mt-[10%] text-6xl font-bold">
+					Limit Distractions with Website Blocker, Improve Productivity & Stay Focused
 				</HeadingText>
 				<PenUnderline className={"w-[50%] stroke-3 mx-auto"} />
 			</div>
 
 
 			<p className={"max-w-[80%] text-lg text-center text-gray-300"}>
-				WebsiteBlocker, a productivity extension for Google Chrome, empowers you to maintain focus on your tasks. By limiting your access to time-wasting websites, it facilitates efficient work habits and boosts productivity.
+				Ashdeck is a powerful productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
 			</p>
 
 			<Link className={"w-[30%]"} href={"/join-our-waitlist"}>

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "description": "Focus and Productive tool to help reduce distractions.",
-  "name": "Website Blocker",
+  "name": "Ashdeck",
   "version": "0.1.0",
   "background": {
     "service_worker": "background.js"

@@ -30,7 +30,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
 
 	return (
 		<div className={"p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
-			<Logo className={"text-white font-outfit w-[20%]"} />
+			<Logo className={"text-white font-outfit w-[20%] ml-8"} />
 
 			<div className="w-full flex text-white justify-center gap-12">
 				{links.map((link, index) => {
@@ -50,12 +50,15 @@ const HeaderLayout = ({ className = "" }: Props) => {
 					Install Extension
 				</CustomButton>
 			</div> */}
-				<div className="w-[20%]">
-					<Link href="/join-our-waitlist">
-						<CustomButton className="border-0 hover-border-0">
-							Join Our Waitlist
-						</CustomButton>
-					</Link>
+				<div className="w-[20%] mr-8">
+					<div className="flex justify-between">
+						<div></div>
+						<Link href="/join-our-waitlist">
+							<CustomButton className="border-0 hover-border-0">
+								Join Our Waitlist
+							</CustomButton>
+						</Link>
+					</div>
 				</div>
 
 		</div>

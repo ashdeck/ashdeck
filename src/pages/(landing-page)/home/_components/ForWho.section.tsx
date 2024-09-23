@@ -47,11 +47,17 @@ const ForWhoSection = ({ className }: Props) => {
 
 		},
 		{
-			title: "Product Designers",
+			title: "Designers",
 			description: "Carve out space for creativity and bring your ideas to life.",
 			image: <img className={"w-[25%] absolute"} src={"/images/palette.png"} alt={""} />,
 
 		},
+		{
+			title: "Researchers",
+			description: "Stay focused on your research and achieve breakthrough results.",
+			image: <img className={"w-[25%] absolute"} src={"/images/researcher.png"} alt={""} />,
+
+		}
 
 	]
 
@@ -60,9 +66,9 @@ const ForWhoSection = ({ className }: Props) => {
 		<div id={"features"}
 			 className={"flex flex-col gap-4 min-h-[100vh] px-[15%] justify-center items-center"}>
 
-			<HeadingText className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">
-				Control your Time and Boost your Productivity with Website Blocker for Achieving your Goals
-			</HeadingText>
+			<h2 className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">
+				Use Cases of Daily Focus mode + Productivity + Website blocker
+			</h2>
 
 			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
 				It's easy to set up and use.
@@ -103,18 +109,18 @@ const FeatureCard = ({ item, index = 0 }) => {
 		<div className={`flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
 
 			<div className="w-[50%] flex flex-col px-16 py-10">
-				<div className={"font-heading font-medium text-2xl"}>
+				<h3 className={"font-heading font-medium text-2xl"}>
 					{item?.title}
-				</div>
+				</h3>
 
 				<p className={"text-sm my-4"}>
 					{item?.description}
 				</p>
 
 
-				<Link href={"/dashboard"}>
+				<Link href={"/join-our-waitlist"}>
 					<CustomButton className={"mt-20"} variant={"text"} endIcon={<ArrowUpRightIcon />}>
-						Create Account
+						Join Our Waitlist
 					</CustomButton>
 				</Link>
 			</div>
