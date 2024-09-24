@@ -29,8 +29,8 @@ const HeaderLayout = ({ className = "" }: Props) => {
 	]
 
 	return (
-		<div className={"p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
-			<Logo className={"text-white font-outfit w-[12rem] ml-8"} />
+		<div className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
+			<Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
 
 			<div className="w-full hidden sm:flex text-white justify-center gap-12">
 				{links.map((link, index) => {
@@ -54,7 +54,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
 					<div className="flex justify-between">
 						<div></div>
 						<Link href="/join-our-waitlist">
-							<CustomButton className="border-0 hover-border-0">
+							<CustomButton className="border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
 								Join Our Waitlist
 							</CustomButton>
 						</Link>
