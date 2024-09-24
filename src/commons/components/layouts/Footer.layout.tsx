@@ -45,7 +45,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 					</div>
 					<div>{socials.map(social => social.icon)}</div>
 				</div>
-				<div className="w-full h-full flex justify-center gap-4 p-8">
+				<div className="w-full h-full flex justify-center gap-4 p-8 text-sm flex-col md:flex-row items-center">
 
 					{
 						links.map((item, index) => (

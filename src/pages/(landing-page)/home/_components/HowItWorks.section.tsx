@@ -39,7 +39,7 @@ const HowItWorksSection = ({ className }: Props) => {
 				Are distracting websites eating away at your precious time?
 			</HeadingText> */}
 
-			<h2 className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">Regain Control of Your Time with Our Website Blocker</h2>
+			<h2 className="mt-[10%] max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Regain Control of Your Time with Our Website Blocker</h2>
 
 			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
 				Are distracting websites eating away at your precious time? Our powerful website blocker features put you back in the driver's seat, allowing you to effortlessly block time-wasting sites, games, and applications.
@@ -56,7 +56,7 @@ const HowItWorksSection = ({ className }: Props) => {
 			</Link>
 
 
-			<div className="grid grid-cols-2 gap-6 w-full my-[10%]">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full my-[10%]">
 
 				{
 					features.map((item, i) => <FeatureCard item={item} index={i} />)

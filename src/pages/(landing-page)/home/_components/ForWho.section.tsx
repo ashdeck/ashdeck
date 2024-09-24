@@ -66,7 +66,7 @@ const ForWhoSection = ({ className }: Props) => {
 		<div id={"features"}
 			 className={"flex flex-col gap-4 min-h-[100vh] px-[15%] justify-center items-center"}>
 
-			<h2 className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">
+			<h2 className="mt-[10%] max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">
 				Use Cases of Daily Focus mode + Productivity + Website blocker
 			</h2>
 
@@ -106,9 +106,9 @@ export default ForWhoSection
 
 const FeatureCard = ({ item, index = 0 }) => {
 	return (
-		<div className={`flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
+		<div className={`sm:flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
 
-			<div className="w-[50%] flex flex-col px-16 py-10">
+			<div className="sm:w-[50%] flex flex-col px-16 py-10">
 				<h3 className={"font-heading font-medium text-2xl"}>
 					{item?.title}
 				</h3>
@@ -125,7 +125,7 @@ const FeatureCard = ({ item, index = 0 }) => {
 				</Link>
 			</div>
 
-			<div className="aspect-square flex flex-col px-16 py-10 items-center justify-center">
+			<div className="aspect-square hidden sm:flex flex-col px-16 py-10 items-center justify-center">
 				{item?.image}
 			</div>
 
