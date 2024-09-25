@@ -75,9 +75,11 @@ const FAQSection = ({ className }: Props) => {
           <div key={index} className="mb-4">
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full flex justify-between items-center py-4 text-lg font-medium text-primary-dark border-b-2"
+              className="w-full flex justify-between items-center py-4 text-md lg:text-lg font-medium text-primary-dark border-b-2"
             >
-              {item.question}
+              <div className="text-left max-w-[90%]">
+                {item.question}
+              </div>
               {activeIndex === index ? (
                 <ChevronUpIcon className="w-6 h-6" />
               ) : (
