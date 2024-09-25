@@ -4,7 +4,6 @@ import HeroBgPattern from "@commons/assets/images/hero-bg-pattern.svg?react"
 import Link from "@router/link"
 import PenUnderline from "@commons/assets/images/pen-underline.svg?react"
 
-
 type Props = {
 	className?: string
 }
