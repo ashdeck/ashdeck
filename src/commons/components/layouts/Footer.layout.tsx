@@ -12,7 +12,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 	const socials = [
 		{icon: <TiSocialLinkedin />, url: "https://www.linkedin.com/company/ashdeck"},
 		{icon: <SlSocialPintarest />, url: "https://www.pinterest.com/Ashdeckhq/"},
-		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"}
+		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"} 
 	]
 
 	const links = [
