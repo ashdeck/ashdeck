@@ -41,13 +41,13 @@ const FooterLayout = ({ className = "" }: Props) => {
 	return (
 		<div className={""}>
 			<div className="min-h-[15vh] z-20 bg-primary-dark-alt flex flex-col items-center w-full">
-				<div className="gap-8 justify-between w-[90%] mt-8 hidden">
-					<div>
-						<img src="/images/ashdeck-logo-2.png" className="w-36" alt="Ashdeck Logo" />
-						<p className="text-gray-500 mt-4">Proudly Owned by Ashdeck Analytics Limited</p>
+				<div className="gap-8 w-[90%] mt-8 items-center justify-center">
+					<div className="flex justify-center items-center gap-2 flex-col md:flex-row">
+						<p className="text-gray-500 text-sm order-last md:order-1 mx-[10%] text-center">Proudly Owned by Ashdeck Analytics Limited</p>
+						<img src="/images/ashdeck-logo-2.png" className="w-24" alt="Ashdeck Logo" />
 					</div>
 				</div>
-				<div className="w-full h-full flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
+				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
 
 					{
 						links.map((item, index) => (

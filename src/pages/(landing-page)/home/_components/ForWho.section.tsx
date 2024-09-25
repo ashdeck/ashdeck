@@ -64,28 +64,29 @@ const ForWhoSection = ({ className }: Props) => {
 
 	return (
 		<div id={"features"}
-			 className={"flex flex-col gap-4 min-h-[100vh] px-[15%] justify-center items-center"}>
+			 className={"flex flex-col gap-4 min-h-[100vh] px-[5%] md:px-[15%] justify-center items-center"}>
 
-			<h2 className="mt-[10%] max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">
+			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">
 				Use Cases of Daily Focus mode + Productivity + Website blocker
 			</h2>
 
-			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
+			<p className={"w-full text-gray-600 max-w-[90%] md:max-w-[60%] text-center"}>
 				It's easy to set up and use.
 			</p>
 
 			{/* <CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
 				Start for FREE
 			</CustomButton> */}
+			<div className="flex items-center justify-center md:block text-center w-full">
+				<Link href="/join-our-waitlist" className="w-[16rem]">
+					<CustomButton variant={"text"} className={"mx-auto"} endIcon={<ArrowUpRightIcon />}>
+						Join Waitlist
+					</CustomButton>
+				</Link>
+			</div>
 
-			<Link href="/join-our-waitlist">
-				<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
-					Join Our Waitlist
-				</CustomButton>
-			</Link>
 
-
-			<div className="grid grid-cols-1 gap-24 w-full my-[20%]">
+			<div className="grid grid-cols-1 gap-12 md:gap-24 w-full my-[4rem] md:my-[20%]">
 
 
 				{
@@ -108,7 +109,7 @@ const FeatureCard = ({ item, index = 0 }) => {
 	return (
 		<div className={`sm:flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
 
-			<div className="sm:w-[50%] flex flex-col px-16 py-10">
+			<div className="sm:w-[50%] flex flex-col px-8 sm:px-12 md:px-20 py-10">
 				<h3 className={"font-heading font-medium text-2xl"}>
 					{item?.title}
 				</h3>
@@ -118,9 +119,9 @@ const FeatureCard = ({ item, index = 0 }) => {
 				</p>
 
 
-				<Link href={"/join-our-waitlist"}>
-					<CustomButton className={"mt-20"} variant={"text"} endIcon={<ArrowUpRightIcon />}>
-						Join Our Waitlist
+				<Link href={"/join-our-waitlist"} className="w-[16rem]">
+					<CustomButton className={"mt-8 sm:mt-10 md:mt-20"} variant={"text"} endIcon={<ArrowUpRightIcon />}>
+						Join Waitlist
 					</CustomButton>
 				</Link>
 			</div>

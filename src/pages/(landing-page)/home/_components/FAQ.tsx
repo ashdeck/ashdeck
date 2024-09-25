@@ -64,7 +64,7 @@ const FAQSection = ({ className }: Props) => {
   return (
     <div
       id="faq"
-      className={`w-full px-[10%] py-16 flex flex-col gap-6 ${className}`}
+      className={`w-full px-[5%] md:px-[15%] py-16 flex flex-col gap-6 ${className}`}
     >
       <h2 className="text-center text-2xl md:text-3xl lg:text-5xl font-semibold">
         Frequently Asked Questions

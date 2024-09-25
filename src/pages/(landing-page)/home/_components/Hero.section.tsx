@@ -11,7 +11,7 @@ type Props = {
 const HeroSection = ({ className }: Props) => {
 	return (
 		<div
-			className={"flex flex-col bg-secondary py-24 sm:py-0 sm:h-[90vh] w-full items-center gap-8 relative px-[15%] justify-center"}>
+			className={"flex flex-col bg-secondary py-24 lg:py-0 lg:h-[90vh] w-full items-center gap-8 relative px-[10%] md:px-[15%] justify-center"}>
 			<HeroBgPattern className={"w-full absolute"} />
 
 			<div className="items-center flex flex-col">
@@ -26,9 +26,9 @@ const HeroSection = ({ className }: Props) => {
 				Ashdeck is a powerful productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
 			</p>
 
-			<Link className={"w-[80%] sm:w-[40%] lg:w-[30%]"} href={"/join-our-waitlist"}>
+			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
 				<CustomButton className={"py-3.5 px-6 w-full"}>
-					Join Our Waitlist
+					Join Waitlist
 				</CustomButton>
 			</Link>
 

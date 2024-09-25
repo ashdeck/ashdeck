@@ -32,14 +32,14 @@ const HowItWorksSection = ({ className }: Props) => {
 
 	return (
 		<div id={"how-it-works"}
-			 className={"flex flex-col w-full gap-4 min-h-[100vh] px-[15%] justify-center items-center"}>
+			 className={"flex flex-col w-full gap-4 min-h-[100vh] px-[5%] md:px-[15%] justify-center items-center"}>
 
 			{/* <HeadingText className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">
 
 				Are distracting websites eating away at your precious time?
 			</HeadingText> */}
 
-			<h2 className="mt-[10%] max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Regain Control of Your Time with Our Website Blocker</h2>
+			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Regain Control of Your Time with Our Website Blocker</h2>
 
 			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
 				Are distracting websites eating away at your precious time? Our powerful website blocker features put you back in the driver's seat, allowing you to effortlessly block time-wasting sites, games, and applications.
@@ -49,9 +49,9 @@ const HowItWorksSection = ({ className }: Props) => {
 				Start for FREE
 			</CustomButton> */}
 
-			<Link href="/join-our-waitlist">
-				<CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
-					Join Our Waitlist
+			<Link href="/join-our-waitlist" className="w-[16rem]">
+				<CustomButton variant={"text"} className="mx-auto" endIcon={<ArrowUpRightIcon />}>
+					Join Waitlist
 				</CustomButton>
 			</Link>
 
@@ -75,7 +75,7 @@ export default HowItWorksSection
 
 const FeatureCard = ({ item, index = 0 }) => {
 	return (
-		<div className={"flex bg-bg-50 dark:bg-bg-dark-50 justify-between rounded-br-[40%] border border-bg-50 dark:border-bg-dark-50 transition duration-500 hover:border-primary w-full flex-col gap-2 py-10 px-16"}>
+		<div className={"flex bg-bg-50 dark:bg-bg-dark-50 justify-between rounded-br-[40%] border border-bg-50 dark:border-bg-dark-50 transition duration-500 hover:border-primary w-full flex-col gap-2 py-10 px-8 md:px-16"}>
 			<div className="flex flex-col">
 				<h3 className={"font-heading font-medium text-2xl"}>
 					0{index + 1}.{" "}{item?.title}
@@ -87,9 +87,9 @@ const FeatureCard = ({ item, index = 0 }) => {
 			</div>
 
 
-			<Link href={"/join-our-waitlist"}>
+			<Link href={"/join-our-waitlist"} className="w-[16rem]">
 				<CustomButton className={"mt-20"} variant={"text"} endIcon={<ArrowUpRightIcon />}>
-					Join Our Waitlist
+					Join Waitlist
 				</CustomButton>
 			</Link>
 
