@@ -36,7 +36,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
   };
 
   return (
-    <header className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0 border-b py-2"}>
+    <header className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0 border-b-[1px] py-2"}>
       <Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
 
       {/* Hamburger icon for mobile screens */}

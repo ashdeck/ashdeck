@@ -43,7 +43,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 			<div className="min-h-[15vh] z-20 bg-primary-dark-alt flex flex-col items-center w-full">
 				<div className="gap-8 w-[90%] mt-8 items-center justify-center">
 					<div className="flex justify-center items-center gap-2 flex-col md:flex-row">
-						<p className="text-gray-500 text-sm order-last md:order-1 mx-[10%] text-center">Proudly Owned by Ashdeck Analytics Limited</p>
+						<p className="text-gray-500 text-sm order-last md:order-1 mx-[10%] md:mx-0 text-center">Proudly Owned by Ashdeck Analytics Limited</p>
 						<img src="/images/ashdeck-logo-2.png" className="w-24" alt="Ashdeck Logo" />
 					</div>
 				</div>
