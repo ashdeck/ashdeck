@@ -27,7 +27,7 @@ const HeroSection = ({ className }: Props) => {
 				Ashdeck is a powerful productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
 			</p>
 
-			<Link className={"w-[40%] lg:w-[30%]"} href={"/join-our-waitlist"}>
+			<Link className={"w-[80%] sm:w-[40%] lg:w-[30%]"} href={"/join-our-waitlist"}>
 				<CustomButton className={"py-3.5 px-6 w-full"}>
 					Join Our Waitlist
 				</CustomButton>

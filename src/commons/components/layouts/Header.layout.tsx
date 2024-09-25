@@ -1,68 +1,93 @@
-import React from "react"
-import useUserStore from "@store/userStore"
-import Logo from "@commons/components/Logo"
-import CustomButton from "@commons/components/CustomButton"
-import { PuzzlePieceIcon } from "@heroicons/react/16/solid"
-import Link from "@router/link"
+import React, { useState } from "react";
+import useUserStore from "@store/userStore";
+import Logo from "@commons/components/Logo";
+import CustomButton from "@commons/components/CustomButton";
+import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
+import { HambergerMenu } from "iconsax-react";
+import { XCircleIcon } from "@heroicons/react/16/solid";
+import Link from "@router/link";
 
 type Props = {
-	className?: string
-} & React.PropsWithChildren
+  className?: string;
+} & React.PropsWithChildren;
 
 const HeaderLayout = ({ className = "" }: Props) => {
+  const { user } = useUserStore();
+  const [menuOpen, setMenuOpen] = useState(false); // State to toggle menu
 
-	const { user } = useUserStore()
+  const links = [
+    {
+      name: "Blog",
+      href: "/blog",
+    },
+    {
+      name: "Features",
+      href: "#features",
+    },
+    {
+      name: "About",
+      href: "/about",
+    },
+  ];
 
-	const links = [
-		{
-			name: "Blog",
-			href: "/blog",
-		},
-		{
-			name: "Features",
-			href: "#features",
-		},
-		{
-			name: "About",
-			href: "about",
-		},
-	]
+  // Toggle the menu
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
-	return (
-		<div className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
-			<Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
+  return (
+    <header className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0"}>
+      <Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
 
-			<div className="w-full hidden sm:flex text-white justify-center gap-12">
-				{links.map((link, index) => {
-					return (
-						<Link
-							key={index}
-							href={link.href}
-							className="text-md hover:text-primary pb-2 transition duration-500 ">
-							{link.name}
-						</Link>
-					)
-				})}
-			</div>
+      {/* Hamburger icon for mobile screens */}
+      <div className="flex sm:hidden mr-8">
+        {menuOpen ? (
+          <XCircleIcon className="w-8 h-8 text-primary" onClick={toggleMenu} />
+        ) : (
+          <HambergerMenu className="w-8 h-8 text-primary" onClick={toggleMenu} />
+        )}
+      </div>
 
-			{/* <div className="w-[20%]">
-				<CustomButton endIcon={<PuzzlePieceIcon className={""} />}>
-					Install Extension
-				</CustomButton>
-			</div> */}
-				<div className="w-[40%] md:w-[30%] lg:w-[20%] mr-8">
-					<div className="flex justify-between">
-						<div></div>
-						<Link href="/join-our-waitlist">
-							<CustomButton className="border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
-								Join Our Waitlist
-							</CustomButton>
-						</Link>
-					</div>
-				</div>
+      {/* Desktop links */}
+      <nav className="hidden sm:flex w-full text-white justify-center gap-12">
+        {links.map((link, index) => (
+          <Link
+            key={index}
+            href={link.href}
+            className="text-md hover:text-primary pb-2 transition duration-500">
+            {link.name}
+          </Link>
+        ))}
+      </nav>
 
-		</div>
-	)
-}
+      {/* Mobile menu */}
+      {menuOpen && (
+        <nav className="absolute top-[8vh] right-0 w-[50%] bg-white bg-opacity-90 p-4 sm:hidden">
+          {links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              className="block text-secondary text-lg py-2 border-b border-gray-300"
+              onClick={toggleMenu} // Close menu on link click
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+      )}
 
-export default HeaderLayout
+      {/* Join waitlist button */}
+      <div className="w-[40%] md:w-[30%] lg:w-[20%] mr-8 hidden sm:block">
+        <div className="flex justify-end">
+          <Link href="/join-our-waitlist">
+            <CustomButton className="border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
+              Join Our Waitlist
+            </CustomButton>
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default HeaderLayout;
