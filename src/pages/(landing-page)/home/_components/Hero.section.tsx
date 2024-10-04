@@ -15,7 +15,7 @@ const HeroSection = ({ className }: Props) => {
 			<HeroBgPattern className={"w-full absolute"} />
 
 			<div className="items-center flex flex-col">
-				<HeadingText className="text-center text-white mt-[10%] md:text-4xl lg:text-6xl text-3xl font-bold">
+				<HeadingText className="text-center text-white lg:mt-[12rem] md:text-4xl lg:text-6xl text-3xl font-bold">
 					Limit Distractions with Website Blocker, Improve Productivity & Stay Focused
 				</HeadingText>
 				<PenUnderline className={"w-[50%] stroke-3 mx-auto"} />
@@ -23,7 +23,7 @@ const HeroSection = ({ className }: Props) => {
 
 
 			<p className={"max-w-[80%] md:text-md lg:text-lg text-center text-gray-300 hidden sm:block"}>
-				Ashdeck is a powerful productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
+				Ashdeck is an open-source productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
 			</p>
 
 			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>

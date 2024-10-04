@@ -14,18 +14,21 @@ import { useState, useEffect } from "react";
 import { QUERY_KEYS } from "@/src/commons/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
+import { BlockList } from "../../types";
 
 interface Props {
-	options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: number };
+	options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: string };
 	setOptions: any;
 	refetch: () => void;
 }
 
 const AddSession = ({ options = { type: "create", show: false }, setOptions, refetch }: Props) => {
+	console.log(options.data, "data")
 
 	const [selectedTab, setSelectedTab] = useState(options.data ? options.data.type : "start_now");
 	const [selectedBlockList, setSelectedBlockList] = useState<string[]>([]);
 	const [req_data, setReqData] = useState({})
+	const { loading, setLoading } = useGlobalStore()
 
 	const setRequestDate = (data) => {
 		console.log(data)
@@ -62,7 +65,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
             .catch((err) => {
 					toast.error(err.response.data.detail)
 				})
-		    .finally()
+		    .finally(()=>setLoading(false))
     }
 
 	const block_lists = () => JSON.parse(localStorage.getItem("block_lists"));
@@ -88,27 +91,30 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 		<DialogLayout className={"w-[50%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
 			<div className="flex w-full justify-between items-center">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">Create Session</p>
-					<p className="text-gray-500 dark:text-gray">Fill in the details to create a new session.</p>
+					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">{options.type == "create" ? "Create Session": "Update Session"}</p>
+					<p className="text-gray-500 dark:text-gray">{options.type == "create" ? "Fill in the details to create a new session.": "Fill in the details to update your session."}</p>
 				</div>
 				<div className="max-w-[30%]">
 					<XMarkIcon onClick={closeModal} className="w-6 h-6 text-primary-dark cursor-pointer" />
 				</div>
 			</div>
 
-			<div className="flex items-center gap-6 mt-4 font-bold text-lg">
-				<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
-					onClick={() => setSelectedTab("start_now")}>Start Now</h3>
-				<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
-					onClick={() => setSelectedTab("start_later")}>Start Later</h3>
-				<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
-					onClick={() => setSelectedTab("recurring")}>Recurring</h3>
-			</div>
+			{
+				// options.type == "create" && 
+				<div className="flex items-center gap-6 mt-4 font-bold text-lg">
+					<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
+						onClick={() => setSelectedTab("start_now")}>Start Now</h3>
+					<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
+						onClick={() => setSelectedTab("start_later")}>Start Later</h3>
+					<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
+						onClick={() => setSelectedTab("recurring")}>Recurring</h3>
+				</div>
+			}
 
 			<div className="flex flex-col text-black w-full my-8">
-				{selectedTab === "start_now" ? 
+				{selectedTab === "start_now" ?
 				<SingleTime block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} />
-				: selectedTab === "recurring" ? 
+				: selectedTab === "recurring" ?
 				<RecurringSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/> : <StartLaterSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/>}
 				<div className="flex justify-between gap-4 mt-8">
 					<div className="bg-gray-300 rounded-lg">
@@ -133,7 +139,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					</div>
 				</div>
 			</div>
-			{selectedTab !== "start_now" && <div onClick={handleSubmit}><CustomButton>Set Schedule</CustomButton></div>}
+			{selectedTab !== "start_now" && <div onClick={handleSubmit}><CustomButton>{options.type == "create" ? "Set Schedule": "Update Schedule"}</CustomButton></div>}
 		</DialogLayout>
 	);
 };

@@ -13,6 +13,6 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "images/ashdeck-logo.jpg"
+    "default_icon": "images/ashdeck-logo.png"
   }
 }

@@ -2,7 +2,7 @@ import "@assets/css/components.css"
 import { useState } from "react"
 import { SessionItem } from "../../types"
 import { useEffect } from "react"
-import { PlayCircleIcon, PauseCircleIcon, ShieldCheckIcon, WindowIcon, LockClosedIcon, PencilSquareIcon, ArrowUpCircleIcon } from "@heroicons/react/16/solid"
+import { PlayCircleIcon, PauseCircleIcon, ShieldCheckIcon, WindowIcon, LockClosedIcon, PencilSquareIcon, ArrowUpCircleIcon, TrashIcon } from "@heroicons/react/16/solid"
 import { Arrow, ArrowUp, ArrowUp3 } from "iconsax-react"
 import { ArrowUpIcon } from "@heroicons/react/24/outline"
 import { ISession } from "@/src/commons/interfaces"
@@ -11,12 +11,26 @@ import { ISession } from "@/src/commons/interfaces"
 
 
 type Props = {
-	session?: ISession
+	session?: ISession,
+	handleEdit: (item: ISession) => void
+	handleDelete: (id:string) => void
 }
 
-const SingleCurrentSession = ({ session }: Props) => {
+const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
     const [showDetails, setShowDetails] = useState(false)
 	const [isPaused, setIsPaused] = useState(false)
+	const [showEditDialog, setShowEditDialog] = useState<{
+		type?: "edit" | "create",
+		show: boolean,
+		data?: ISession,
+		id?: number,
+	}>({
+		type: "create",
+		show: false,
+		data: null,
+		id: undefined,
+	})
+
     useEffect(()=>{}, [showDetails])
 	return (
 		<div className="w-full bg-[#29a259] rounded-md">
@@ -75,13 +89,13 @@ const SingleCurrentSession = ({ session }: Props) => {
 				</div>
 
 				<div className="border-t border-t-gray-400 mt-2 pt-4 flex justify-between">
-					<div className="flex py-2">
+					<div className="flex py-2" onClick={()=>handleEdit(session)}>
 						<PencilSquareIcon className="mr-1 h-5 w-5 text-sm"/>
-						<p className="font-semibold">Edit Session</p>
+						<p className="font-semibold">Edit</p>
 					</div>
-					<div className="flex py-2">
-						<LockClosedIcon className="text-red-600 mr-1 h-5 w-5 text-sm"/>
-						<p className="text-red-600 font-semibold">End Session</p>
+					<div onClick={()=>handleDelete(session.id)} className="flex py-2">
+						<TrashIcon className="text-red-600 mr-1 h-5 w-5 text-sm"/>
+						<p className="text-red-600 font-semibold">Remove</p>
 					</div>
 				</div>
 

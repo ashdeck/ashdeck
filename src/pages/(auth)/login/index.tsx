@@ -34,7 +34,7 @@ function LoginPage() {
 
     return (
 		<div className="bg-primary-dark-alt w-full h-screen text-white flex flex-col items-center justify-center">
-			<h2 className="text-3xl mb-4 font-semibold">Welcome to Ashdeck!</h2>
+			<h2 className="text-3xl mb-4 font-semibold text-center">Welcome to Ashdeck!</h2>
 
 			<form onSubmit={login} className="flex flex-col w-80">
 				<label className="mb-2 text-lg" htmlFor="email">Email</label>

@@ -6,6 +6,7 @@ import { components, hooks, utils } from "@generouted/react-router/client"
 export type Path =
 	| `/`
 	| `/dashboard`
+	| `/dashboard/Context/PopupContext`
 	| `/dashboard/focus_mode`
 	| `/dashboard/settings`
 	| `/extension/popup/:id`

@@ -6,9 +6,28 @@
 </head>
 <body>
 
-<iframe id="iframe" src="http://localhost:8500/extension/popup">
+<!-- <iframe id="iframe" src="http://localhost:8500/extension/popup">
     <h1 class="title">Hello world</h1>
-</iframe>
+</iframe> -->
+<div class="main">
+    <div class="logo">
+        <a href="https://ashdeck.com" target="_blank">
+            <img src="images/ashdeck-logo.png" width="150px" />
+        </a>
+    </div>
+
+    <div class="content">
+        <h1>Welcome to Ashdeck</h1>
+        <p>Built to enhance your productivity.</p>
+
+        <div>
+            <a href="https://ashdeck.com/dashboard" target="_blank">
+                <button>Go to Dashboard</button>
+            </a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 <style>
@@ -29,10 +48,61 @@
         width: 350px;
         min-height: 500px;
         height: auto;
+        background-color: #162337;
     }
 
-    .title {
-        background-color: brown;
+    button {
+        background-color: #29a259;
+
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .main {
+        width: 100%;
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .logo {
+        margin-top: 1rem;
+    }
+
+    .content {
+        margin-top: 50px;
+        padding-inline: 1rem;
+    }
+
+    .content h1 {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        color: white;
+        font-size: 2rem;
+    }
+
+    .content p {
+        margin-top: 2px;
+        font-size: 1.2rem;
+        color: #9ca3af;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    button {
+        background-color: #29a259;
+        border: none;
+        border-radius: .5rem;
+        padding-inline: 1rem;
+        padding-block: .5rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin: 0;
+        color: white;
+        cursor: pointer;
+    }
+
 </style>
 </html>

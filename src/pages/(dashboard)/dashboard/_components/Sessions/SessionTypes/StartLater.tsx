@@ -5,7 +5,7 @@ import { ISession } from "@/src/commons/interfaces";
 
 interface Props {
     block_lists: string[];
-    options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: number };
+    options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: string };
     setOptions: any;
     refetch: () => void;
     passOnData: (any) => void;  // pass up values to the parent

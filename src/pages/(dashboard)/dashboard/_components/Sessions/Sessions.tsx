@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import "@assets/css/components.css";
 import SessionHistory from "./SessionHistory";
@@ -14,71 +14,38 @@ import { api } from "@/src/commons/utils/axiosProvider";
 import { IBlockList, ISession } from "@/src/commons/interfaces";
 import CustomButton from "@/src/commons/components/CustomButton";
 import { tokens } from "@/src/commons/tokens";
+import { useGlobalStore } from "@/src/commons/store";
+import { ModalContext, SessionsModalProvider } from "../../Context/PopupContext";
+
 
 type Props = {
     className?: string;
 };
 
-const sessions_res: Array<SessionItem> = [
-  {
-    id: "someId1",
-    name: "First Session",
-	paused: false,
-    start: new Date(),
-    end: new Date(),
-    blockDate: new Date(),
-    recurring: false,
-	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
-    blockList: [
-      	{ name: "First entries", entries: ["google.com", "facebook.com"]},
-      	{ name: "First entries", entries: ["google.com", "facebook.com"]},
-    ],
-  },
-  {
-    id: "someId2",
-    name: "Second Session",
-    start: new Date(),
-    end: new Date(),
-    blockDate: new Date(),
-	paused: false,
-	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
-    recurring: false,
-    blockList: [{ name: "First entries", entries: ["google.com", "facebook.com"]}],
-  },
-   {
-    id: "someId1",
-    name: "First Session",
-    start: new Date(),
-    end: new Date(),
-	paused: true,
-    blockDate: new Date(),
-    recurring: false,
-	notes: "Ok for some reason this works. I really don't get the point of this. If I figure it out, I will stop the session.",
-    blockList: [
-      	{ name: "First entries", entries: ["google.com", "facebook.com"] },
-      	{ name: "First entries", entries: ["google.com", "facebook.com"] },
-    ],
-  	}
-  // ... more sessions
-];
 
 const Sessions = ({ className }: Props) => {
 	const [selectedTab, setSelectedTab] = useState('sessions');
 	const [sessions, setSessions] = useState<Array<ISession>>([]);
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isScrollable, setIsScrollable] = useState(false);
+	const { setShowConfirmModal } = useGlobalStore();
 
-	const [showEditDialog, setShowEditDialog] = useState<{
-		type?: "edit" | "create",
-		show: boolean,
-		data?: ISession,
-		id?: number,
-	}>({
-		type: "create",
-		show: false,
-		data: null,
-		id: undefined,
-	})
+	 // Get context values
+
+	// const {showEditDialog, setEditDialog } = useContext(ModalContext)
+	// setEditDialog({type: "edit", show: true})
+	// console.log(showEditDialog, "editDialogue")
+    const [showEditDialog, setShowEditDialog] = useState<{
+    type?: 'edit' | 'create';
+    show: boolean;
+    data?: ISession | null;
+    id?: string;
+		}>({
+			type: 'create',
+			show: false,
+			data: null,
+			id: undefined,
+		});
 
 
 	const { data = [], refetch } = useQuery({
@@ -107,7 +74,32 @@ const Sessions = ({ className }: Props) => {
 		}
 	};
 
+	const handleEdit = (item: ISession) => {
+		setShowEditDialog({
+            type: "edit",
+            show: true,
+            data: item,
+            id: item.id,
+        })
+	}
+
+	const handleDelete = (id: string) => {
+		setShowConfirmModal({
+            show: true,
+            dangerous: true,
+            title: `Delete session`,
+            message: "Are you sure you want to delete this session?\n This action cannot be undone.",
+            action: async () => {
+                await api.delete(`/sessions/${id}`, {"Authorization": `Bearer ${tokens.access_token}`});
+                await refetch();
+            },
+        });
+	}
+
+	const running_sessions = sessions.filter(session => new Date(session.end_time) > new Date())
+
 	return (
+		<SessionsModalProvider>
 		<div className={twMerge(`custom-scrollbar bg-gray-300 shadow-2xl pb-6 px-8 rounded-lg min-h-[60vh] max-h-[60vh] relative ${sessions.length > 0 ? "overflow-auto" : "overflow-hidden"}`, className)}>
 		<AddSession options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
 		<div className="sticky top-0 z-10 bg-gray-300">
@@ -133,36 +125,20 @@ const Sessions = ({ className }: Props) => {
 					{selectedTab === "history" ? "View your past sessions" : "Create and manage your focus sessions here"}
 				</p>
 				</div>
-				{/* <CustomButton>
-					<PlusCircleIcon className="cursor-pointer w-8 h-8 text-white" />
-					<p className="ml-1">Create Session</p>
-				</CustomButton> */}
-				{/* <PlusCircleIcon onClick={()=>setShowEditDialog({type: "create", show: true})} className="cursor-pointer w-9 h-9 text-primary" /> */}
 				<div className="" onClick={()=>setShowEditDialog({type: "create", show: true})}>
 					<CustomButton>Create Session</CustomButton>
 				</div>
 				</div>
 		</div>
 
-		{/* {isScrollable && (
-			<div className="bg-white">
-				<ChevronDownIcon
-				className="scroll-arrow rounded-full"
-				onClick={handleScroll}
-				/>
-			</div>
-		)} */}
-
-		{/* {isScrollable && (
-			<div className="scroll-arrow bg-[#29a259] rounded-full h-10 w-10 flex justify-center items-center overflow-auto">
-				<ChevronDownIcon className="h-8 w-6 text-white"/>
-			</div>
-		)} */}
-
 		<div className="w-full flex flex-col h-full items-center mt-4" ref={containerRef}>
-			{selectedTab === "history" ? <SessionHistory sessions={sessions.length > 0 ? sessions: []} /> : <CurrentSessions current_sessions={sessions.length > 0 ? sessions: []} />}
+			{
+				selectedTab === "history" ? <SessionHistory sessions={sessions.length > 0 ? sessions: []} /> :
+				<CurrentSessions handleEdit={handleEdit} handleDelete={handleDelete} current_sessions={running_sessions.length > 0 ? running_sessions: []} />
+				}
 		</div>
 		</div>
+		</SessionsModalProvider>
 	);
 };
 

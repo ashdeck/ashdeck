@@ -58,6 +58,14 @@ const FAQSection = ({ className }: Props) => {
     {
         question: "Is Ashdeck's website blocker compatible with all major browsers?",
         answer: "Yes, Ashdeck is compatible with major browsers including Chrome, Firefox, Microsoft Edge, and Safari. You can easily install and use it on your preferred browser to start improving your focus and productivity."
+    },
+    {
+        question: "Is the code open-source?",
+        answer: "Yes! You can see the source code in our GitHub repo."
+    },
+    {
+        question: "Do you take feature requests?",
+        answer: "Yes! Post an issue on GitHub or email us. We're happy to hear how we can improve your email experience."
     }
   ];
 
