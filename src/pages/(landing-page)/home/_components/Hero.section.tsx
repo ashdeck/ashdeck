@@ -16,7 +16,7 @@ const HeroSection = ({ className }: Props) => {
 
 			<div className="items-center flex flex-col">
 				<HeadingText className="text-center text-white lg:mt-[12rem] md:text-4xl lg:text-6xl text-3xl font-bold">
-					Limit Distractions with Website Blocker, Improve Productivity & Stay Focused
+					Block Distractions and Boost Focus Instantly with Our Website Blocker
 				</HeadingText>
 				<PenUnderline className={"w-[50%] stroke-3 mx-auto"} />
 			</div>
