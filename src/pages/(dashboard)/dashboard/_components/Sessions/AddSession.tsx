@@ -15,6 +15,8 @@ import { QUERY_KEYS } from "@/src/commons/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 import { BlockList } from "../../types";
+import { convertTo24Hour } from "@/src/commons/utils/timeConverter";
+
 
 interface Props {
 	options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: string };
@@ -23,7 +25,7 @@ interface Props {
 }
 
 const AddSession = ({ options = { type: "create", show: false }, setOptions, refetch }: Props) => {
-	console.log(options.data, "data")
+	// console.log(options.data, "data")
 
 	const [selectedTab, setSelectedTab] = useState(options.data ? options.data.type : "start_now");
 	const [selectedBlockList, setSelectedBlockList] = useState<string[]>([]);
@@ -31,7 +33,9 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 	const { loading, setLoading } = useGlobalStore()
 
 	const setRequestDate = (data) => {
-		console.log(data)
+		// console.log(data, "Request data")
+		const fullDate = convertTo24Hour(data.fromHour, data.fromMinute, data.fromPeriod, data.toHour, data.toMinute, data.toPeriod)
+		// console.log(fullDate, "This is the full date")
 		const date = new Date()
 
 		const year = date.getFullYear();
@@ -44,8 +48,8 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 			block_lists: selectedBlockList,
 			type: selectedTab,
 			start_date: formattedDate,
-			start_time: new Date(),
-			end_time: new Date()
+			start_time: fullDate.from,
+			end_time: fullDate.to
 		}
 
 		if (selectedTab === "recurring") request_data.recurring_days = data.selectedDays
@@ -53,8 +57,10 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 	}
 
 	const handleSubmit = () => {
+		if (options.type === "create"){
 		api.post("/sessions", req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
-				toast.success("Session Started")
+				toast.success("Session Created")
+				localStorage.setItem("newSession", JSON.stringify(res.data))
 				setOptions({
 					type: "create",
 					show: false,
@@ -66,6 +72,22 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					toast.error(err.response.data.detail)
 				})
 		    .finally(()=>setLoading(false))
+		} else {
+			api.patch(`/sessions/${options.data.id}`, req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
+				toast.success("Session Updated")
+				console.log(req_data)
+				setOptions({
+					type: "create",
+					show: false,
+					id: undefined,
+				})
+				refetch()
+			})
+            .catch((err) => {
+					toast.error(err.response.data.detail)
+				})
+		    .finally(()=>setLoading(false))
+		}
     }
 
 	const block_lists = () => JSON.parse(localStorage.getItem("block_lists"));
@@ -100,7 +122,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 			</div>
 
 			{
-				// options.type == "create" && 
+				// options.type == "create" &&
 				<div className="flex items-center gap-6 mt-4 font-bold text-lg">
 					<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
 						onClick={() => setSelectedTab("start_now")}>Start Now</h3>

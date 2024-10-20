@@ -1,6 +1,7 @@
 import CustomButton from "@components/CustomButton"
 import HeadingText from "@components/HeadingText"
 import Link from "@router/link"
+import { SlSocialGithub } from "react-icons/sl"
 
 
 type Props = {
@@ -21,12 +22,19 @@ const HeroSection = ({ className }: Props) => {
 				Whether you're aiming for a promotion, pursuing new opportunities, or simply craving a more balanced lifestyle, WebsiteBlocker empowers you to take charge of your time and unlock your full potential.
 			</p>
 
-			<Link className={"w-[16rem]"} href={"/join-our-waitlist"}>
+		<div className="flex gap-6">
+			<Link className={"w-[14rem]"} href={"https://github.com/ashdeck/ashdeck_ui"}>
+				<CustomButton startIcon={<SlSocialGithub color="white" size={16}/>}  variant={"secondary"} className={"py-3.5 w-full text-white"}>
+					Check us on Github
+				</CustomButton>
+			</Link>
+
+			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
 				<CustomButton variant={"primary"} className={"py-3.5 w-full text-white"}>
 					Join Waitlist
 				</CustomButton>
 			</Link>
-
+		</div>
 
 		</div>
 	)

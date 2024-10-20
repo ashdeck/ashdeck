@@ -27,7 +27,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
     {
       name: "About",
       href: "/about",
-    },
+    }
   ];
 
   // Toggle the menu

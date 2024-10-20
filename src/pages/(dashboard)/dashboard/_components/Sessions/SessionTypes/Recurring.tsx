@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ISession } from "@/src/commons/interfaces";
+import { convertTo24Hour, convertTo12Hour, add_to_time, getTimeDiff } from "@/src/commons/utils/timeConverter";
 
 
 interface Props {
@@ -48,8 +49,39 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
     const [toHour, setToHour] = useState(12); // Default to 12 AM
     const [toMinute, setToMinute] = useState(0);
     const [toPeriod, setToPeriod] = useState("AM");
+    const [rendered, setRendered] = useState(false)
 
     const [errorMessage, setErrorMessage] = useState(""); // State to track error message
+
+    if (!rendered){
+        let start_date, end_date
+        if (options.type === "edit"){
+            console.log(options.data, "This is the data we use")
+
+            // we add minutes to the current date for the last date value if the date being edited is in hours and minutes
+            if (options.data.type === "start_now"){
+                // const time_diff = getTimeDiff(options.data.end_time)
+                // const end_time = add_to_time(time_diff)
+                // start_date = convertTo12Hour(new Date().toLocaleString())
+                // end_date = convertTo12Hour(end_time.toString())
+                start_date = convertTo12Hour(new Date().toLocaleString())
+                end_date = convertTo12Hour(new Date().toLocaleString())
+            } else {
+                start_date = convertTo12Hour(new Date(new Date(options.data.start_time+"Z").toLocaleString()))
+                end_date = convertTo12Hour(new Date(new Date(options.data.end_time+"Z").toLocaleString()))
+            }
+        } else {
+            start_date = convertTo12Hour(new Date().toLocaleString())
+            end_date = convertTo12Hour(new Date().toLocaleString())
+        }
+        setFromHour(start_date.hr)
+        setToHour(end_date.hr)
+        setFromMinute(start_date.minutes)
+        setToMinute(end_date.minutes)
+        setFromPeriod(start_date.period)
+        setToPeriod(end_date.period)
+        setRendered(true)
+    }
 
     // Ensure "To" time is always greater than "From" time
     useEffect(() => {

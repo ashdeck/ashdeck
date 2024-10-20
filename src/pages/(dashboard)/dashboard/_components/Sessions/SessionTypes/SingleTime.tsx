@@ -25,11 +25,15 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
 		handleSubmit, formState, watch,
 	} = useForm()
 
-    const getHrsAndMinutes = (saved_data) => {
-        var start_time = new Date(saved_data.start_time)
+    // const [defaultHours, setDefaultHours] = useState(0)
+    // const [defaultMinutes, setDefaultMinutes] = useState(0)
+
+    const getHrsAndMinutes = () => {
+        const saved_data = options.data
         var end_time = new Date(saved_data.end_time)
-        var date_diff = Math.abs(new Date(end_time) - new Date())
-        // console.log(new Date(end_time), new Date())
+        var now = new Date(new Date().toISOString().slice(0, -1))
+        console.log(now, "\n", end_time)
+        var date_diff = Math.abs(end_time - now)
 
 
         var hours = date_diff/(1000*60*60)
@@ -40,15 +44,17 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
         var absoluteMinutes = Math.floor(minutes);
         var m = absoluteMinutes > 9 ? absoluteMinutes : '0' +  absoluteMinutes;
 
+
+        // console.log(h, m, "Hours and minutes")
+
         var seconds = (minutes - absoluteMinutes) * 60;
         var absoluteSeconds = Math.floor(seconds);
         var s = absoluteSeconds > 9 ? absoluteSeconds : '0' + absoluteSeconds;
 
         const time_diff = {h: h, m:m, s:s}
-        // console.log(time_diff)
+        return time_diff
     }
 
-    if (options.data) getHrsAndMinutes(options.data)
 
     const onSubmit = (data) => {
         const date = new Date(); // Current date and time
@@ -59,11 +65,11 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
 
         const formattedDate = `${year}-${month}-${day}`; // Create the date string
 
-        console.log(date, "First before", date.getHours(), date.getMinutes())
+        // console.log(date, "First before", date.getHours(), date.getMinutes())
         // Add hours and minutes
-        date.setHours(date.getHours() + data.hours);
-        date.setMinutes(date.getMinutes() + data.minutes);
-        console.log(date, "Last after")
+        date.setHours(date.getHours() + parseInt(data.hours));
+        date.setMinutes(date.getMinutes() + parseInt(data.minutes));
+        // console.log(date, "Last after")
 
         const compile: ISession = {
             start_time: new Date(),
@@ -76,9 +82,10 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
         const resetModal = () => {
             reset()
         }
-
+        options.type === "create" ?
         api.post("/sessions", compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Session Started")
+				localStorage.setItem("newSession", JSON.stringify(res.data))
 				setOptions({
 					type: "create",
 					show: false,
@@ -91,21 +98,34 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
 					toast.error(err.response.data.detail)
 				})
 		    .finally()
-
-        console.log(compile)
+        :
+        api.patch(`/sessions/${options.data.id}`, compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
+				toast.success("Session Updated")
+				setOptions({
+					type: "create",
+					show: false,
+					id: undefined,
+				})
+				refetch()
+				resetModal()
+			})
+            .catch((err) => {
+					toast.error(err.response.data.detail)
+				})
+		    .finally()
     }
 
     return (
         <form className="flex bg-gray-300 w-full items-center justify-center py-2 rounded-lg px-4 gap-4">
             <div className="flex gap-2 items-center">
-                <input className="w-12 h-8 text-center rounded-md text-black" type="number" name="hours" id="hours" defaultValue={0} min={0} {...register("hours")} />
+                <input className="w-12 h-8 text-center rounded-md text-black" type="number" name="hours" id="hours" defaultValue={options.data ? getHrsAndMinutes().h :0} min={0} {...register("hours")} />
                 <p>Hrs</p>
             </div>
             <div className="flex gap-2 items-center">
-                <input  className="w-12 h-8 rounded-md text-black text-center" max={60} type="number" name="minutes" id="minutes" defaultValue={0} min={0} {...register("minutes")} />
+                <input  className="w-12 h-8 rounded-md text-black text-center" max={59} type="number" name="minutes" id="minutes" defaultValue={options.data ? getHrsAndMinutes().m :0} min={0} {...register("minutes")} />
                 <p>Mins</p>
             </div>
-            <CustomButton onClick={handleSubmit(onSubmit)}>Start</CustomButton>
+            <CustomButton onClick={handleSubmit(onSubmit)}>{options.type === "edit" && options.data.type == "start_now" ? "Restart": "Start Now"}</CustomButton>
     </form>
 )
 }

@@ -96,7 +96,16 @@ const Sessions = ({ className }: Props) => {
         });
 	}
 
-	const running_sessions = sessions.filter(session => new Date(session.end_time) > new Date())
+	// date from server is ISO string so we have to convert our current date to the same
+	const running_sessions = sessions.filter(
+		session => new Date(session.end_time) > new Date(new Date().toISOString().slice(0, -1))
+	)
+
+	// sessions.map(session => {
+	// 	console.log(new Date(new Date().toISOString().slice(0, -1)), "Current date")
+	// 	console.log(new Date(session.end_time).toString(), "End time")
+	// })
+
 
 	return (
 		<SessionsModalProvider>

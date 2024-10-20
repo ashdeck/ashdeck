@@ -2,17 +2,30 @@
   "manifest_version": 3,
   "description": "Focus and Productive tool to help reduce distractions.",
   "name": "Ashdeck",
-  "version": "0.1.0",
+  "version": "1.0",
   "background": {
     "service_worker": "background.js"
   },
   "permissions": [
     "tabs",
     "storage",
-    "declarativeNetRequest"
+    "webNavigation",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "scripting"
   ],
+  "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["./scripts/contentScript.js"],
+            "css": ["./css/styles.css"]
+        }
+    ],
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "images/ashdeck-logo.png"
-  }
+    "default_icon": "./images/ashdeck-logo.png"
+  },
+  "host_permissions": [
+    "*://*/*"
+  ]
 }

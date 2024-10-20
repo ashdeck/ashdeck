@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "@router/link"
-import { TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
-import { SlSocialPintarest } from "react-icons/sl";
+import { TiSocialGithub, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
+import { SlSocialPintarest, SlSocialGithub } from "react-icons/sl";
 
 
 type Props = {
@@ -10,9 +10,10 @@ type Props = {
 
 const FooterLayout = ({ className = "" }: Props) => {
 	const socials = [
+		{icon: <SlSocialGithub />, url: "https://github.com/ashdeck"},
 		{icon: <TiSocialLinkedin />, url: "https://www.linkedin.com/company/ashdeck"},
 		{icon: <SlSocialPintarest />, url: "https://www.pinterest.com/Ashdeckhq/"},
-		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"} 
+		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"}
 	]
 
 	const links = [
