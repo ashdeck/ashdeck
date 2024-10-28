@@ -14,12 +14,13 @@ import { TrashIcon } from "@heroicons/react/24/outline"
 
 export default function FocusMode(){
     const saved_Session = JSON.parse(localStorage.getItem("focus_session"))
-    const [whiteList, setWhiteList] = useState(["facebook.com", "twitter.com", "reddit.com", "youtube.com"])
+    const [whiteList, setWhiteList] = useState([])
     const [duration, setDuration] = useState((saved_Session && saved_Session.duration) || 2);
     const [cycles, setCycles] = useState((saved_Session && saved_Session.cycles) || 2);
     const [breakTime, setBreakTime] = useState((saved_Session && saved_Session.breakTime) || 1);
     const [paused, setPaused] = useState((saved_Session && saved_Session.paused) || false)
     const [showTimer, setShowTimer] = useState((saved_Session && true) || false)
+    const [newSite, setNewSite] = useState("")
     const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
 		show: boolean,
@@ -55,6 +56,13 @@ export default function FocusMode(){
     const handleAddSite = (site) => {
         setWhiteList([...whiteList, site])
     }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        console.log(newValue)
+        setNewSite(newValue); // Pass new value back to parent component
+    };
+
     useEffect(()=>{}, [duration, cycles, breakTime, paused, duration, whiteList])
     return (
         <div className={"bg-gray-300 w-full flex flex-col"}>
@@ -115,8 +123,8 @@ export default function FocusMode(){
                             <div className="mt-4">
                                 <h4 className="font-semibold text-lg mb-4">Allowed Sites List</h4>
                                 <div>
-                                    <div onClick={()=>handleAddSite("twitter.com")} className="flex gap-4 rounded-md">
-                                        <input type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border border-gray-200" />
+                                    <div onClick={()=>handleAddSite(newSite)} className="flex gap-4 rounded-md">
+                                        <input onChange={handleInputChange} type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border border-gray-200" />
                                         <CustomButton startIcon={<PlusIcon />} className="w-44 py-3 font-bold outline-none hover:outline-none">Add to List</CustomButton>
                                     </div>
 
