@@ -19,6 +19,8 @@ type Props = {
 const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
     const [showDetails, setShowDetails] = useState(false)
 	const [isPaused, setIsPaused] = useState(false)
+	const [blockListNames, setBlockListNames] = useState([])
+	const [blockedDomains, setBlockedDomains] = useState([])
 	const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
 		show: boolean,
@@ -31,7 +33,15 @@ const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
 		id: undefined,
 	})
 
-    useEffect(()=>{}, [showDetails])
+
+    useEffect(()=>{
+		let entries = []
+	session.block_lists.forEach(
+		block_list => block_list.entries.forEach(
+		entry => entries.push(entry)
+	))
+	setBlockedDomains(entries)
+	}, [showDetails])
 	return (
 		<div className="w-full bg-[#29a259] rounded-md">
 			<div onClick={()=>setShowDetails(!showDetails)} className="bg-gree text-white flex justify-between items-start py-3">
@@ -55,10 +65,12 @@ const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
 						<div className="flex justify-between items-start">
 							<p className="text-white w-20">Block Lists</p>
 							<div className="px-2">
-								{session.block_lists.map(item=><div className="flex items-center gap-1">
+								{session.block_lists.map(
+									item=><div className="flex items-center gap-1">
 									<ShieldCheckIcon className="h-7 w-7" />
-									<p className="font-small">{item}</p>
-								</div>)}
+									<p className="font-small">{item.name}</p>
+								</div>
+							)}
 							</div>
 						</div>
 					</div>
@@ -73,7 +85,7 @@ const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
 						<p className="text-white w-20">Blocked</p>
 						<div className="flex items-center gap-1">
 							<WindowIcon className="h-7 w-7" />
-							<p className="font-small">25 Domains</p>
+							<p className="font-small">{blockedDomains.length} Domains</p>
 						</div>
 					</div>
 				</div>

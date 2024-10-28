@@ -17,6 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "'": "file:heroicons/react@v1'",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@generouted/react-router": "^1.18.5",

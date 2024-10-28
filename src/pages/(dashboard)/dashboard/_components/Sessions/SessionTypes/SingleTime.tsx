@@ -32,7 +32,7 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
         const saved_data = options.data
         var end_time = new Date(saved_data.end_time)
         var now = new Date(new Date().toISOString().slice(0, -1))
-        console.log(now, "\n", end_time)
+        // console.log(now, "\n", end_time)
         var date_diff = Math.abs(end_time - now)
 
 
@@ -85,7 +85,7 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
         options.type === "create" ?
         api.post("/sessions", compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Session Started")
-				localStorage.setItem("newSession", JSON.stringify(res.data))
+                window.dispatchEvent(new CustomEvent("sessionCreated", { detail: res.data }));
 				setOptions({
 					type: "create",
 					show: false,
@@ -101,6 +101,9 @@ export default function SingleTimeSession({block_lists, options, setOptions, ref
         :
         api.patch(`/sessions/${options.data.id}`, compile, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Session Updated")
+                res.data.session.end_time = res.data.session.end_time + "Z"
+                res.data.session.start_time = res.data.session.start_time + "Z"
+                window.dispatchEvent(new CustomEvent("sessionUpdated", { detail: res.data }));
 				setOptions({
 					type: "create",
 					show: false,

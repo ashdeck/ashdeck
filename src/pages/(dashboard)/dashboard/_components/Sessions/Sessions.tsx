@@ -53,7 +53,7 @@ const Sessions = ({ className }: Props) => {
 		queryFn: () => api.get("/sessions", {"Authorization": `Bearer ${tokens.access_token}`}).then((res) =>{
 			res.data
 			setSessions(res.data)
-			console.log(sessions)
+			// console.log(sessions)
 			return res.data
 		}
 		),
@@ -91,6 +91,7 @@ const Sessions = ({ className }: Props) => {
             message: "Are you sure you want to delete this session?\n This action cannot be undone.",
             action: async () => {
                 await api.delete(`/sessions/${id}`, {"Authorization": `Bearer ${tokens.access_token}`});
+				window.dispatchEvent(new CustomEvent("sessionDeleted", { detail: id }));
                 await refetch();
             },
         });

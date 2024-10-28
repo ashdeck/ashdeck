@@ -1,11 +1,13 @@
 import Timer from "./timer/Timer";
+
 interface Props {
-    duration: number;  // Use lowercase 'number' for the type
+    duration: number;  
     cycles: number;
     break_time: number;
+    paused: boolean
 }
 
-export default function FocusSession({ duration, cycles, break_time }: Props) {
+export default function FocusSession({ duration, cycles, break_time, paused }: Props) {
     return (
         <div className="border border-gray-400 rounded-xl mt-2 pb-16">
             <div className="flex justify-center gap-[4px] my-8">
@@ -16,9 +18,9 @@ export default function FocusSession({ duration, cycles, break_time }: Props) {
                 ))}
             </div>
             <div className="mb-6 flex justify-center items-center mt-8">
-                <p>{`2 of ${cycles} remaining | Break fo ${break_time} minutes`}</p>
+                <p>{`Cycle 1 of ${cycles} | Break for ${break_time} minutes`}</p>
             </div>
-            <Timer />
+            <Timer duration={duration} breakTime={break_time} cycles={cycles} paused={paused} />
         </div>
     );
 }

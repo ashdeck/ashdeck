@@ -61,6 +61,8 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 		api.post("/sessions", req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Session Created")
 				localStorage.setItem("newSession", JSON.stringify(res.data))
+				window.dispatchEvent(new CustomEvent("sessionCreated", { detail: res.data }));
+				console.log("Dispatch event received")
 				setOptions({
 					type: "create",
 					show: false,
@@ -75,7 +77,7 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 		} else {
 			api.patch(`/sessions/${options.data.id}`, req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
 				toast.success("Session Updated")
-				console.log(req_data)
+				window.dispatchEvent(new CustomEvent("sessionUpdated", { detail: res.data }));
 				setOptions({
 					type: "create",
 					show: false,

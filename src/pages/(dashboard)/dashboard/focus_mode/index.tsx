@@ -3,7 +3,7 @@ import HeroView from "../_components/HeroView"
 import CustomButton from "@/src/commons/components/CustomButton"
 import TimerSetup from "../_components/focus_mode/TimerSetup"
 import { ArrowUpIcon, CheckIcon, PlayCircleIcon, PlayIcon, PlusIcon } from "@heroicons/react/16/solid"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowDown, PlayCircle } from "iconsax-react"
 import DashboardSideBar from "../_components/Sidebar"
 import FocusSoundSelect from "../_components/focus_mode/FocusSoundSelect"
@@ -13,8 +13,13 @@ import { TrashIcon } from "@heroicons/react/24/outline"
 
 
 export default function FocusMode(){
+    const saved_Session = JSON.parse(localStorage.getItem("focus_session"))
     const [whiteList, setWhiteList] = useState(["facebook.com", "twitter.com", "reddit.com", "youtube.com"])
-    const [showTimer, setShowTimer] = useState(false)
+    const [duration, setDuration] = useState((saved_Session && saved_Session.duration) || 2);
+    const [cycles, setCycles] = useState((saved_Session && saved_Session.cycles) || 2);
+    const [breakTime, setBreakTime] = useState((saved_Session && saved_Session.breakTime) || 1);
+    const [paused, setPaused] = useState((saved_Session && saved_Session.paused) || false)
+    const [showTimer, setShowTimer] = useState((saved_Session && true) || false)
     const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
 		show: boolean,
@@ -24,6 +29,33 @@ export default function FocusMode(){
 		show: false,
 		url: null,
 	})
+
+    const addMinutes = (date, minutes) => {
+        return new Date(date.getTime() + (minutes*6000))
+    }
+
+    const focus_session = {
+        cycles: cycles,
+        breakTime: breakTime,
+        paused: paused,
+        duration: duration,
+        whiteList: whiteList,
+        current_session_ends: addMinutes(new Date(), duration)
+    }
+
+    const startSession = () => {
+        localStorage.setItem("focus_session", JSON.stringify(focus_session))
+        setShowTimer(true)
+    }
+
+    const handleRemoveSite = (site) => {
+        setWhiteList(whiteList.filter((s) => s !== site));
+    };
+
+    const handleAddSite = (site) => {
+        setWhiteList([...whiteList, site])
+    }
+    useEffect(()=>{}, [duration, cycles, breakTime, paused, duration, whiteList])
     return (
         <div className={"bg-gray-300 w-full flex flex-col"}>
 
@@ -39,19 +71,34 @@ export default function FocusMode(){
                             We can add more to this copy over time so no problem at all.
                         </p>
                         <div className="py-4 flex items-center gap-3">
-                            {!showTimer && <CustomButton onClick={()=>setShowTimer(true)}>Start Focus Session</CustomButton>}
+                            {!showTimer && <CustomButton onClick={startSession}>Start Focus Session</CustomButton>}
                             <CustomButton onClick={()=>setShowEditDialog({show: true})} className="bg-[#071a37]">Redirect your block site</CustomButton>
                         </div>
                     </div>
 
                     {/* timer */}
-                    {showTimer ? <FocusSession duration={25} cycles={3} break_time={10} /> :
+                    {showTimer ? <FocusSession duration={duration} cycles={cycles} break_time={breakTime} paused={paused} /> :
                         <div className="">
                             <h4 className="font-semibold text-lg underline hidden">Timer Setup</h4>
                             <div className="py-8">
-                                <TimerSetup metric_name="Focus Time" description="Simple description" initial_value={25}/>
-                                <TimerSetup metric_name="Break Time" description="Simple description" initial_value={5}/>
-                                <TimerSetup metric_name="Number of Cycles" description="Simple description" initial_value={1}/>
+                                <TimerSetup
+                                    metric_name="Focus Time"
+                                    description="Set the focus duration"
+                                    initial_value={duration}
+                                    onValueChange={setDuration}
+                                />
+                                <TimerSetup
+                                    metric_name="Break Time"
+                                    description="Set break time duration"
+                                    initial_value={breakTime}
+                                    onValueChange={setBreakTime}
+                                />
+                                <TimerSetup
+                                    metric_name="Number of Cycles"
+                                    description="Set the number of cycles"
+                                    initial_value={cycles}
+                                    onValueChange={setCycles}
+                                />
                                 <div className="flex bg-gray-300 justify-between items-center border-b first:pt-0 pt-4 pb-4 last:border-b-0 last:pb-0">
                                 <div className="">
                                     <h4 className="font-medium text-md">Focus Sound</h4>
@@ -68,7 +115,7 @@ export default function FocusMode(){
                             <div className="mt-4">
                                 <h4 className="font-semibold text-lg mb-4">Allowed Sites List</h4>
                                 <div>
-                                    <div className="flex gap-4 rounded-md">
+                                    <div onClick={()=>handleAddSite("twitter.com")} className="flex gap-4 rounded-md">
                                         <input type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border border-gray-200" />
                                         <CustomButton startIcon={<PlusIcon />} className="w-44 py-3 font-bold outline-none hover:outline-none">Add to List</CustomButton>
                                     </div>
@@ -79,7 +126,9 @@ export default function FocusMode(){
                                                 <div className="flex gap-4">
                                                     <p>{i+1}.</p> <p>{domain}</p>
                                                 </div>
-                                                <TrashIcon className="w-6 h-6"/>
+                                                <div className="cursor-pointer" onClick={()=>handleRemoveSite(domain)}>
+                                                    <TrashIcon className="w-6 h-6"/>
+                                                </div>
                                             </div>))}
                                         </div>
                                     </div>
