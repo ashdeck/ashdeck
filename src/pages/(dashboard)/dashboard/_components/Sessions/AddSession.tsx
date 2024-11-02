@@ -113,25 +113,27 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 
 	return (
 		<DialogLayout className={"w-[50%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
-			<div className="flex w-full justify-between items-center">
-				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">{options.type == "create" ? "Create Session": "Update Session"}</p>
-					<p className="text-gray-500 dark:text-gray">{options.type == "create" ? "Fill in the details to create a new session.": "Fill in the details to update your session."}</p>
+				<div className="flex w-full justify-center items-center relative">
+					<div className="flex max-w-[70%] flex-col gap-0.5">
+						<p className="font-outfit text-primary-dark font-semibold capitalize text-2xl">{options.type == "create" ? "Create Session": "Update Session"}</p>
+					</div>
+					<p className="text-gray-500 dark:text-gray hidden">{options.type == "create" ? "Fill in the details to create a new session.": "Fill in the details to update your session."}</p>
+					<div className="max-w-[30%] rounded-full absolute right-4">
+						<XMarkIcon onClick={closeModal} className="w-6 h-6 cursor-pointer font-bold" />
+					</div>
 				</div>
-				<div className="max-w-[30%]">
-					<XMarkIcon onClick={closeModal} className="w-6 h-6 text-primary-dark cursor-pointer" />
-				</div>
-			</div>
 
 			{
 				// options.type == "create" &&
-				<div className="flex items-center gap-6 mt-4 font-bold text-lg">
-					<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("start_now")}>Start Now</h3>
-					<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("start_later")}>Start Later</h3>
-					<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("recurring")}>Recurring</h3>
+				<div className="w-full flex justify-center">
+					<div className="flex items-center gap-6 mt-4 font-bold text-lg">
+						<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("start_now")}>Start Now</h3>
+						<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("start_later")}>Start Later</h3>
+						<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("recurring")}>Recurring</h3>
+					</div>
 				</div>
 			}
 
@@ -140,19 +142,19 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 				<SingleTime block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} />
 				: selectedTab === "recurring" ?
 				<RecurringSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/> : <StartLaterSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/>}
-				<div className="flex justify-between gap-4 mt-8">
-					<div className="bg-gray-300 rounded-lg">
+				<div className="flex gap-8 mt-4">
+					<div className="rounded-lg flex gap-8 justify-between">
 						{block_lists()?.length > 0 ? (
-							<div className="flex w-full items-center rounded-lg px-4 py-4 gap-4">
-								<div className="grid grid-cols-3 gap-2">
+							<div className="flex w-full items-center rounded-lg gap-4">
+								<div className="grid grid-cols-4 justify-center gap-8">
 									{block_lists().map((item) => (
-										<div key={item.id} className="flex items-center gap-2">
+										<div key={item.id} className="flex items-center gap-2 rounded-lg text-lg">
 											<input
 												type="checkbox"
 												checked={selectedBlockList.includes(item.id)}
 												onChange={(e) => handleBlockListChange(e, item)}
 											/>
-											<p>{item.name}</p>
+											<p className="font-normal">{item.name}</p>
 										</div>
 									))}
 								</div>

@@ -10,16 +10,18 @@ import FocusSoundSelect from "../_components/focus_mode/FocusSoundSelect"
 import RedirectURL from "../_components/focus_mode/RedirectURL"
 import FocusSession from "../_components/focus_mode/FocusSession"
 import { TrashIcon } from "@heroicons/react/24/outline"
+import Timer2 from "../_components/focus_mode/timer2/timer2"
 
 
 export default function FocusMode(){
     const saved_Session = JSON.parse(localStorage.getItem("focus_session"))
-    const [whiteList, setWhiteList] = useState([])
+    const [whiteList, setWhiteList] = useState((saved_Session && saved_Session.whiteList) || [])
     const [duration, setDuration] = useState((saved_Session && saved_Session.duration) || 2);
-    const [cycles, setCycles] = useState((saved_Session && saved_Session.cycles) || 2);
+    const [cycles, setCycles] = useState((saved_Session && saved_Session.cycles) || 3);
     const [breakTime, setBreakTime] = useState((saved_Session && saved_Session.breakTime) || 1);
     const [paused, setPaused] = useState((saved_Session && saved_Session.paused) || false)
     const [showTimer, setShowTimer] = useState((saved_Session && true) || false)
+    const [elapsedTime, setElapsedTime] = useState(saved_Session && saved_Session.elapsedTime || 0)
     const [newSite, setNewSite] = useState("")
     const [showEditDialog, setShowEditDialog] = useState<{
 		type?: "edit" | "create",
@@ -38,11 +40,14 @@ export default function FocusMode(){
     const focus_session = {
         cycles: cycles,
         breakTime: breakTime,
+        original_breakTime: breakTime,
+        original_duration: duration,
         paused: paused,
         duration: duration,
         whiteList: whiteList,
-        current_session_ends: addMinutes(new Date(), duration)
+        elapsedTime: elapsedTime
     }
+
 
     const startSession = () => {
         localStorage.setItem("focus_session", JSON.stringify(focus_session))
@@ -53,15 +58,17 @@ export default function FocusMode(){
         setWhiteList(whiteList.filter((s) => s !== site));
     };
 
-    const handleAddSite = (site) => {
-        setWhiteList([...whiteList, site])
+    const handleAddSite = () => {
+    if (newSite.trim()) {
+        setWhiteList((prevList) => [...prevList, newSite.trim()]);
+        setNewSite("");  // Clear input after adding
     }
+};
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = e.target.value;
-        console.log(newValue)
-        setNewSite(newValue); // Pass new value back to parent component
-    };
+    e.preventDefault();
+    setNewSite(e.target.value);
+};
 
     useEffect(()=>{}, [duration, cycles, breakTime, paused, duration, whiteList])
     return (
@@ -73,19 +80,17 @@ export default function FocusMode(){
                 <div className="max-w-[80%]">
                     <div className="flex flex-col mr-8">
                     <div>
-                        <h1 className="font-semibold text-4xl text-[#071a37]">Focus Mode</h1>
-                        <p className="text-[#525353] pt-2">Use focus mode with break intervals to avoid distractions. Create a blocklist and add multiple websites to it.
+                        {!showTimer && <h1 className="font-semibold text-4xl text-[#071a37]">Focus Mode</h1>}
+                        <div className="w-[880px]"></div>
+                        <p className="text-[#525353] pt-2 hidden">Use focus mode with break intervals to avoid distractions. Create a blocklist and add multiple websites to it.
                             Add websites you want to keep using in a white list.
                             We can add more to this copy over time so no problem at all.
                         </p>
-                        <div className="py-4 flex items-center gap-3">
-                            {!showTimer && <CustomButton onClick={startSession}>Start Focus Session</CustomButton>}
-                            <CustomButton onClick={()=>setShowEditDialog({show: true})} className="bg-[#071a37]">Redirect your block site</CustomButton>
-                        </div>
                     </div>
 
                     {/* timer */}
-                    {showTimer ? <FocusSession duration={duration} cycles={cycles} break_time={breakTime} paused={paused} /> :
+
+                    {showTimer ? <FocusSession /> :
                         <div className="">
                             <h4 className="font-semibold text-lg underline hidden">Timer Setup</h4>
                             <div className="py-8">
@@ -120,16 +125,17 @@ export default function FocusMode(){
                                 </div>
                             </div>
 
+
                             <div className="mt-4">
                                 <h4 className="font-semibold text-lg mb-4">Allowed Sites List</h4>
                                 <div>
-                                    <div onClick={()=>handleAddSite(newSite)} className="flex gap-4 rounded-md">
-                                        <input onChange={handleInputChange} type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border border-gray-200" />
+                                    <div onClick={handleAddSite} className="flex gap-4 rounded-md">
+                                        <input onChange={handleInputChange} value={newSite} type="text" placeholder="ex: facebook.com" name="white-list" id="white-list" className="bg-gray-300 px-4 py-2 w-full rounded-lg border border-gray-200" />
                                         <CustomButton startIcon={<PlusIcon />} className="w-44 py-3 font-bold outline-none hover:outline-none">Add to List</CustomButton>
                                     </div>
 
                                     <div className="px-2">
-                                        <div className="my-6 flex flex-col gap-4">
+                                        <div className="mt-4 mb-3 flex flex-col gap-4">
                                             {whiteList.map((domain, i)=>(<div className="flex gap-2 items-center justify-between">
                                                 <div className="flex gap-4">
                                                     <p>{i+1}.</p> <p>{domain}</p>
@@ -141,7 +147,12 @@ export default function FocusMode(){
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-8">
+                                    {!showTimer && <div className="flex items-center gap-3">
+                                        <CustomButton onClick={startSession}>Start Focus Session</CustomButton>
+                                        <CustomButton onClick={()=>setShowEditDialog({show: true})} className="bg-[#071a37]">Redirect your block site</CustomButton>
+                                        </div>}
+
+                                    <div className="flex gap-8 hidden">
                                         <CustomButton className="" startIcon={<ArrowUpIcon />}>Import</CustomButton>
                                         <CustomButton className="bg-[#071a37]" startIcon={<ArrowDown />}>Export</CustomButton>
                                     </div>

@@ -106,10 +106,10 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
 
     return (
         <div className="w-full">
-            <div className="flex gap-4 mr-4 w-full">
-                <div className="bg-slate-300 rounded-md py-2 px-4">
-                    <div className="flex items-center gap-2">
-                        <p className="font-semibold">From</p>
+            <div className="flex gap-4 mr-4 w-full justify-between mb-4">
+                <div className="bg-slate-300 rounded-md py-2 px-4 w-1/2">
+                    <div className="flex items-center gap-2 justify-center">
+                        <p className="font-semibold mr-4">From</p>
                         <input
                             className="w-12 h-10 text-center rounded-md outline-none"
                             type="number"
@@ -143,9 +143,9 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
                     </div>
                 </div>
 
-                <div className="bg-slate-300 rounded-md">
-                    <div className="flex items-center gap-2 py-2 px-4">
-                        <p className="font-semibold">To</p>
+                <div className="bg-slate-300 rounded-md w-1/2">
+                    <div className="flex items-center gap-2 py-2 px-4 justify-center">
+                        <p className="font-semibold mr-4">To</p>
                         <input
                             className="w-12 h-10 text-center rounded-md outline-none"
                             type="number"
