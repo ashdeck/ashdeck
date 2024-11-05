@@ -128,7 +128,9 @@ export default function FocusSession() {
         });
     }
 
-    const minutes = Math.floor(remainingTime / 60);
+    let minutes = Math.floor(remainingTime / 60);
+    const hours = Math.floor(minutes/60);
+    minutes = minutes % 60
     const seconds = remainingTime % 60;
 
     return (
@@ -153,11 +155,12 @@ export default function FocusSession() {
                     <h2 className="font-semibold text-gray-400 text-2xl">{paused ? "Focus Session Paused" : "Focus Session Running"}</h2>
                 </div>
                 <div className="flex items-center justify-center flex-col gap-8">
-                    <div className="flex gap-6 text-secondary items-center text-6xl font-mono">
+                    <div className="flex gap-4 sm:gap-16 text-secondary items-center sm:text-[rem] sm:font-normal lg:text-[7rem] font-mono">
+                        <span>{String(hours).padStart(2, "0")}</span>:
                         <span>{String(minutes).padStart(2, "0")}</span>:
                         <span>{String(seconds).padStart(2, "0")}</span>
                     </div>
-                    <div className="flex gap-8 mt-10">
+                    <div className="flex gap-8 mt-8">
                         <PauseButton paused={paused} onClick={togglePause} />
                         <ResetButton onClick={resetSession} />
                     </div>
