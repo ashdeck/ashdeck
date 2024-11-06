@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ISession } from "@/src/commons/interfaces";
+import { convertTo24Hour, convertTo12Hour, add_to_time, getTimeDiff } from "@/src/commons/utils/timeConverter";
+
 
 
 interface Props {
@@ -48,6 +50,38 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
     const [toHour, setToHour] = useState(12); // Default to 12 AM
     const [toMinute, setToMinute] = useState(0);
     const [toPeriod, setToPeriod] = useState("AM");
+    const [rendered, setRendered] = useState(false)
+
+
+    if (!rendered){
+        let start_date, end_date
+        if (options.type === "edit"){
+            console.log(options.data, "This is the data we use")
+
+            // we add minutes to the current date for the last date value if the date being edited is in hours and minutes
+            if (options.data.type === "start_now"){
+                // const time_diff = getTimeDiff(options.data.end_time)
+                // const end_time = add_to_time(time_diff)
+                // start_date = convertTo12Hour(new Date().toLocaleString())
+                // end_date = convertTo12Hour(end_time.toString())
+                start_date = convertTo12Hour(new Date().toLocaleString())
+                end_date = convertTo12Hour(new Date().toLocaleString())
+            } else {
+                start_date = convertTo12Hour(new Date(new Date(options.data.start_time+"Z").toLocaleString()))
+                end_date = convertTo12Hour(new Date(new Date(options.data.end_time+"Z").toLocaleString()))
+            }
+        } else {
+            start_date = convertTo12Hour(new Date().toLocaleString())
+            end_date = convertTo12Hour(new Date().toLocaleString())
+        }
+        setFromHour(start_date.hr)
+        setToHour(end_date.hr)
+        setFromMinute(start_date.minutes)
+        setToMinute(end_date.minutes)
+        setFromPeriod(start_date.period)
+        setToPeriod(end_date.period)
+        setRendered(true)
+    }
 
     const [errorMessage, setErrorMessage] = useState(""); // State to track error message
 
@@ -72,15 +106,16 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
 
     return (
         <div className="w-full">
-            <div className="flex gap-4 mr-4 w-full">
-                <div className="bg-slate-300 rounded-md py-2 px-4">
-                    <div className="flex items-center gap-2">
-                        <p className="font-semibold">From</p>
+            <div className="flex gap-4 mr-4 w-full justify-between mb-4">
+                <div className="bg-slate-300 rounded-md py-2 px-4 w-1/2">
+                    <div className="flex items-center gap-2 justify-center">
+                        <p className="font-semibold mr-4">From</p>
                         <input
                             className="w-12 h-10 text-center rounded-md outline-none"
                             type="number"
                             min={1}
                             max={12}
+                            defaultValue={12}
                             value={fromHour}
                             {...register("from_hour")}
                             onChange={(e) => setFromHour(Math.max(1, Math.min(12, parseInt(e.target.value) || 12)))}
@@ -98,6 +133,7 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
                         <select
                             className="border rounded-md p-2 ml-4 outline-none"
                             value={fromPeriod}
+                            defaultValue={"AM"}
                             {...register("from_period")}
                             onChange={(e) => setFromPeriod(e.target.value)}
                         >
@@ -107,14 +143,15 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
                     </div>
                 </div>
 
-                <div className="bg-slate-300 rounded-md">
-                    <div className="flex items-center gap-2 py-2 px-4">
-                        <p className="font-semibold">To</p>
+                <div className="bg-slate-300 rounded-md w-1/2">
+                    <div className="flex items-center gap-2 py-2 px-4 justify-center">
+                        <p className="font-semibold mr-4">To</p>
                         <input
                             className="w-12 h-10 text-center rounded-md outline-none"
                             type="number"
                             min={1}
                             max={12}
+                            defaultValue={12}
                             value={toHour}
                             {...register("to_hours")}
                             onChange={(e) => setToHour(Math.max(1, Math.min(12, parseInt(e.target.value) || 12)))}
@@ -134,6 +171,7 @@ export default function RecurringSession({ block_lists, options, setOptions, ref
                             value={toPeriod}
                             {...register("to_period")}
                             onChange={(e) => setToPeriod(e.target.value)}
+                            defaultValue={"AM"}
                         >
                             <option value="AM">AM</option>
                             <option value="PM">PM</option>

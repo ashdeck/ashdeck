@@ -15,6 +15,8 @@ import { QUERY_KEYS } from "@/src/commons/utils";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import toast from "react-hot-toast";
 import { BlockList } from "../../types";
+import { convertTo24Hour } from "@/src/commons/utils/timeConverter";
+
 
 interface Props {
 	options: { type?: "edit" | "create", show: boolean, data?: ISession, id?: string };
@@ -23,7 +25,7 @@ interface Props {
 }
 
 const AddSession = ({ options = { type: "create", show: false }, setOptions, refetch }: Props) => {
-	console.log(options.data, "data")
+	// console.log(options.data, "data")
 
 	const [selectedTab, setSelectedTab] = useState(options.data ? options.data.type : "start_now");
 	const [selectedBlockList, setSelectedBlockList] = useState<string[]>([]);
@@ -31,7 +33,9 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 	const { loading, setLoading } = useGlobalStore()
 
 	const setRequestDate = (data) => {
-		console.log(data)
+		// console.log(data, "Request data")
+		const fullDate = convertTo24Hour(data.fromHour, data.fromMinute, data.fromPeriod, data.toHour, data.toMinute, data.toPeriod)
+		// console.log(fullDate, "This is the full date")
 		const date = new Date()
 
 		const year = date.getFullYear();
@@ -44,8 +48,8 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 			block_lists: selectedBlockList,
 			type: selectedTab,
 			start_date: formattedDate,
-			start_time: new Date(),
-			end_time: new Date()
+			start_time: fullDate.from,
+			end_time: fullDate.to
 		}
 
 		if (selectedTab === "recurring") request_data.recurring_days = data.selectedDays
@@ -53,8 +57,12 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 	}
 
 	const handleSubmit = () => {
+		if (options.type === "create"){
 		api.post("/sessions", req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
-				toast.success("Session Started")
+				toast.success("Session Created")
+				localStorage.setItem("newSession", JSON.stringify(res.data))
+				window.dispatchEvent(new CustomEvent("sessionCreated", { detail: res.data }));
+				console.log("Dispatch event received")
 				setOptions({
 					type: "create",
 					show: false,
@@ -66,6 +74,22 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 					toast.error(err.response.data.detail)
 				})
 		    .finally(()=>setLoading(false))
+		} else {
+			api.patch(`/sessions/${options.data.id}`, req_data, {"Authorization": `Bearer ${tokens.access_token}`}).then((res) => {
+				toast.success("Session Updated")
+				window.dispatchEvent(new CustomEvent("sessionUpdated", { detail: res.data }));
+				setOptions({
+					type: "create",
+					show: false,
+					id: undefined,
+				})
+				refetch()
+			})
+            .catch((err) => {
+					toast.error(err.response.data.detail)
+				})
+		    .finally(()=>setLoading(false))
+		}
     }
 
 	const block_lists = () => JSON.parse(localStorage.getItem("block_lists"));
@@ -89,25 +113,27 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 
 	return (
 		<DialogLayout className={"w-[50%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
-			<div className="flex w-full justify-between items-center">
-				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">{options.type == "create" ? "Create Session": "Update Session"}</p>
-					<p className="text-gray-500 dark:text-gray">{options.type == "create" ? "Fill in the details to create a new session.": "Fill in the details to update your session."}</p>
+				<div className="flex w-full justify-center items-center relative">
+					<div className="flex max-w-[70%] flex-col gap-0.5">
+						<p className="font-outfit text-primary-dark font-semibold capitalize text-2xl">{options.type == "create" ? "Create Session": "Update Session"}</p>
+					</div>
+					<p className="text-gray-500 dark:text-gray hidden">{options.type == "create" ? "Fill in the details to create a new session.": "Fill in the details to update your session."}</p>
+					<div className="max-w-[30%] rounded-full absolute right-4">
+						<XMarkIcon onClick={closeModal} className="w-6 h-6 cursor-pointer font-bold" />
+					</div>
 				</div>
-				<div className="max-w-[30%]">
-					<XMarkIcon onClick={closeModal} className="w-6 h-6 text-primary-dark cursor-pointer" />
-				</div>
-			</div>
 
 			{
-				// options.type == "create" && 
-				<div className="flex items-center gap-6 mt-4 font-bold text-lg">
-					<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("start_now")}>Start Now</h3>
-					<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("start_later")}>Start Later</h3>
-					<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
-						onClick={() => setSelectedTab("recurring")}>Recurring</h3>
+				// options.type == "create" &&
+				<div className="w-full flex justify-center">
+					<div className="flex items-center gap-6 mt-4 font-bold text-lg">
+						<h3 className={`nav-item ${selectedTab === 'start_now' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("start_now")}>Start Now</h3>
+						<h3 className={`nav-item ${selectedTab === 'start_later' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("start_later")}>Start Later</h3>
+						<h3 className={`nav-item ${selectedTab === 'recurring' ? 'nav-item-active' : ''}`}
+							onClick={() => setSelectedTab("recurring")}>Recurring</h3>
+					</div>
 				</div>
 			}
 
@@ -116,19 +142,19 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 				<SingleTime block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} />
 				: selectedTab === "recurring" ?
 				<RecurringSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/> : <StartLaterSession block_lists={selectedBlockList} options={options} setOptions={setOptions} refetch={refetch} passOnData={setRequestDate}/>}
-				<div className="flex justify-between gap-4 mt-8">
-					<div className="bg-gray-300 rounded-lg">
+				<div className="flex gap-8 mt-4">
+					<div className="rounded-lg flex gap-8 justify-between">
 						{block_lists()?.length > 0 ? (
-							<div className="flex w-full items-center rounded-lg px-4 py-4 gap-4">
-								<div className="grid grid-cols-3 gap-2">
+							<div className="flex w-full items-center rounded-lg gap-4">
+								<div className="grid grid-cols-4 justify-center gap-8">
 									{block_lists().map((item) => (
-										<div key={item.id} className="flex items-center gap-2">
+										<div key={item.id} className="flex items-center gap-2 rounded-lg text-lg">
 											<input
 												type="checkbox"
 												checked={selectedBlockList.includes(item.id)}
 												onChange={(e) => handleBlockListChange(e, item)}
 											/>
-											<p>{item.name}</p>
+											<p className="font-normal">{item.name}</p>
 										</div>
 									))}
 								</div>

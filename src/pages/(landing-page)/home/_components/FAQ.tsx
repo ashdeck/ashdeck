@@ -61,11 +61,11 @@ const FAQSection = ({ className }: Props) => {
     },
     {
         question: "Is the code open-source?",
-        answer: "Yes! You can see the source code in our GitHub repo."
+        answer: <div>"Yes! You can see the source code in our <a className="cursor-pointer text-primary-dark font-semibold" href="https://github.com/ashdeck/ashdeck_ui" target="_blank">GitHub repo</a>."</div>
     },
     {
         question: "Do you take feature requests?",
-        answer: "Yes! Post an issue on GitHub or email us. We're happy to hear how we can improve your email experience."
+        answer: <div>Yes! Post an issue on <a className="cursor-pointer text-primary-dark font-semibold" href="https://github.com/ashdeck/ashdeck_ui" target="_blank">GitHub</a> or email us. We're happy to hear how we can improve your email experience.</div>
     }
   ];
 
@@ -96,6 +96,7 @@ const FAQSection = ({ className }: Props) => {
             </button>
             {activeIndex === index && (
               <div className="mt-2 text-gray-600">{item.answer}</div>
+              // item.anser
             )}
           </div>
         ))}

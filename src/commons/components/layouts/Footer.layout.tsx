@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "@router/link"
-import { TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
-import { SlSocialPintarest } from "react-icons/sl";
+import { TiSocialGithub, TiSocialLinkedin, TiSocialTwitter } from "react-icons/ti";
+import { SlSocialPintarest, SlSocialGithub } from "react-icons/sl";
 
 
 type Props = {
@@ -10,9 +10,10 @@ type Props = {
 
 const FooterLayout = ({ className = "" }: Props) => {
 	const socials = [
+		{icon: <SlSocialGithub />, url: "https://github.com/ashdeck"},
 		{icon: <TiSocialLinkedin />, url: "https://www.linkedin.com/company/ashdeck"},
 		{icon: <SlSocialPintarest />, url: "https://www.pinterest.com/Ashdeckhq/"},
-		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"} 
+		{icon: <TiSocialTwitter />, url: "https://x.com/Ashdeckhq"}
 	]
 
 	const links = [
@@ -46,6 +47,12 @@ const FooterLayout = ({ className = "" }: Props) => {
 						<p className="text-gray-500 text-sm order-last md:order-1 mx-[10%] md:mx-0 text-center">Proudly Owned by Ashdeck Analytics Limited</p>
 						<img src="/images/ashdeck-logo-2.png" className="w-24" alt="Ashdeck Logo" />
 					</div>
+				</div>
+
+				<div className="mt-5">
+					<a href="https://www.toolpilot.ai" target="_blank">
+						<img src="/images/toolpilot.png" alt="featured-on-tool-pilot" width={150} />
+					</a>
 				</div>
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
 

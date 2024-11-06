@@ -19,7 +19,7 @@ export interface ISession {
 	type: "start_now" | "start_later" | "recurring"
 	start_time?: string | Date;
 	end_time?: string | Date;
-	block_lists: string[];
+	block_lists: any;
 	start_date?: string | Date
 	recurring_days?: RecurringDays[]
 	paused?: boolean

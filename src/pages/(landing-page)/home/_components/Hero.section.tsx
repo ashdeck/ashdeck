@@ -23,7 +23,7 @@ const HeroSection = ({ className }: Props) => {
 
 
 			<p className={"max-w-[80%] md:text-md lg:text-lg text-center text-gray-300 hidden sm:block"}>
-				Ashdeck is an <Link href="https://github.com/ashdeck/ashdeck_main_api.git"><span className="text-primary cursor-pointer">open-source</span></Link> productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome, Firefox, Microsoft Edge, or Safari browser today
+				Ashdeck is an <Link href="https://github.com/ashdeck/ashdeck_ui.git" target="_blank"><span className="text-primary cursor-pointer">open-source</span></Link> productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome browser today.
 			</p>
 
 			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
