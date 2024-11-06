@@ -48,6 +48,12 @@ const FooterLayout = ({ className = "" }: Props) => {
 						<img src="/images/ashdeck-logo-2.png" className="w-24" alt="Ashdeck Logo" />
 					</div>
 				</div>
+
+				<div className="mt-5">
+					<a href="https://www.toolpilot.ai" target="_blank">
+						<img src="/images/toolpilot.png" alt="featured-on-tool-pilot" width={150} />
+					</a>
+				</div>
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
 
 					{
