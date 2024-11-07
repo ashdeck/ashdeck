@@ -3,7 +3,7 @@ import { useState } from "react"
 import { SessionItem } from "../../types"
 import { useEffect } from "react"
 import { PlayCircleIcon, PauseCircleIcon, ShieldCheckIcon, WindowIcon, LockClosedIcon, PencilSquareIcon, ArrowUpCircleIcon, TrashIcon } from "@heroicons/react/16/solid"
-import { Arrow, ArrowUp, ArrowUp3 } from "iconsax-react"
+import { Arrow, ArrowDown2, ArrowUp2 } from "iconsax-react"
 import { ArrowUpIcon } from "@heroicons/react/24/outline"
 import { ISession } from "@/src/commons/interfaces"
 // import { CloseCircle } from "iconsax-react"
@@ -19,6 +19,7 @@ type Props = {
 const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
     const [showDetails, setShowDetails] = useState(false)
 	const [isPaused, setIsPaused] = useState(false)
+	const [singleOpen, setSingleOpen] = useState(false)
 	const [blockListNames, setBlockListNames] = useState([])
 	const [blockedDomains, setBlockedDomains] = useState([])
 	const [showEditDialog, setShowEditDialog] = useState<{
@@ -49,7 +50,10 @@ const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
 					<p className="font-medium text-xl">{session.name}</p>
 					<p className="text-xs">{session.type == "recurring" ? "Recurring": <>{session.type == "start_later"? "Upcoming": "Running"}</>}</p>
 				</div>
-
+				<div>
+					{!showDetails && <ArrowDown2 className="h-6 w-4 mt-6"/>}
+					{/* <ArrowUp2 className="h-6 w-4 mt-6"/> */}
+				</div>
 				<div className="">
 					<div className="flex gap-4 items-center">
 						<div className={`h-4 w-4 rounded-full ${session.paused ? "bg-orange-400" :"bg-green-500"}`}></div>
@@ -115,7 +119,7 @@ const SingleCurrentSession = ({ session, handleEdit, handleDelete }: Props) => {
 					<div className="">
 					</div>
 					<div onClick={()=>setShowDetails(!showDetails)} className="">
-						<ArrowUpCircleIcon className="h-8 w-8" />
+						<ArrowUp2 className="h-6 w-4" />
 					</div>
 					<div className="">
 					</div>

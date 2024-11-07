@@ -62,7 +62,6 @@ const AddSession = ({ options = { type: "create", show: false }, setOptions, ref
 				toast.success("Session Created")
 				localStorage.setItem("newSession", JSON.stringify(res.data))
 				window.dispatchEvent(new CustomEvent("sessionCreated", { detail: res.data }));
-				console.log("Dispatch event received")
 				setOptions({
 					type: "create",
 					show: false,
