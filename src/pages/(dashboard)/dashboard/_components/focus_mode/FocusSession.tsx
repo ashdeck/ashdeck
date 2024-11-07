@@ -109,12 +109,14 @@ export default function FocusSession() {
         setPaused((prev) => {
             const newPausedState = !prev;
             if (newPausedState) {
-                localStorage.setItem('focus_session', JSON.stringify({
+                const focus_session_to_save = JSON.stringify({
                     ...initialSessionData,
                     paused: true,
                     elapsedTime: totalDuration - remainingTime,
                     startTime: null
-                }));
+                })
+                window.dispatchEvent(new CustomEvent("FocusSessionPaused", { detail: focus_session_to_save }));
+                localStorage.setItem('focus_session', focus_session_to_save);
             } else {
                 const startTime = Date.now();
                 localStorage.setItem('focus_session', JSON.stringify({

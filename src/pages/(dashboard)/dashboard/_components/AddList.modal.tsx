@@ -14,7 +14,17 @@ import { BlockList } from "../types"
 import SiteCategories from "./SiteCategorie"
 import { tokens } from "@/src/commons/tokens"
 
-const site_categories = ["Adult", "Sport", "News", "Social", "Search", "Gambling", "Shopping", "Gaming", "Streaming"]
+const site_categories = [
+	{name: "Adult", sites: ["google.com"]},
+	{name: "Sport", sites: ["pinterest.come"]},
+	{name: "News", sites: ["cnn.com"]},
+	{name: "Social", sites: ["facebook.com"]},
+	{name: "Search", sites: ["yahoo.com"]},
+	{name: "Gambling", sites: ["betway.com"]},
+	{name: "Shopping", sites: ["amazon.com"]},
+	{name: "Gaming", sites: ["fifa.com"]},
+	{name: "Streaming", sites: ["twitch.com"]}
+]
 
 
 interface IListTypeOptions {
@@ -200,7 +210,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							<div className="rounded-lg p-4 hidden">
 								<h4 className="text-xl font-semibold mb-4">Categories</h4>
 								<div className="grid gap-4 grid-cols-3">
-									{site_categories?.map(site => <SiteCategories category={site} />)}
+									{site_categories?.map(site => <SiteCategories category={site.name} />)}
 								</div>
 							</div>
 						</form>
@@ -211,7 +221,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							<h4 className="text-md font-medium mb-4">Create from Categories</h4>
 							<p className="text-sm font-light mb-4 hidden">You can also create blocklists from categories we have made for you</p>
 							<div className="grid gap-6 grid-cols-3">
-								{site_categories?.map(site => <SiteCategories category={site} />)}
+								{site_categories?.map(site => <SiteCategories category={site.name} />)}
 							</div>
 						</div>
 					</div>
@@ -226,8 +236,6 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 					selected={listType}
 					setSelected={setListType}
 				/> */}
-
-				
 
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
 					{entries?.map((entry, i) => (
