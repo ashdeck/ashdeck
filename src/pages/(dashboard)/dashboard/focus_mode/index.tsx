@@ -51,6 +51,8 @@ export default function FocusMode(){
 
     const startSession = () => {
         localStorage.setItem("focus_session", JSON.stringify(focus_session))
+        window.dispatchEvent(new CustomEvent("FocusSessionToggle", { detail: focus_session }));
+        console.log("Dispatch sent")
         setShowTimer(true)
     }
 
