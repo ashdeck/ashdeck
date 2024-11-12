@@ -101,30 +101,36 @@ export default function FocusSession() {
         setCurrentCycle(1);
         setIsBreak(false);
         setRemainingTime(totalDuration);
+        const session = JSON.parse(localStorage.getItem("focus_session"))
         localStorage.removeItem('focus_session'); // Clear local storage on reset
+        window.dispatchEvent(new CustomEvent("FocusSessionReset", { detail: session}));
         window.location.reload();
     }
 
     function togglePause() {
         setPaused((prev) => {
             const newPausedState = !prev;
+            let focus_session_to_save;
             if (newPausedState) {
-                const focus_session_to_save = JSON.stringify({
+                focus_session_to_save = {
                     ...initialSessionData,
                     paused: true,
                     elapsedTime: totalDuration - remainingTime,
                     startTime: null
-                })
-                window.dispatchEvent(new CustomEvent("FocusSessionPaused", { detail: focus_session_to_save }));
-                localStorage.setItem('focus_session', focus_session_to_save);
+                }
+                localStorage.setItem('focus_session', JSON.stringify(focus_session_to_save));
+                window.dispatchEvent(new CustomEvent("FocusSessionToggle", { detail: focus_session_to_save }));
             } else {
+                console.log("Resume here")
                 const startTime = Date.now();
-                localStorage.setItem('focus_session', JSON.stringify({
+                focus_session_to_save = {
                     ...initialSessionData,
                     paused: false,
                     startTime,
                     elapsedTime: totalDuration - remainingTime
-                }));
+                }
+                localStorage.setItem('focus_session', JSON.stringify(focus_session_to_save));
+                window.dispatchEvent(new CustomEvent("FocusSessionToggle", { detail: focus_session_to_save }));
             }
             return newPausedState;
         });
