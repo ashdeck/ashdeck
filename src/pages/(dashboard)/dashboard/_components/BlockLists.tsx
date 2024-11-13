@@ -52,11 +52,19 @@ const BlockLists = ({ className, blockLists }: Props) => {
             dangerous: true,
             title: `Delete ${item?.name}?`,
             message: "Are you sure you want to delete this blocklist?\n This action cannot be undone.",
+            actionBtn: "Yes",
             action: async () => {
                 await api.delete(`/blocklists/${item?.id}`, {"Authorization": `Bearer ${tokens.access_token}`});
+                const remaining_lists = JSON.parse(localStorage.getItem("block_lists"))
+                if (remaining_lists){
+                    if (remaining_lists.length === 0){
+                        localStorage.removeItem("block_lists")
+                    }
+                }
                 await refetch();
             },
         });
+
     };
 
     // Handle edit action
@@ -81,7 +89,7 @@ const BlockLists = ({ className, blockLists }: Props) => {
                         <p className="font-outfit hidden text-primary-dark font-semibold capitalize text-xl mb-2">
                             Block Lists
                         </p>
-                        <div onClick={() => {
+                        <div id="add-blocklist" onClick={() => {
                             setShowEditDialog({
                                 type: "create",
                                 show: true,

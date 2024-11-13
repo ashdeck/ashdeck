@@ -24,6 +24,8 @@ type Props = {
 
 
 const Sessions = ({ className }: Props) => {
+	// const blockLists = JSON.parse(localStorage.getItem("block_lists"))
+
 	const [selectedTab, setSelectedTab] = useState('sessions');
 	const [sessions, setSessions] = useState<Array<ISession>>([]);
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -89,12 +91,32 @@ const Sessions = ({ className }: Props) => {
             dangerous: true,
             title: `Delete session`,
             message: "Are you sure you want to delete this session?\n This action cannot be undone.",
+			actionBtn: "Yes",
+			refuseBtn: "No",
             action: async () => {
                 await api.delete(`/sessions/${id}`, {"Authorization": `Bearer ${tokens.access_token}`});
 				window.dispatchEvent(new CustomEvent("sessionDeleted", { detail: id }));
                 await refetch();
             },
         });
+	}
+
+
+	const handleAddBlockListsFirst = () => {
+		setShowConfirmModal({
+			show: true,
+			dangerous: false,
+			title: "Add Block List",
+			message: "You don't have any block lists to create a session. Create at least on block list to continue!",
+			actionBtn: "Add Blocklist",
+			refuseBtn: "Cancel",
+			action: () => {
+				const blockListBtn = document.getElementById("add-blocklist")
+				if (blockListBtn){
+					blockListBtn.click()
+				}
+			}
+		})
 	}
 
 	// date from server is ISO string so we have to convert our current date to the same
@@ -135,9 +157,9 @@ const Sessions = ({ className }: Props) => {
 					{selectedTab === "history" ? "View your past sessions" : "Create and manage your focus sessions here"}
 				</p>
 				</div>
-				<div className="" onClick={()=>setShowEditDialog({type: "create", show: true})}>
+				{<div className="" onClick={(JSON.parse(localStorage.getItem("block_lists")) && JSON.parse(localStorage.getItem("block_lists")).length > 0) ? ()=>setShowEditDialog({type: "create", show: true}): handleAddBlockListsFirst}>
 					<CustomButton>Create Session</CustomButton>
-				</div>
+				</div>}
 				</div>
 		</div>
 

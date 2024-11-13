@@ -136,6 +136,18 @@ export default function FocusSession() {
         });
     }
 
+    function PauseResume(){
+        togglePause()
+        const saved_session = JSON.parse(localStorage.getItem("focus_session"))
+        window.dispatchEvent(new CustomEvent("FocusSessionToggle", { detail: saved_session }));
+    }
+
+    function toggleSync(){
+        togglePause()
+        const saved_session = JSON.parse(localStorage.getItem("focus_session"))
+        localStorage.setItem("focus_session", JSON.stringify({...saved_session, paused: !saved_session.paused}))
+    }
+
     let minutes = Math.floor(remainingTime / 60);
     const hours = Math.floor(minutes/60);
     minutes = minutes % 60
@@ -169,7 +181,8 @@ export default function FocusSession() {
                         <span>{String(seconds).padStart(2, "0")}</span>
                     </div>
                     <div className="flex gap-8 mt-8">
-                        <PauseButton paused={paused} onClick={togglePause} />
+                        <div id="sync" onClick={toggleSync}></div>
+                        <PauseButton paused={paused} onClick={PauseResume} />
                         <ResetButton onClick={resetSession} />
                     </div>
                 </div>
