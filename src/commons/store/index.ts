@@ -6,6 +6,9 @@ interface IConfirmModal {
 	dangerous?: boolean
 	message?: string
 	action?: () => void
+	actionBtn?: string
+	actionBtnClr?: string
+	refuseBtn?: string
 }
 
 interface IGlobalState {

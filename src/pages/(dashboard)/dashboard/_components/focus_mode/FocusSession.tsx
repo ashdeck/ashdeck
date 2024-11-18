@@ -136,13 +136,25 @@ export default function FocusSession() {
         });
     }
 
+    function PauseResume(){
+        togglePause()
+        const saved_session = JSON.parse(localStorage.getItem("focus_session"))
+        window.dispatchEvent(new CustomEvent("FocusSessionToggle", { detail: saved_session }));
+    }
+
+    function toggleSync(){
+        togglePause()
+        const saved_session = JSON.parse(localStorage.getItem("focus_session"))
+        localStorage.setItem("focus_session", JSON.stringify({...saved_session, paused: !saved_session.paused}))
+    }
+
     let minutes = Math.floor(remainingTime / 60);
     const hours = Math.floor(minutes/60);
     minutes = minutes % 60
     const seconds = remainingTime % 60;
 
     return (
-        <div className="border border-gray-400 rounded-xl mt-2 pb-16">
+        <div className="border border-gray-400 rounded-xl mt-2 pb-16  max-h-[450px]">
             <div className="flex justify-center gap-[4px] my-8">
                 {Array.from({ length: initialSessionData.cycles }).map((_, index) => (
                     <div key={index} className="cycle-div">
@@ -163,13 +175,14 @@ export default function FocusSession() {
                     <h2 className="font-semibold text-gray-400 text-2xl">{paused ? "Focus Session Paused" : "Focus Session Running"}</h2>
                 </div>
                 <div className="flex items-center justify-center flex-col gap-8">
-                    <div className="flex gap-4 sm:gap-16 text-secondary items-center sm:text-[rem] sm:font-normal lg:text-[7rem] font-mono">
+                    <div className="flex gap-4 sm:gap-12 text-secondary items-center text-[2rem] sm:text-[3rem] sm:font-normal lg:text-[4rem] font-mono">
                         <span>{String(hours).padStart(2, "0")}</span>:
                         <span>{String(minutes).padStart(2, "0")}</span>:
                         <span>{String(seconds).padStart(2, "0")}</span>
                     </div>
                     <div className="flex gap-8 mt-8">
-                        <PauseButton paused={paused} onClick={togglePause} />
+                        <div id="sync" onClick={toggleSync}></div>
+                        <PauseButton paused={paused} onClick={PauseResume} />
                         <ResetButton onClick={resetSession} />
                     </div>
                 </div>

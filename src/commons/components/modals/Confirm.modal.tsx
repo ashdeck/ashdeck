@@ -6,7 +6,7 @@ import { useGlobalStore } from "@store"
 
 function ConfirmModal({}) {
 
-	const { showConfirmModal: { show, message, title, action, dangerous }, setShowConfirmModal } = useGlobalStore()
+	const { showConfirmModal: { show, message, title, action, dangerous, actionBtn="Yes", refuseBtn="Cancel" }, setShowConfirmModal } = useGlobalStore()
 
 	return (
 		<DialogLayout show={show}>
@@ -22,7 +22,7 @@ function ConfirmModal({}) {
 						variant="outlined"
 						onClick={() => setShowConfirmModal({ show: false })}
 						className={`w-full text-gray-500`}>
-						No
+						{refuseBtn}
 					</CustomButton>
 					<CustomButton
 						variant="outlined"
@@ -31,7 +31,7 @@ function ConfirmModal({}) {
 							action()
 						}}
 						className={`w-full ${dangerous ? "bg-red-500 border-red-500 text-white" : "text-gray-500 hover:bg-primary hover:border-primary"}  hover:text-white`}>
-						Yes
+						{actionBtn}
 					</CustomButton>
 				</div>
 			</div>

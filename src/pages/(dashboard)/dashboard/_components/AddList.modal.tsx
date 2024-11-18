@@ -57,6 +57,8 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 	const [listType, setListType] = useState<IListTypeOptions>(listTypeOptions[1])
 	const [entries, setEntries] = useState<any[]>([])
 
+	const add_group_sites = (item) => (setEntries([...entries, item.name+".com"]))
+
 	useEffect(() => {
 		if (options?.data && options?.type === "edit") {
 			Object.keys(options?.data).forEach((key) => {
@@ -221,7 +223,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 							<h4 className="text-md font-medium mb-4">Create from Categories</h4>
 							<p className="text-sm font-light mb-4 hidden">You can also create blocklists from categories we have made for you</p>
 							<div className="grid gap-6 grid-cols-3">
-								{site_categories?.map(site => <SiteCategories category={site.name} />)}
+								{site_categories?.map(site => <div onClick={()=>add_group_sites(site)}><SiteCategories category={site.name} /></div>)}
 							</div>
 						</div>
 					</div>
