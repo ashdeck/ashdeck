@@ -154,7 +154,7 @@ export default function FocusSession() {
     const seconds = remainingTime % 60;
 
     return (
-        <div className="border border-gray-400 rounded-xl mt-2 pb-16  max-h-[450px]">
+        <div className="shadow-xl rounded-xl mt-2 pb-16  max-h-[445px]">
             <div className="flex justify-center gap-[4px] my-8">
                 {Array.from({ length: initialSessionData.cycles }).map((_, index) => (
                     <div key={index} className="cycle-div">

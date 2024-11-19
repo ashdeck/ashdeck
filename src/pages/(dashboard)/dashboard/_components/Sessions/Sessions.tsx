@@ -135,7 +135,7 @@ const Sessions = ({ className }: Props) => {
 		<div className={twMerge(`custom-scrollbar bg-gray-300 shadow-2xl pb-6 px-8 rounded-lg min-h-[60vh] max-h-[60vh] relative ${sessions.length > 0 ? "overflow-auto" : "overflow-hidden"}`, className)}>
 		<AddSession options={showEditDialog} setOptions={setShowEditDialog} refetch={refetch} />
 		<div className="sticky top-0 z-10 bg-gray-300">
-			<div className="flex w-full justify-between items-start pt-6">
+			<div className="flex w-full justify-between items-start pt-8">
 				<div className="flex max-w-[70%] flex-col gap-0.5">
 				<div className="font-outfit text-primary-dark font-semibold capitalize justify-between">
 					<div className="flex gap-6 mb-4">
@@ -157,7 +157,7 @@ const Sessions = ({ className }: Props) => {
 					{selectedTab === "history" ? "View your past sessions" : "Create and manage your focus sessions here"}
 				</p>
 				</div>
-				{<div className="" onClick={(JSON.parse(localStorage.getItem("block_lists")) && JSON.parse(localStorage.getItem("block_lists")).length > 0) ? ()=>setShowEditDialog({type: "create", show: true}): handleAddBlockListsFirst}>
+				{<div className="-mt-2" onClick={(JSON.parse(localStorage.getItem("block_lists")) && JSON.parse(localStorage.getItem("block_lists")).length > 0) ? ()=>setShowEditDialog({type: "create", show: true}): handleAddBlockListsFirst}>
 					<CustomButton>Create Session</CustomButton>
 				</div>}
 				</div>
