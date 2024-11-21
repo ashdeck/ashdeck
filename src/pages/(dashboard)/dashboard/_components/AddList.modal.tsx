@@ -146,10 +146,10 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 	}
 
 	return (
-		<DialogLayout className={"w-[60%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
-			<div className="flex w-full justify-between items-center">
-				<div className="flex max-w-[70%] flex-col gap-0.5">
-					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl">
+		<DialogLayout className={"w-[40%] max-h-fit items-start"} show={options?.show} setShow={setOptions}>
+			<div className="flex w-full justify-between items-start">
+				<div className="flex flex-col gap-0.5 text-center">
+					<p className="font-outfit text-primary-dark font-semibold capitalize text-xl mb-2">
 						Create Block List
 					</p>
 					<p className="text-gray-500 dark:text-gray ">
@@ -161,9 +161,9 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				</div>
 			</div>
 
-			<div className="flex flex-col text-black w-full my-4">
+			<div className="flex flex-col text-black w-full">
 				<div className="flex justify-between gap-4 items-start my-4">
-					<div className="w-[50%] mr-8">
+					<div className="w-full">
 						<div>
 							<FormInput
 								label={"Enter List Name"}
@@ -202,47 +202,15 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 										</p>
 									)
 								}
-								{/* {
-									!entries?.length && (
-										<p className="w-full text-center text-red-500 text-sm my-4 font-medium ">
-											Enter at least a site
-										</p>
-									)
-								} */}
-							<div className="rounded-lg p-4 hidden">
-								<h4 className="text-xl font-semibold mb-4">Categories</h4>
-								<div className="grid gap-4 grid-cols-3">
-									{site_categories?.map(site => <SiteCategories category={site.name} />)}
-								</div>
-							</div>
 						</form>
-						</div>
-					</div>
-					<div className="rounded-lg border-2">
-						<div className="py-4 px-4">
-							<h4 className="text-md font-medium mb-4">Create from Categories</h4>
-							<p className="text-sm font-light mb-4 hidden">You can also create blocklists from categories we have made for you</p>
-							<div className="grid gap-6 grid-cols-3">
-								{site_categories?.map(site => <div onClick={()=>add_group_sites(site)}><SiteCategories category={site.name} /></div>)}
-							</div>
 						</div>
 					</div>
 				</div>
 
-
-				{/* <DropdownSelect
-					label={"Select List Type"}
-					prompt={"List Type (Whitelist/Blacklist)"}
-					className="z-50"
-					items={listTypeOptions}
-					selected={listType}
-					setSelected={setListType}
-				/> */}
-
 				<div className="flex max-h-[20vh] overflow-y-scroll flex-col gap-2">
 					{entries?.map((entry, i) => (
 						<div key={i}
-							className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 p2-4">
+							className="flex flex-row items-center justify-between w-full border-b border-gray-200 dark:border-gray-600 py-2">
 							<div className="flex flex-col py-2">
 								<p className="cursor-pointer hover:text-primary transition duration-300 font-outfit text-primary-dark">
 									{i + 1}. {entry.site_url}
@@ -265,7 +233,7 @@ const AddBlockListModal = ({ options = { type: "create", show: false }, setOptio
 				<CustomButton
 					disabled={Object.keys(errors)?.length > 0 || !entries?.length}
 					onClick={handleSubmit(submitAction)}
-					className="py-4 mt-8"
+					className={`py-3 ${entries.length > 0 ? "mt-6": "mt-4"}`}
 					loading={loading}>
 					{options?.type === "create" ? "Create List" : "Update List"}
 				</CustomButton>

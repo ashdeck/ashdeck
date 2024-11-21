@@ -12,7 +12,7 @@ export default function TimerSetup({ metric_name, description, initial_value, on
     };
 
     return (
-        <div className="flex bg-gray-300 justify-between items-center border-b first:pt-0 pt-4 pb-4 last:border-b-0 last:pb-0">
+        <div className="flex bg-gray-300 justify-between items-center border-b first:pt-0 py-5 last:border-b-0 last:pb-0">
             <div>
                 <h4 className="font-medium text-md">{metric_name}</h4>
                 <p className="text-[#525353]">{description}</p>

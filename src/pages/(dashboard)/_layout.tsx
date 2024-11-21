@@ -4,11 +4,13 @@ import { Outlet } from "react-router-dom"
 import { ClassNames } from "@emotion/react"
 
 function DashboardLayout({ children }) {
+	const current_location = window.location.href;
+  	const contains_dashboard = current_location.includes("dashboard")
 	return (
 		<div className="relative min-h-screen">
-			<HeaderLayout />
+			{!contains_dashboard && <HeaderLayout />}
 			<div className="h-full">{children ? children : <Outlet />}</div>
-			<FooterLayout />
+			{!contains_dashboard && <FooterLayout />}
 		</div>
 	)
 }

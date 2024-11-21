@@ -22,9 +22,9 @@ export default function DashboardSideBar(){
 	}
 
     return (
-        <div className="hidden sm:flex flex-col justify-between bg-gray-300 shadow-gray-500 shadow-lg rounded-lg w-full md:max-w-[20rem] max-h-[450px]">
+        <div className="hidden sm:flex flex-col justify-between bg-gray-300 shadow-gray-500 shadow-lg rounded-lg w-full md:max-w-[20rem]">
 			{/* <SettingsModal options={showEditDialog} setOptions={setShowEditDialog} /> */}
-			<div className="px-4 mt-8 mx-2 gap-2 flex flex-col w-full">
+			<div className="px-4 mt-8 mx-2 gap-6 flex flex-col w-full">
 				<Link href="/dashboard">
 					<div className="bg-opacity-80 flex gap-2 items-center rounded-md px-2 py-2 w-full cursor-pointer">
 						<ShieldSecurity className="w-6 h-6 text-primary" />
