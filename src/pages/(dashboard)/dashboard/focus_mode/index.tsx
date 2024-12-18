@@ -35,11 +35,20 @@ export default function FocusMode(){
 	})
 
     const addMinutes = (date, minutes) => {
-        return new Date(date.getTime() + (minutes*6000))
+        console.log(minutes)
+        const res = new Date(date.getTime() + (minutes*60000))
+        console.log(date, minutes, res)
+        return res
     }
+
+    const total_break_time = breakTime * cycles > 1 ? (cycles-1): cycles
+    const total_duration = duration * cycles
+    const end_time = addMinutes(new Date(), total_break_time+total_duration)
+    // console.log(total_break_time + total_duration, end_time)
 
     const focus_session = {
         cycles: cycles,
+        end_time,
         breakTime: breakTime,
         original_breakTime: breakTime,
         original_duration: duration,
