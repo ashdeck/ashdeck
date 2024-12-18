@@ -54,7 +54,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 						<img src="/images/toolpilot.png" alt="featured-on-tool-pilot" width={150} />
 					</a>
 
-					<a title="ai tools code.market" href="https://code.market?code.market=verified"><img alt="ai tools code.market" title="ai tools code.market" src="https://code.market/assets/manage-product/featured-logo-dark.svg" /></a>
+					<a title="ai tools code.market" href="https://code.market?code.market=verified"><img alt="ai tools code.market" title="ai tools code.market" src="https://code.market/assets/manage-product/featured-logo-bright.svg" /></a>
 
 				</div>
 
