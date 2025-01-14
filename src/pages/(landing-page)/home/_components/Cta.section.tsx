@@ -1,7 +1,7 @@
 import CustomButton from "@components/CustomButton"
 import HeadingText from "@components/HeadingText"
 import Link from "@router/link"
-import { SlSocialGithub } from "react-icons/sl"
+import { FaGithub } from "react-icons/fa"
 
 
 type Props = {
@@ -23,13 +23,13 @@ const HeroSection = ({ className }: Props) => {
 			</p>
 
 		<div className="flex gap-6">
-			<Link className={"w-[14rem]"} href={"https://github.com/ashdeck/ashdeck_ui"}>
-				<CustomButton startIcon={<SlSocialGithub color="white" size={16}/>}  variant={"secondary"} className={"py-3.5 w-full text-white"}>
-					Check us on Github
+			<Link className={"sm:w-[14rem] hidden sm:block"} href={"https://github.com/ashdeck/ashdeck_ui"} target="_blank">
+				<CustomButton startIcon={<FaGithub color="white" size={16}/>}  variant={"secondary"} className={"py-3.5 w-full text-white"}>
+					Star on Github
 				</CustomButton>
 			</Link>
 
-			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
+			<Link className={"sm:w-[14rem]"} href={"/join-our-waitlist"}>
 				<CustomButton variant={"primary"} className={"py-3.5 w-full text-white"}>
 					Join Waitlist
 				</CustomButton>

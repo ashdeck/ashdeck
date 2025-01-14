@@ -6,6 +6,8 @@ import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 import { HambergerMenu } from "iconsax-react";
 import { XCircleIcon } from "@heroicons/react/16/solid";
 import Link from "@router/link";
+import { FaGithub } from "react-icons/fa";
+
 
 type Props = {
   className?: string;
@@ -40,7 +42,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
       <Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
 
       {/* Hamburger icon for mobile screens */}
-      <div className="flex sm:hidden mr-8">
+      <div className="flex md:hidden mr-8">
         {menuOpen ? (
           <XCircleIcon className="w-8 h-8 text-primary" onClick={toggleMenu} />
         ) : (
@@ -49,12 +51,12 @@ const HeaderLayout = ({ className = "" }: Props) => {
       </div>
 
       {/* Desktop links */}
-      <nav className="hidden sm:flex w-full text-white justify-center gap-12">
+      <nav className="hidden md:flex w-full text-white justify-center gap-12">
         {links.map((link, index) => (
           <Link
             key={index}
             href={link.href}
-            className="text-md hover:text-primary pb-2 transition duration-500">
+            className="text-md hover:text-primary transition duration-500">
             {link.name}
           </Link>
         ))}
@@ -62,7 +64,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <nav className="absolute top-[8vh] right-0 w-[50%] bg-white bg-opacity-90 p-4 sm:hidden">
+        <nav className="absolute top-[8vh] right-0 w-[50%] bg-white bg-opacity-90 p-4 md:hidden">
           {links.map((link, index) => (
             <Link
               key={index}
@@ -77,13 +79,23 @@ const HeaderLayout = ({ className = "" }: Props) => {
       )}
 
       {/* Join waitlist button */}
-      <div className="w-[16rem] mr-8 hidden sm:block">
-        <div className="flex justify-end">
-          <Link href="/join-our-waitlist">
-            <CustomButton className="border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
-              Join Waitlist
-            </CustomButton>
-          </Link>
+      <div className="w-[32rem] mr-4 hidden md:block">
+        <div className="flex justify-between items-center gap-4">
+            <Link href="https://github.com/ashdeck/ashdeck" target="_blank">
+              <CustomButton className="bg-secondary border-[.1px] border-white">
+                <div className="flex items-center justify-center w-[10rem] gap-2 ">
+                  <FaGithub className="font-bold" size={20} />
+                  <p className="font-semibold">Star On Github</p>
+                </div>
+              </CustomButton>
+            </Link>
+            <div className="flex ">
+            <Link href="/join-our-waitlist">
+              <CustomButton className="w-[10rem] border-0 hover-border-0 text-[.8rem] md:text-[1rem] font-semibold">
+                Join Waitlist
+              </CustomButton>
+            </Link>
+          </div>
         </div>
       </div>
     </header>
