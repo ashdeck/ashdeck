@@ -67,10 +67,10 @@ const ForWhoSection = ({ className }: Props) => {
 			 className={"flex flex-col gap-4 min-h-[100vh] px-[5%] md:px-[15%] justify-center items-center"}>
 
 			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">
-				Use Cases of Pomodoro Timer + Block Distractions = Productivity
+				Pomodoro Timer: Block Distractions and Boost Focus
 			</h2>
 
-			<p className={"w-full text-gray-600 max-w-[90%] md:max-w-[60%] text-center"}>
+			<p className={"w-full text-gray-600 max-w-[90%] md:max-w-[60%] text-center hidden"}>
 				It's easy to set up and use.
 			</p>
 

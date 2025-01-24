@@ -39,10 +39,11 @@ const HowItWorksSection = ({ className }: Props) => {
 				Are distracting websites eating away at your precious time?
 			</HeadingText> */}
 
-			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Regain Control of Your Time with Our Website Blocker</h2>
+			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Do You Work or Study on Your Computer?
+			</h2>
 
-			<p className={"w-full text-gray-600 md:max-w-[60%] text-center"}>
-				Are distracting websites eating away at your precious time? Our powerful website blocker puts you back in the driver's seat, allowing you to effortlessly block time-wasting sites, games, and applications.
+			<p className={"w-full text-gray-600 md:max-w-[60%] text-center text-lg"}>
+				If so, you know the struggle. The constant pull of news, social media, shopping, or emails is relentless. Before you know it, you've drifted off-task, wasted hours, and ended the day feeling unproductive and unfulfilled. Sound familiar?
 			</p>
 
 			{/* <CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
