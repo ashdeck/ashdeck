@@ -16,14 +16,17 @@ const HeroSection = ({ className }: Props) => {
 
 			<div className="items-center flex flex-col">
 				<HeadingText className="text-center text-white lg:mt-[12rem] md:text-4xl lg:text-6xl text-3xl font-bold">
-					Block Distractions and Boost Focus Instantly with Our Website Blocker
+					Block Distractions and Boost Focus Instantly with Website Blocker
 				</HeadingText>
 				<PenUnderline className={"w-[50%] stroke-3 mx-auto"} />
 			</div>
 
 
 			<p className={"max-w-[80%] md:text-md lg:text-lg text-center text-gray-300 hidden sm:block"}>
-				Ashdeck is an <Link href="https://github.com/ashdeck/ashdeck_ui.git" target="_blank"><span className="text-primary cursor-pointer">open-source</span></Link> productivity tool built to enhance your daily focus by limiting distractions with a robust website blocker. It helps you manage your time, track your progress with an AI-powered notepad, and achieve your goals while staying focused. Install Ashdeck on your Chrome browser today.
+				Struggling to stay productive with endless tabs and distractions? Ashdeck’s website blocker
+				and Pomodoro timer help you focus on what matters most—whether it’s finishing a project,
+				studying for exams, or finally hitting those deadlines. —because, let’s face it, procrastination
+				isn’t getting the job done.
 			</p>
 
 			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
