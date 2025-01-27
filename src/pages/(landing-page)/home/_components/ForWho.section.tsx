@@ -24,41 +24,44 @@ const ForWhoSection = ({ className }: Props) => {
 		},
 		{
 			title: "Marketers",
-			description: "Stay ahead of the competition by focusing on what truly matters.",
+			description: "Cut through the noise with focus tools that let you block distractions. Stay ahead of the competition by using a website blocker to zero in on what drives results.",
 			image: <img className={"w-[25%] absolute"} src={"/images/megaphone.png"} alt={""} />,
 
 		},
 		{
 			title: "Writers",
-			description: "Let your creativity flow uninterrupted and produce your best work.",
+			description: "Unleash your creativity uninterrupted. A free website blocker helps you stay in your flow, so you can craft your best work with no distractions.",
 			image: <img className={"w-[40%] absolute"} src={"/images/papers.png"} alt={""} />,
 
 		},
 		{
 			title: "Entrepreneurs",
-			description: "Make time for strategic planning and watch your business thrive.",
+			description: "Strategize smarter. Use focus techniques like the Pomodoro timer to make every minute count, and watch your business thrive like never before.",
 			image: <img className={"w-[25%] absolute"} src={"/images/coin.png"} alt={""} />,
 
 		},
 		{
 			title: "Freelancers",
-			description: "Take control of your workload and make productivity your norm.",
-			image: <img className={"w-[20%] absolute"} src={"/images/rocket.png"} alt={""} />,
+			description: "Take control of your workload. With tools like a website blocker, balance productivity and freedom—your time is yours to own.",
+			image: <img className={"w-[20%] absolute"} src={"/images/freelancer.png"} alt={""} />,
 
 		},
 		{
 			title: "Designers",
-			description: "Carve out space for creativity and bring your ideas to life.",
+			description: "Bring your ideas to life in a space free of interruptions. Whether it’s using a Pomodoro timer or blocking distractions, create without limits.",
 			image: <img className={"w-[25%] absolute"} src={"/images/palette.png"} alt={""} />,
 
 		},
 		{
 			title: "Researchers",
-			description: "Stay focused on your research and achieve breakthrough results.",
+			description: "Focus deeply, discover boldly. A free website blocker can help you stay in the zone and achieve the breakthroughs you aim for.",
 			image: <img className={"w-[25%] absolute"} src={"/images/researcher.png"} alt={""} />,
-
+		},
+		{
+			title: "For those with ADHD",
+			description: "Your mind is brilliant. A little structure—like a website blocker or Pomodoro timer—can help you channel your energy and own your day.",
+			image: <img className={"w-[25%] absolute"} src={"/images/adhd2.png"} alt={""} />,
 		}
-
 	]
 
 

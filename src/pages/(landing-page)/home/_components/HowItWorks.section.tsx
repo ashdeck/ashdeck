@@ -13,20 +13,20 @@ const HowItWorksSection = ({ className }: Props) => {
 
 	const features = [
 		{
-			title: "Focus Mode",
-			description: "Overcome bad habits, remove distractions, and concentrate on one task at a time. Ashdeck’s Pomodoro timer helps to boost your productivity, improve focus, and achieve your desired results swiftly and efficiently",
+			title: "Overcome the Tab Temptation",
+			description: `That urge to open "just one quick tab" is more than a habit—a reflex. Ashdeck, the free website blocker helps you silence distractions and reclaim your focus, so you stop spiraling into wasted hours.`,
 		},
 		{
-			title: "Website Blocker",
-			description: "Effectively control your online distractions with our website blocker tool. Customise your blocklist to block or unblock sites, including notorious time-wasters. With our site blocker, you can even opt for a focused mode, restricting access to the entire web except for approved sites.",
+			title: "Get More Done, Feel Accomplished",
+			description: "Ever feel like your day vanished with nothing to show for it? By blocking distractions, Ashdeck’s Pomodoro’s timer keeps you on track, turning procrastination into meaningful progress.",
 		},
 		{
-			title: "Set Your Schedule",
-			description: "Define your schedule and rules by specifying the days and times for blocking sites, ensuring you stay focused during designated times. Say goodbye to distractions and hello to enhanced productivity with our intuitive site blocker.",
+			title: "Turn Bad Habits Into Better Ones",
+			description: "Constant notifications and mindless scrolling leave you drained. With Ashdeck, you can build habits prioritizing focus and intention, one small step at a time.",
 		},
 		{
-			title: "Personalized Dashboard",
-			description: "Transform your new tab into an inspiring dashboard showcasing weather updates, beautiful backgrounds, a to-do list, natural meditative sounds, AI notepad and a motivational quote. Facilitate efficient work habits, track your progress and goals, and boost productivity to regain control, productivity, and focus.",
+			title: "Take Control of Your Attention",
+			description: "It’s exhausting to feel controlled by distractions. Ashdeck’s website blocker gives you the power to break free, helping you work purposefully and feel fulfilled at the end of the day",
 		},
 	]
 
