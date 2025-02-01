@@ -2,16 +2,17 @@ import CustomButton from "@components/CustomButton"
 import HeadingText from "@components/HeadingText"
 import Link from "@router/link"
 import { FaGithub } from "react-icons/fa"
+import AddToChrome from "@/src/commons/components/AddToChrome"
 
 
 type Props = {
 	className?: string
 }
 
-const HeroSection = ({ className }: Props) => {
+const CTASection = ({ className }: Props) => {
 	return (
 		<div
-			className={"flex flex-col h-fit w-full items-center gap-4 md:gap-6 lg:gap-12 pb-36 lg:pb-60 px-[5%] md:px-[15%]"}>
+			className={"flex flex-col h-fit w-full items-center gap-4 md:gap-6 lg:gap-12 mb-36 lg:mb-60 px-[5%] md:px-[15%]"}>
 
 			<HeadingText className="text-center mt-[10%] max-w-[90%]  md:max-w-[40rem] text-2xl md:3xl lg:text-5xl drop-shadow-2xl shadow-primary">
 				It’s Time to Turn your To-Do List into a Done List.
@@ -26,17 +27,13 @@ const HeroSection = ({ className }: Props) => {
 			</p>
 
 		<div className="flex gap-6">
-			<Link className={"sm:w-[14rem] hidden sm:block"} href={"https://github.com/ashdeck/ashdeck_ui"} target="_blank">
-				<CustomButton startIcon={<FaGithub color="white" size={16}/>}  variant={"secondary"} className={"py-3.5 w-full text-white"}>
+			<Link className={"sm:w-[12rem] hidden sm:block"} href={"https://github.com/ashdeck/ashdeck_ui"} target="_blank">
+				<CustomButton startIcon={<FaGithub color="white" size={16}/>}  variant={"secondary"} className={"py-3 w-full text-white"}>
 					Star on Github
 				</CustomButton>
 			</Link>
 
-			<Link className={"sm:w-[14rem]"} href={"/join-our-waitlist"}>
-				<CustomButton variant={"primary"} className={"py-3.5 w-full text-white"}>
-					Join Waitlist
-				</CustomButton>
-			</Link>
+			<AddToChrome />
 		</div>
 
 		</div>
@@ -44,4 +41,4 @@ const HeroSection = ({ className }: Props) => {
 }
 
 
-export default HeroSection
+export default CTASection

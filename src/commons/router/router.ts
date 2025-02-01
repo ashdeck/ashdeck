@@ -13,6 +13,7 @@ export type Path =
 	| `/home`
 	| `/join-our-waitlist`
 	| `/login`
+	| `/pomodoro-timer`
 	| `/signup`
 
 export type Params = {

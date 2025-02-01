@@ -7,6 +7,8 @@ import { HambergerMenu } from "iconsax-react";
 import { XCircleIcon } from "@heroicons/react/16/solid";
 import Link from "@router/link";
 import { FaGithub } from "react-icons/fa";
+import AddToChrome from "../AddToChrome";
+import { StarOnGithub } from "../AddToChrome";
 
 
 type Props = {
@@ -38,7 +40,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
   };
 
   return (
-    <header className={"md:p-8 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0 border-b-[1px] py-2"}>
+    <header className={"md:p-10 z-40 w-full flex bg-secondary items-center justify-between h-[10vh] sticky top-0 border-b-[1px] py-2"}>
       <Logo className={"text-white font-outfit w-[6rem] sm:w-[12rem] ml-8"} />
 
       {/* Hamburger icon for mobile screens */}
@@ -81,20 +83,9 @@ const HeaderLayout = ({ className = "" }: Props) => {
       {/* Join waitlist button */}
       <div className="w-[32rem] mr-4 hidden md:block">
         <div className="flex justify-between items-center gap-4">
-            <Link href="https://github.com/ashdeck/ashdeck" target="_blank">
-              <CustomButton className="bg-secondary border-[.1px] border-white">
-                <div className="flex items-center justify-center w-[10rem] gap-2 ">
-                  <FaGithub className="font-bold" size={20} />
-                  <p className="font-semibold">Star On Github</p>
-                </div>
-              </CustomButton>
-            </Link>
+            <StarOnGithub />
             <div className="flex ">
-            <Link href="/join-our-waitlist">
-              <CustomButton className="w-[10rem] border-0 hover-border-0 text-[.8rem] md:text-[1rem] font-semibold">
-                Join Waitlist
-              </CustomButton>
-            </Link>
+            <AddToChrome />
           </div>
         </div>
       </div>
