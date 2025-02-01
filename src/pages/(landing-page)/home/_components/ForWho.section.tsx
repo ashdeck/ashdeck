@@ -2,6 +2,7 @@ import CustomButton from "@components/CustomButton"
 import HeadingText from "@components/HeadingText"
 import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import Link from "@router/link"
+import AddToChrome from "@/src/commons/components/AddToChrome"
 
 
 type Props = {
@@ -81,15 +82,18 @@ const ForWhoSection = ({ className }: Props) => {
 				Start for FREE
 			</CustomButton> */}
 			<div className="flex items-center justify-center md:block text-center w-full">
-				<Link href="/join-our-waitlist" className="w-[16rem]">
+				{/* <Link href="/join-our-waitlist" className="w-[16rem]">
 					<CustomButton variant={"text"} className={"mx-auto"} endIcon={<ArrowUpRightIcon />}>
 						Join Waitlist
 					</CustomButton>
-				</Link>
+				</Link> */}
+				<div className="mx-auto w-full flex justify-center mt-4">
+				<AddToChrome />
+				</div>
 			</div>
 
 
-			<div className="grid grid-cols-1 gap-12 md:gap-24 w-full my-[4rem] md:my-[20%]">
+			<div className="grid grid-cols-1 gap-12 md:gap-24 w-full my-[4rem] md:my-[15%]">
 
 
 				{
@@ -122,9 +126,9 @@ const FeatureCard = ({ item, index = 0 }) => {
 				</p>
 
 
-				<Link href={"/join-our-waitlist"} className="w-[16rem]">
+				<Link href={"https://chromewebstore.google.com/detail/ashdeck/ahdbmagpbepplcdlfodgilcljafooimc"} className="w-[16rem]">
 					<CustomButton className={"mt-8 sm:mt-10 md:mt-20"} variant={"text"} endIcon={<ArrowUpRightIcon />}>
-						Join Waitlist
+						Add to Chrome
 					</CustomButton>
 				</Link>
 			</div>

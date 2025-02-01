@@ -74,22 +74,6 @@ const FAQSection = ({ className }: Props) => {
                 </ol>
               </div>
     }
-    // {
-    //     question: "What features does the personalised dashboard offer in Ashdeck?",
-    //     answer: "Ashdeck's personalised dashboard turns your new tab into an inspiring and productive workspace. It includes real-time weather updates, stunning backgrounds, a to-do list, natural meditative sounds, and motivational quotes. Additionally, with AI notepad, you can leverage AI tools to brainstorm, outline, refine, and create content. The dashboard helps you stay on top of your progress, track your goals, and enhance your productivity."
-    // },
-    // {
-    //     question: "Is Ashdeck's website blocker compatible with all major browsers?",
-    //     answer: "Yes, Ashdeck is compatible with major browsers including Chrome, Firefox, Microsoft Edge, and Safari. You can easily install and use it on your preferred browser to start improving your focus and productivity."
-    // },
-    // {
-    //     question: "Is the code open-source?",
-    //     answer: <div>"Yes! You can see the source code in our <a className="cursor-pointer text-primary-dark font-semibold" href="https://github.com/ashdeck/ashdeck_ui" target="_blank">GitHub repo</a>."</div>
-    // },
-    // {
-    //     question: "Do you take feature requests?",
-    //     answer: <div>Yes! Post an issue on <a className="cursor-pointer text-primary-dark font-semibold" href="https://github.com/ashdeck/ashdeck_ui" target="_blank">GitHub</a> or email us. We're happy to hear how we can improve your email experience.</div>
-    // }
   ];
 
   return (

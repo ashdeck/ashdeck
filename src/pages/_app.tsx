@@ -28,33 +28,33 @@ function BaseLayout({}) {
 	const { setUser } = useUserStore()
 	const { loading, setLoading, showConfirmModal, setShowConfirmModal } = useGlobalStore()
 
-	useEffect(() => {
-		setLoading(true)
-		const user_data = JSON.parse(localStorage.getItem("user_data"))
+	// useEffect(() => {
+	// 	setLoading(true)
+	// 	const user_data = JSON.parse(localStorage.getItem("user_data"))
 
-		if (user_data && pathName !== "/" && pathName !== "/join-our-waitlist") {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
-			.then(({data})=>{
-				setUser(data)
-			})
-			.catch((err)=>{
-				console.log(err)
-				let login_redirect = pathName
-				if (login_redirect == "/login" || login_redirect == "/join-our-waitlist"){
-					login_redirect = "/login"
-				} else {
-					login_redirect = `/login?redirect=${encodeURIComponent(usePathname())}`
-				}
-				router.replace(login_redirect)
-			})
-			.finally(()=>{
-				setLoading(false)
-		})} else {
-			pathName !=="/signup" && pathName !== "/" && pathName !== "/join-our-waitlist" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
-			setLoading(false)
-		}
+	// 	if (user_data && pathName !== "/" && pathName !== "/join-our-waitlist") {api.get("/auth/me", {"Authorization": `Bearer ${user_data.access_token}`})
+	// 		.then(({data})=>{
+	// 			setUser(data)
+	// 		})
+	// 		.catch((err)=>{
+	// 			console.log(err)
+	// 			let login_redirect = pathName
+	// 			if (login_redirect == "/login" || login_redirect == "/join-our-waitlist"){
+	// 				login_redirect = "/login"
+	// 			} else {
+	// 				login_redirect = `/login?redirect=${encodeURIComponent(usePathname())}`
+	// 			}
+	// 			router.replace(login_redirect)
+	// 		})
+	// 		.finally(()=>{
+	// 			setLoading(false)
+	// 	})} else {
+	// 		pathName !=="/signup" && pathName !== "/" && pathName !== "/join-our-waitlist" && router.replace(`/login?redirect=${encodeURIComponent(usePathname())}`)
+	// 		setLoading(false)
+	// 	}
 
 
-	}, [])
+	// }, [])
 
 	return (
 		<QueryClientProvider client={queryClient}>

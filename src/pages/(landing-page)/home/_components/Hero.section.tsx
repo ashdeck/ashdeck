@@ -3,6 +3,7 @@ import HeadingText from "@components/HeadingText"
 import HeroBgPattern from "@commons/assets/images/hero-bg-pattern.svg?react"
 import Link from "@router/link"
 import PenUnderline from "@commons/assets/images/pen-underline.svg?react"
+import AddToChrome from "@/src/commons/components/AddToChrome"
 
 type Props = {
 	className?: string
@@ -29,11 +30,7 @@ const HeroSection = ({ className }: Props) => {
 				isn’t getting the job done.
 			</p>
 
-			<Link className={"w-[14rem]"} href={"/join-our-waitlist"}>
-				<CustomButton className={"py-3.5 px-6 w-full"}>
-					Join Waitlist
-				</CustomButton>
-			</Link>
+			<AddToChrome />
 
 			<div className="flex w-full bg-primary opacity-0 min-h-[20%]">
 
