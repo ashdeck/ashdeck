@@ -114,7 +114,7 @@ export default ForWhoSection
 
 const FeatureCard = ({ item, index = 0 }) => {
 	return (
-		<div className={`sm:flex bg-bg-50 dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
+		<div className={`sm:flex bg-[#eff9f1] dark:bg-bg-dark-50 rounded-lg w-full justify-between relative ${index % 2 ? "flex-row-reverse" : "flex-row"}`}>
 
 			<div className="sm:w-[50%] flex flex-col px-8 sm:px-12 md:px-20 py-10">
 				<h3 className={"font-heading font-medium text-2xl"}>

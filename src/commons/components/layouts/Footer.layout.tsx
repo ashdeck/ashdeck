@@ -41,10 +41,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 	return (
 		<div className={""}>
-			<div className="min-h-[15vh] z-20 bg-primary-dark-alt flex flex-col items-center w-full">
+			<div className="min-h-[15vh] z-20 bg-[#eff9f1] flex flex-col items-center w-full">
 				<div className="gap-8 w-[90%] mt-8 items-center justify-center">
 					<div className="flex justify-center items-center gap-2 flex-col md:flex-row">
-						<p className="text-gray-500 text-sm order-last md:order-1 mx-[10%] md:mx-0 text-center">Proudly Owned by Ashdeck Analytics Limited</p>
+						<p className="text-[#4d4c4d] text-sm order-last md:order-1 mx-[10%] md:mx-0 text-center">Proudly Owned by Ashdeck Analytics Limited</p>
 						<img src="/images/ashdeck-logo-2.png" className="w-24" alt="Ashdeck Logo" />
 					</div>
 				</div>
@@ -64,7 +64,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 						links.map((item, index) => (
 							<Link
 								href={item.href}
-								className="text-gray-400 hover:text-primary">
+								className="text-[#071a37] hover:text-primary">
 								{item.name}
 							</Link>))
 					}
@@ -72,10 +72,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 				</div>
 
-				<div className="flex text-2xl pb-4 gap-4 text-primary">{socials.map(social => <div className="hover:scale-125 hover:duration-150"><Link href={social.url} target="blank">{social.icon}</Link></div>)}</div>
+				<div className="flex text-2xl pb-4 gap-4 text-[#23c55e]">{socials.map(social => <div className="hover:scale-125 hover:duration-150"><Link href={social.url} target="blank">{social.icon}</Link></div>)}</div>
 
 
-				<div className="text-gray-500 mb-3 text-xs">
+				<div className="text-[#4d4c4d] mb-3 text-xs">
 					Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
 				</div>
 			</div>
