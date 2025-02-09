@@ -15,25 +15,29 @@ const HowItWorksSection = ({ className }: Props) => {
 	const features = [
 		{
 			title: "Overcome the Tab Temptation",
+			icon: "🛑",
 			description: `That urge to open "just one quick tab" is more than a habit—a reflex. Ashdeck, the free website blocker helps you silence distractions and reclaim your focus, so you stop spiraling into wasted hours.`,
 		},
 		{
 			title: "Get More Done, Feel Accomplished",
+			icon: "✅",
 			description: "Ever feel like your day vanished with nothing to show for it? By blocking distractions, Ashdeck’s Pomodoro’s timer keeps you on track, turning procrastination into meaningful progress.",
 		},
 		{
 			title: "Turn Bad Habits Into Better Ones",
+			icon: "🔄",
 			description: "Constant notifications and mindless scrolling leave you drained. With Ashdeck, you can build habits prioritizing focus and intention, one small step at a time.",
 		},
 		{
 			title: "Take Control of Your Attention",
+			icon: "🎯",
 			description: "It’s exhausting to feel controlled by distractions. Ashdeck’s website blocker gives you the power to break free, helping you work purposefully and feel fulfilled at the end of the day",
 		},
 	]
 
 	return (
 		<div id={"how-it-works"}
-			 className={"flex flex-col w-full gap-4 min-h-[100vh] px-[5%] md:px-[15%] justify-center items-center"}>
+			className={"flex flex-col w-full gap-4 min-h-[100vh] px-[5%] md:px-[15%] justify-center items-center"}>
 
 			{/* <HeadingText className="mt-[10%] max-w-[80%] w-fit text-5xl text-center">
 
@@ -77,8 +81,8 @@ const FeatureCard = ({ item, index = 0 }) => {
 	return (
 		<div className={"flex bg-[#eff9f1] dark:bg-bg-dark-50 justify-between rounded-br-[40%] border border-bg-50 dark:border-bg-dark-50 transition duration-500 hover:border-primary w-full flex-col gap-2 py-10 px-8 md:px-16"}>
 			<div className="flex flex-col">
-				<h3 className={"font-heading font-medium text-2xl"}>
-					0{index + 1}.{" "}{item?.title}
+				<h3 className={"font-heading font-semibold text-xl"}>
+					{item?.icon}{" "}{item?.title}
 				</h3>
 
 				<p className={"text-sm my-4"}>

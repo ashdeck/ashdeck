@@ -76,7 +76,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 
 				<div className="text-[#4d4c4d] mb-3 text-xs">
-					Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
+					Illustration by <a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA" className="text-[#071a37] font-semibold">Icons 8</a> from <a href="https://icons8.com/illustrations">Ouch!</a>
 				</div>
 			</div>
 		</div>
