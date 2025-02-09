@@ -18,7 +18,7 @@ const SecuritySection = ({ className }: Props) => {
 
 			<div className=" flex items-center justify-center flex-col">
 				<Lottie
-				className="h-20 w-20 md:w-[13rem] md:h-[13rem]"
+				className="h-[6.5rem] w-[6.5rem] md:w-[13rem] md:h-[13rem]"
 				play
 				segments={[50, 155]}
 				animationData={LockAnimation}
