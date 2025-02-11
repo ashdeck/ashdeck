@@ -14,6 +14,7 @@ export type Path =
 	| `/join-our-waitlist`
 	| `/login`
 	| `/pomodoro-timer`
+	| `/privacy_policy`
 	| `/signup`
 
 export type Params = {

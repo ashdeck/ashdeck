@@ -22,6 +22,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 			href: "#",
 		},
 		{
+			name: "Privacy Policy",
+			href: "/privacy_policy",
+		},
+		{
 			name: "Contact Us",
 			href: "#contact",
 		},
