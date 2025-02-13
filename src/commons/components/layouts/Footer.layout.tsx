@@ -19,11 +19,11 @@ const FooterLayout = ({ className = "" }: Props) => {
 	const links = [
 		{
 			name: "Terms of Use",
-			href: "#",
+			href: "/terms-of-use",
 		},
 		{
 			name: "Privacy Policy",
-			href: "/privacy_policy",
+			href: "/privacy-policy",
 		},
 		{
 			name: "Contact Us",
