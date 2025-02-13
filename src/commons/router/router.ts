@@ -14,7 +14,9 @@ export type Path =
 	| `/join-our-waitlist`
 	| `/login`
 	| `/pomodoro-timer`
+	| `/privacy-policy`
 	| `/signup`
+	| `/terms-of-use`
 
 export type Params = {
 	"/extension/popup/:id": { id: string }
