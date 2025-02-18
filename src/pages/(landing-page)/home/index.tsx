@@ -80,10 +80,39 @@ function HomePage({}) {
     detail: "Ashdeck helps you block the noise, stay on track, and accomplish your goals. Whether it's work, school, or your projects, you’ve got the tools to make it happen. you’ll finally have the power to take back your time and turn focus into your superpower. Get ready to see what you can achieve."
   }
 
+  const features = [
+		{
+			title: "Overcome the Tab Temptation",
+			icon: "🛑",
+			description: `That urge to open "just one quick tab" is more than a habit—a reflex. Ashdeck, the free website blocker helps you silence distractions and reclaim your focus, so you stop spiraling into wasted hours.`,
+		},
+		{
+			title: "Get More Done, Feel Accomplished",
+			icon: "✅",
+			description: "Ever feel like your day vanished with nothing to show for it? By blocking distractions, Ashdeck’s Pomodoro’s timer keeps you on track, turning procrastination into meaningful progress.",
+		},
+		{
+			title: "Turn Bad Habits Into Better Ones",
+			icon: "🔄",
+			description: "Constant notifications and mindless scrolling leave you drained. With Ashdeck, you can build habits prioritizing focus and intention, one small step at a time.",
+		},
+		{
+			title: "Take Control of Your Attention",
+			icon: "🎯",
+			description: "It’s exhausting to feel controlled by distractions. Ashdeck’s website blocker gives you the power to break free, helping you work purposefully and feel fulfilled at the end of the day",
+		},
+	]
+
+  const how_it_works = {
+    features: features,
+    title: "Do You Work or Study on Your Computer?",
+    details: "If so, you know the struggle. The constant pull of news, social media, shopping, or emails is relentless. Before you know it, you've drifted off-task, wasted hours, and ended the day feeling unproductive and unfulfilled. Sound familiar?"
+  }
+
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
 			<HeroSection details={hero.detail} headline={hero.headline} />
-			<HowItWorksSection />
+			<HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
 			<ForWhoSection />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />

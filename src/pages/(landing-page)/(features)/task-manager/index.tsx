@@ -2,6 +2,7 @@ import CtaSection from "@src/pages/(landing-page)/home/_components/Cta.section"
 import FAQSection from "../../home/_components/FAQ"
 import SecuritySection from "../../home/_components/SecuritySection"
 import HeroSection from "../../home/_components/Hero.section";
+import HowItWorksSection from "../../home/_components/HowItWorks.section";
 
 type FAQItem = {
     question: string;
@@ -45,9 +46,39 @@ function TaskManager({}) {
         headline: "Turn Your To-Dos into Dones with Ashdeck",
         detail: "No more scattered notes or unfinished tasks. With Ashdeck’s Task Manager, you’ll always know what to focus on next."
     }
+
+    const features = [
+		{
+			title: "Plan Your Day with Ease",
+			icon: "📝",
+			description: `Organize your to-dos, set deadlines, and break down projects into manageable steps—all in one simple dashboard.`,
+		},
+		{
+			title: "Stay Focused with the Pomodoro Timer",
+			icon: "⏳",
+			description: "Combine task management with the Pomodoro Timer to work in focused sprints and avoid burnout.",
+		},
+		{
+			title: "Block Distractions with the Website Blocker",
+			icon: "🚫",
+			description: "Schedule focus sessions and block time-wasting websites, ensuring you stay on task without interruptions.",
+		},
+		{
+			title: "Track Your Productivity",
+			icon: "📊",
+			description: "Monitor your progress, see what you’ve accomplished, and adjust your workflow to maximize efficiency.",
+		},
+	]
+
+    const how_it_works = {
+        features: features,
+        title: "Stay Organized and Get More Done with Ashdeck’s Task Manager",
+        details: "Ashdeck’s Task Manager helps you structure your day, prioritize tasks, and track your progress—all in one distraction-free workspace. Whether you’re tackling a major project, organizing daily tasks, or simply trying to stay on top of your workload, Ashdeck helps you work smarter."
+    }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
             <HeroSection headline={hero.headline} details={hero.detail} />
+            <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
 			<CtaSection headline={cta.headline} detail={cta.detail} />
