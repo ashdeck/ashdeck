@@ -1,42 +1,53 @@
 import CtaSection from "@src/pages/(landing-page)/home/_components/Cta.section"
 import FAQSection from "../../home/_components/FAQ"
 import SecuritySection from "../../home/_components/SecuritySection"
+import HeroSection from "../../home/_components/Hero.section";
 
 type FAQItem = {
     question: string;
     answer: string;
 };
 
+
 function WebsiteBlocker({}) {
 	const faqItems: FAQItem[] = [
     {
-        question: "What is a Pomodoro Timer?",
-        answer:
-            "A Pomodoro Timer is a time management tool that helps you work in focused intervals (typically 25 minutes) followed by short breaks. It’s scientifically proven to enhance productivity."
+        question: "What is Ashdeck’s Website Blocker?",
+        answer: "Ashdeck’s Website Blocker is a tool that helps you block distracting websites, stay focused, and improve productivity."
     },
     {
-        question: "How does Ashdeck’s Pomodoro Timer work?",
-        answer: "Set your work session length, start the timer, and stay focused. After each session, take a short break before beginning the next cycle."
+        question: "Can I customize which websites to block?",
+        answer: "Yes! You can create your blocklists and choose specific websites to restrict."
     },
     {
-        question: "Is the Pomodoro Timer free to use?",
-        answer: "Yes! Ashdeck offers a free Pomodoro Timer along with website-blocking features to maximize your focus."
+        question: "Does Ashdeck work with the Pomodoro Timer?",
+        answer: "Absolutely! You can set up focus sessions that block distractions while you work using the Pomodoro technique."
     },
     {
         question: "Can I customize my Pomodoro sessions?",
         answer: "Absolutely! You can adjust work session lengths, and break times, and even automate blocking distractions during focus periods."
     },
     {
-        question: "Why combine a Pomodoro Timer with a Website Blocker?",
-        answer: "The best way to stay productive is to eliminate distractions while working. Ashdeck blocks distracting websites during focus sessions, ensuring you stay on task."
+        question: "Is Ashdeck’s Website Blocker free?",
+        answer: "Yes! Ashdeck offers a free website blocker to help you stay productive without distractions."
     },
     {
-        question: "Who should use Ashdeck’s Pomodoro Timer?",
-        answer: "Anyone who wants to improve productivity—students, professionals, freelancers, and anyone looking to stay focused while working."
+        question: "Can I schedule website blocking in advance?",
+        answer: "Yes! You can plan focused work sessions and automatically block distracting sites during specific periods."
+    },
+    {
+        question: "Who should use Ashdeck’s Website Blocker?",
+        answer: "Anyone who wants to eliminate distractions—students, professionals, remote workers, freelancers, and creatives."
     }
     ];
+    
+    const hero = {
+        headline: "The Website Blocker That Helps You Stay Focused",
+        detail: "Distractions are everywhere—social media, news sites, and endless browsing keep you from getting things done. Ashdeck’s Website Blocker is designed to help you break free from distractions and reclaim your time."
+    }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
+            <HeroSection headline={hero.headline} details={hero.detail} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
 			<CtaSection />

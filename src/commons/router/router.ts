@@ -16,6 +16,7 @@ export type Path =
 	| `/pomodoro-timer`
 	| `/privacy-policy`
 	| `/signup`
+	| `/task-manager`
 	| `/terms-of-use`
 	| `/website-blocker`
 

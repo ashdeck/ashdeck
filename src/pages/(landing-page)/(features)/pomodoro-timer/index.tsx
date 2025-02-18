@@ -1,6 +1,7 @@
 import CtaSection from "@src/pages/(landing-page)/home/_components/Cta.section"
 import FAQSection from "../../home/_components/FAQ"
 import SecuritySection from "../../home/_components/SecuritySection"
+import HeroSection from "../../home/_components/Hero.section";
 
 type FAQItem = {
     question: string;
@@ -35,8 +36,14 @@ function PomodoroTimer({}) {
         answer: "Anyone who wants to improve productivity—students, professionals, freelancers, and anyone looking to stay focused while working."
     }
     ];
+
+    const hero = {
+        headline: "The Pomodoro Timer That Helps You Stay Focused",
+        detail: "Struggling to stay productive? Distractions, procrastination, and mental fatigue can make it hard to get things done. The secret to working smarter isn’t willpower—it’s using the right method."
+    }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
+            <HeroSection headline={hero.headline} details={hero.detail} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
 			<CtaSection />

@@ -69,9 +69,15 @@ function HomePage({}) {
               </div>
     }
   ];
+
+  const hero = {
+      headline: "Block Distractions and Boost Focus Instantly with Website Blocker",
+      detail: "Struggling to stay productive with endless tabs and distractions? Ashdeck’s website blocker and Pomodoro timer help you focus on what matters most—whether it’s finishing a project, studying for exams, or finally hitting those deadlines. —because, let’s face it, procrastination isn’t getting the job done."
+  }
+
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-			<HeroSection />
+			<HeroSection details={hero.detail} headline={hero.headline} />
 			<HowItWorksSection />
 			<ForWhoSection />
 			<SecuritySection />
