@@ -4,36 +4,21 @@ import { ArrowUpRightIcon } from "@heroicons/react/16/solid"
 import Link from "@router/link"
 import AddToChrome from "@/src/commons/components/AddToChrome"
 
+type FeatureItem = {
+	title: string;
+	icon?: string;
+	description: string
+};
 
 type Props = {
-	className?: string
+	className?: string,
+	title?: string,
+	details?: string,
+	featured_items?: FeatureItem[]
 }
 
 
-const HowItWorksSection = ({ className }: Props) => {
-
-	const features = [
-		{
-			title: "Overcome the Tab Temptation",
-			icon: "🛑",
-			description: `That urge to open "just one quick tab" is more than a habit—a reflex. Ashdeck, the free website blocker helps you silence distractions and reclaim your focus, so you stop spiraling into wasted hours.`,
-		},
-		{
-			title: "Get More Done, Feel Accomplished",
-			icon: "✅",
-			description: "Ever feel like your day vanished with nothing to show for it? By blocking distractions, Ashdeck’s Pomodoro’s timer keeps you on track, turning procrastination into meaningful progress.",
-		},
-		{
-			title: "Turn Bad Habits Into Better Ones",
-			icon: "🔄",
-			description: "Constant notifications and mindless scrolling leave you drained. With Ashdeck, you can build habits prioritizing focus and intention, one small step at a time.",
-		},
-		{
-			title: "Take Control of Your Attention",
-			icon: "🎯",
-			description: "It’s exhausting to feel controlled by distractions. Ashdeck’s website blocker gives you the power to break free, helping you work purposefully and feel fulfilled at the end of the day",
-		},
-	]
+const HowItWorksSection = ({ className, title, details, featured_items }: Props) => {
 
 	return (
 		<div id={"how-it-works"}
@@ -44,11 +29,11 @@ const HowItWorksSection = ({ className }: Props) => {
 				Are distracting websites eating away at your precious time?
 			</HeadingText> */}
 
-			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">Do You Work or Study on Your Computer?
+			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] lg:max-w-[60%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">{title}
 			</h2>
 
-			<p className={"w-full text-gray-600 md:max-w-[60%] text-center text-lg"}>
-				If so, you know the struggle. The constant pull of news, social media, shopping, or emails is relentless. Before you know it, you've drifted off-task, wasted hours, and ended the day feeling unproductive and unfulfilled. Sound familiar?
+			<p className={"w-full text-gray-600 md:max-w-[70%] text-center text-lg"}>
+				{details}
 			</p>
 
 			{/* <CustomButton variant={"text"} endIcon={<ArrowUpRightIcon />}>
@@ -63,7 +48,7 @@ const HowItWorksSection = ({ className }: Props) => {
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full my-[10%]">
 
 				{
-					features.map((item, i) => <FeatureCard item={item} index={i} />)
+					featured_items.map((item, i) => <FeatureCard item={item} index={i} />)
 				}
 
 			</div>
