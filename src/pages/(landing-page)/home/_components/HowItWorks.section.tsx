@@ -29,7 +29,7 @@ const HowItWorksSection = ({ className, title, details, featured_items }: Props)
 				Are distracting websites eating away at your precious time?
 			</HeadingText> */}
 
-			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] lg:max-w-[60%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">{title}
+			<h2 className="mt-[10%] max-w-[90%] md:max-w-[80%] lg:max-w-[70%] w-fit text-2xl md:text-3xl lg:text-5xl text-center">{title}
 			</h2>
 
 			<p className={"w-full text-gray-600 md:max-w-[70%] text-center text-lg"}>
