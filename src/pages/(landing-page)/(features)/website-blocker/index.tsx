@@ -7,7 +7,7 @@ type FAQItem = {
     answer: string;
 };
 
-function PomodoroTimer({}) {
+function WebsiteBlocker({}) {
 	const faqItems: FAQItem[] = [
     {
         question: "What is a Pomodoro Timer?",
@@ -44,4 +44,4 @@ function PomodoroTimer({}) {
 	)
 }
 
-export default PomodoroTimer
+export default WebsiteBlocker

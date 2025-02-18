@@ -17,6 +17,7 @@ export type Path =
 	| `/privacy-policy`
 	| `/signup`
 	| `/terms-of-use`
+	| `/website-blocker`
 
 export type Params = {
 	"/extension/popup/:id": { id: string }
