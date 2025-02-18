@@ -41,12 +41,17 @@ function PomodoroTimer({}) {
         headline: "The Pomodoro Timer That Helps You Stay Focused",
         detail: "Struggling to stay productive? Distractions, procrastination, and mental fatigue can make it hard to get things done. The secret to working smarter isn’t willpower—it’s using the right method."
     }
+
+    const cta = {
+        headline: "Work With Laser Focus—One Pomodoro at a Time",
+        detail: "Stop multitasking, start focusing. Whether you’re working, studying, or tackling a creative project, Ashdeck’s Pomodoro Timer helps you stay on track and accomplish more."
+    }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
             <HeroSection headline={hero.headline} details={hero.detail} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
-			<CtaSection />
+			<CtaSection headline={cta.headline} detail={cta.detail} />
 		</main>
 	)
 }

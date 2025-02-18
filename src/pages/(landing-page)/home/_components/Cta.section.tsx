@@ -7,9 +7,12 @@ import AddToChrome from "@/src/commons/components/AddToChrome"
 
 type Props = {
 	className?: string
+	headline?: string
+	detail?: string
+	cta_text?: string
 }
 
-const CTASection = ({ className }: Props) => {
+const CTASection = ({ className, headline, detail, cta_text }: Props) => {
 	return (
 		<div
 			className={"flex flex-col h-fit w-full items-center gap-4 md:gap-6 lg:gap-12 mb-36 lg:mb-60 px-[5%] md:px-[15%]"}>
@@ -25,6 +28,9 @@ const CTASection = ({ className }: Props) => {
 				power to take back your time and turn focus into your superpower. Get ready to see what
 				you can achieve.
 			</p>
+
+			{/* {cta_text && <p>{cta_text}</p>} */}
+
 
 		<div className="flex gap-6">
 			<Link className={"sm:w-[12rem] hidden sm:block"} href={"https://github.com/ashdeck/ashdeck_ui"} target="_blank">

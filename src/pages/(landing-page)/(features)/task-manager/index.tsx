@@ -40,12 +40,17 @@ function TaskManager({}) {
         headline: "The Task Manager That Keeps You Focused and Organized",
         detail: "Feeling overwhelmed by endless to-do lists and scattered tasks? Productivity isn’t about working harder—it’s about managing your time effectively. That’s where Ashdeck’s Task Manager comes in."
     }
+
+    const cta = {
+        headline: "Turn Your To-Dos into Dones with Ashdeck",
+        detail: "No more scattered notes or unfinished tasks. With Ashdeck’s Task Manager, you’ll always know what to focus on next."
+    }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
             <HeroSection headline={hero.headline} details={hero.detail} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
-			<CtaSection />
+			<CtaSection headline={cta.headline} detail={cta.detail} />
 		</main>
 	)
 }

@@ -75,6 +75,11 @@ function HomePage({}) {
       detail: "Struggling to stay productive with endless tabs and distractions? Ashdeck’s website blocker and Pomodoro timer help you focus on what matters most—whether it’s finishing a project, studying for exams, or finally hitting those deadlines. —because, let’s face it, procrastination isn’t getting the job done."
   }
 
+  const cta = {
+    headline: "It’s Time to Turn your To-Do List into a Done List.",
+    detail: "Ashdeck helps you block the noise, stay on track, and accomplish your goals. Whether it's work, school, or your projects, you’ve got the tools to make it happen. you’ll finally have the power to take back your time and turn focus into your superpower. Get ready to see what you can achieve."
+  }
+
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
 			<HeroSection details={hero.detail} headline={hero.headline} />
@@ -82,7 +87,7 @@ function HomePage({}) {
 			<ForWhoSection />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
-			<CtaSection />
+			<CtaSection headline={cta.headline} detail={cta.detail} />
 		</main>
 	)
 }

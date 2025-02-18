@@ -40,17 +40,23 @@ function WebsiteBlocker({}) {
         answer: "Anyone who wants to eliminate distractions—students, professionals, remote workers, freelancers, and creatives."
     }
     ];
-    
+
     const hero = {
         headline: "The Website Blocker That Helps You Stay Focused",
         detail: "Distractions are everywhere—social media, news sites, and endless browsing keep you from getting things done. Ashdeck’s Website Blocker is designed to help you break free from distractions and reclaim your time."
+    }
+
+    const cta = {
+        headline: "Reclaim Your Focus with Ashdeck’s Website Blocker",
+        detail: "Stop letting distractions control your day. Take charge of your focus, boost your productivity, and accomplish more.",
+        cta_text: "🚀 Try Ashdeck’s Website Blocker for Free!"
     }
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
             <HeroSection headline={hero.headline} details={hero.detail} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
-			<CtaSection />
+			<CtaSection headline={cta.headline} detail={cta.detail} cta_text={cta.cta_text} />
 		</main>
 	)
 }
