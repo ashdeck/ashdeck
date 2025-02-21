@@ -96,7 +96,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
                         alt="Features Preview"
                         width={250}
                       />
-                      <div>
+                      <div className="hidden xl:block">
                         <p className="mb-4 mr-2">Let your distractions watch you walk over them.</p>
                         <AddToChrome />
                       </div>
