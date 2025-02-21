@@ -81,47 +81,27 @@ function PomodoroTimer({}) {
     const for_who = [
       {
         title: "Students",
-        description: "Accelerate your academic journey and achieve top grades while saving time and money.",
+        description: "Stay engaged while studying, retain information better, and complete assignments with less stress.",
         image: <img className={"w-[30%] absolute"} src={"/images/student.png"} alt={""} />,
       },
       {
-        title: "Developers",
-        description: "Dive deep into your work without interruptions and deliver your best code yet.",
-        image: <img className={"w-[35%] absolute"} src={"/images/pc.png"} alt={""} />,
-      },
-      {
-        title: "Marketers",
-        description: "Cut through the noise with focus tools that let you block distractions. Stay ahead of the competition by using a website blocker to zero in on what drives results.",
-        image: <img className={"w-[25%] absolute"} src={"/images/megaphone.png"} alt={""} />,
-      },
-      {
-        title: "Writers",
-        description: "Unleash your creativity uninterrupted. A free website blocker helps you stay in your flow, so you can craft your best work with no distractions.",
-        image: <img className={"w-[40%] absolute"} src={"/images/papers.png"} alt={""} />,
-      },
-      {
-        title: "Entrepreneurs",
-        description: "Strategize smarter. Use focus techniques like the Pomodoro timer to make every minute count, and watch your business thrive like never before.",
-        image: <img className={"w-[25%] absolute"} src={"/images/coin.png"} alt={""} />,
-      },
-      {
-        title: "Freelancers",
-        description: "Take control of your workload. With tools like a website blocker, balance productivity and freedom—your time is yours to own.",
+        title: "Freelancers & Entrepreneurs",
+        description: "Maintain productivity, set structured work hours, and minimize distractions while working from home.",
         image: <img className={"w-[20%] absolute"} src={"/images/freelancer.png"} alt={""} />,
       },
       {
-        title: "Designers",
-        description: "Bring your ideas to life in a space free of interruptions. Whether it’s using a Pomodoro timer or blocking distractions, create without limits.",
-        image: <img className={"w-[25%] absolute"} src={"/images/palette.png"} alt={""} />,
+        title: "Remote Workers & Professionals",
+        description: "Improve time management, avoid burnout, and maintain deep focus during critical tasks.",
+        image: <img className={"w-[25%] absolute"} src={"/images/pc.png"} alt={""} />,
       },
       {
-        title: "Researchers",
-        description: "Focus deeply, discover boldly. A free website blocker can help you stay in the zone and achieve the breakthroughs you aim for.",
-        image: <img className={"w-[25%] absolute"} src={"/images/researcher.png"} alt={""} />,
+        title: "Creatives and Writers",
+        description: "Stay in the flow state longer, spark creativity, and prevent mental fatigue.",
+        image: <img className={"w-[25%] absolute"} src={"/images/papers.png"} alt={""} />,
       },
       {
-        title: "For those with ADHD",
-        description: "Your mind is brilliant. A little structure—like a website blocker or Pomodoro timer—can help you channel your energy and own your day.",
+        title: "Anyone Battling Procrastination",
+        description: "Develop discipline, get tasks done faster, and create healthier work habits.",
         image: <img className={"w-[25%] absolute"} src={"/images/adhd2.png"} alt={""} />,
       }
     ]
