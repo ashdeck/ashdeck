@@ -1,6 +1,8 @@
 import AddToChrome from "@/src/commons/components/AddToChrome"
 import HeroSection from "../home/_components/Hero.section";
 import { FeatureCard } from "../home/_components/HowItWorks.section";
+import CTASection from "../home/_components/Cta.section";
+import SecuritySection from "../home/_components/SecuritySection";
 
 const rkt = "🚀"
 export default function About(){
@@ -66,6 +68,8 @@ export default function About(){
                 </div>
             </div>
 
+            <SecuritySection />
+
 
             <div className="max-w-[90%] md:max-w-[80%] flex flex-col items-center justify-center mx-auto gap-6 mb-32">
                 <div>
@@ -98,6 +102,8 @@ export default function About(){
                     <AddToChrome />
                 </div> */}
             </div>
+
+            <CTASection />
 
 
             {/* <div className="max-w-[90%] md:max-w-[80%] flex flex-col items-center justify-center mx-auto gap-6 mb-32 hidden">
