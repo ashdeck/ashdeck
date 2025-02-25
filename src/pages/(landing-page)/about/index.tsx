@@ -100,7 +100,7 @@ export default function About(){
             </div>
 
 
-            <div className="max-w-[90%] md:max-w-[80%] flex flex-col items-center justify-center mx-auto gap-6 mb-32 hidden">
+            {/* <div className="max-w-[90%] md:max-w-[80%] flex flex-col items-center justify-center mx-auto gap-6 mb-32 hidden">
                 <h2 className="font-semibold text-[1.8rem] md:text-[2.5rem] text-center max-w-[42rem]">We’d Love to Hear From You!</h2>
                 <p>
                     Do you have ideas to make Ashdeck even better? Use the extension (Profile > Messages > Chat with Us) to send us a message. We read and respond to every message because your input makes this tool shine.
@@ -109,7 +109,7 @@ export default function About(){
                     Thanks for being part of this journey. Together, let’s conquer distractions, one blocked site at a time. 
                 </p>
                 <AddToChrome />
-            </div>
+            </div> */}
         </div>
     )
 }
