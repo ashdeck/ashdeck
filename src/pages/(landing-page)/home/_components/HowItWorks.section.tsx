@@ -62,7 +62,7 @@ const HowItWorksSection = ({ className, title, details, featured_items }: Props)
 export default HowItWorksSection
 
 
-const FeatureCard = ({ item, index = 0 }) => {
+export const FeatureCard = ({ item, index = 0 }) => {
 	return (
 		<div className={"flex bg-[#eff9f1] dark:bg-bg-dark-50 justify-between rounded-br-[40%] border border-bg-50 dark:border-bg-dark-50 transition duration-500 hover:border-primary w-full flex-col gap-2 py-10 px-8 md:px-16"}>
 			<div className="flex flex-col">

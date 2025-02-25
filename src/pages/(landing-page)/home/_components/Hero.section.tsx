@@ -14,11 +14,11 @@ type Props = {
 const HeroSection = ({ className, headline, details }: Props) => {
 	return (
 		<div
-			className={"flex flex-col bg-[#eff9f1] py-24 lg:py-0 lg:h-[90vh] w-full items-center gap-8 relative px-[10%] md:px-[15%] justify-center"}>
-			<HeroBgPattern className={"w-full absolute"} />
+			className={"flex flex-col bg-[#eff9f1] py-24 lg:py-0 lg:h-[90vh] w-full items-center gap-6 relative px-[10%] md:px-[15%] justify-center"}>
+			{/* <HeroBgPattern className={"w-full absolute"} /> */}
 
 			<div className="items-center flex flex-col">
-				<HeadingText className="text-center text-[#071a37] lg:mt-[12rem] md:text-4xl lg:text-6xl text-3xl font-bold">
+				<HeadingText className="text-center text-[#071a37] lg:mt-[8rem] md:text-4xl lg:text-6xl text-3xl font-bold">
 					{headline}
 				</HeadingText>
 				<PenUnderline className={"w-[50%] stroke-3 mx-auto"} />
