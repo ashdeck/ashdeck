@@ -4,8 +4,8 @@ import { FaGithub } from "react-icons/fa"
 
 export default function AddToChrome(){
     return <Link href="https://chromewebstore.google.com/detail/ashdeck/ahdbmagpbepplcdlfodgilcljafooimc">
-        <div className="w-[12rem] border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
-            <CustomButton className="">
+        <div className=" border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
+            <CustomButton className="w-[12rem]">
                 <img width={30} src="/images/chrome-icon.png" alt="" />
                 <p className="ml-2">Add to Chrome</p>
             </CustomButton>

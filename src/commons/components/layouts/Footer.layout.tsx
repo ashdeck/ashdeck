@@ -58,10 +58,7 @@ const FooterLayout = ({ className = "" }: Props) => {
 						<img src="/images/toolpilot.png" alt="featured-on-tool-pilot" width={150} />
 					</a>
 
-					{/* <a title="ai tools code.market" href="https://code.market?code.market=verified"><img alt="ai tools code.market" title="ai tools code.market" src="https://code.market/assets/manage-product/featured-logo-dark.svg" /></a> */}
-
 					<a href="https://startupfa.me/s/ashdeck?utm_source=ashdeck.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Ashdeck - Free Website Blocker for Focus | Startup Fame" width="224" height="36" /></a>
-
 				</div>
 
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
