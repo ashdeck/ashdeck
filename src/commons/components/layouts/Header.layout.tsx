@@ -21,7 +21,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const links = [
-    { name: "Blog", href: "/blog" },
+    // { name: "Blog", href: "/blog" },
     { name: "Features", href: "#features", isDropdown: true }, // Mark as dropdown
     { name: "About", href: "/about" }
   ];
