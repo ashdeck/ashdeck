@@ -45,7 +45,8 @@ function WebsiteBlocker({}) {
 
     const hero = {
         headline: "The Website Blocker That Helps You Stay Focused",
-        detail: "Distractions are everywhere—social media, news sites, and endless browsing keep you from getting things done. Ashdeck’s Website Blocker is designed to help you break free from distractions and reclaim your time."
+        detail: "Distractions are everywhere—social media, news sites, and endless browsing keep you from getting things done. Ashdeck’s Website Blocker is designed to help you break free from distractions and reclaim your time.",
+        mobile_details: "Distractions are everywhere. Ashdeck helps you stay focused and in control."
     }
 
     const cta = {
@@ -113,7 +114,7 @@ function WebsiteBlocker({}) {
 
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-            <HeroSection headline={hero.headline} details={hero.detail} />
+            <HeroSection headline={hero.headline} details={hero.detail} mobile_details={hero.mobile_details} />
             <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
             <ForWhoSection forWhoItems={for_who} />
 			<SecuritySection />

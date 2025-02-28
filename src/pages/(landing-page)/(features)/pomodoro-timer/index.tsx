@@ -41,7 +41,8 @@ function PomodoroTimer({}) {
 
     const hero = {
         headline: "The Pomodoro Timer That Helps You Stay Focused",
-        detail: "Struggling to stay productive? Distractions, procrastination, and mental fatigue can make it hard to get things done. The secret to working smarter isn’t willpower—it’s using the right method."
+        detail: "Struggling to stay productive? Distractions, procrastination, and mental fatigue can make it hard to get things done. The secret to working smarter isn’t willpower—it’s using the right method.",
+        mobile_details: "Struggling to focus? The key isn’t willpower—it’s the right approach."
     }
 
     const cta = {
@@ -108,7 +109,7 @@ function PomodoroTimer({}) {
 
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-            <HeroSection headline={hero.headline} details={hero.detail} />
+            <HeroSection headline={hero.headline} details={hero.detail} mobile_details={hero.mobile_details} />
             <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
             <ForWhoSection forWhoItems={for_who} />
 			<SecuritySection />
