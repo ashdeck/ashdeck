@@ -40,7 +40,8 @@ function TaskManager({}) {
 
     const hero = {
         headline: "The Task Manager That Keeps You Focused and Organized",
-        detail: "Feeling overwhelmed by endless to-do lists and scattered tasks? Productivity isn’t about working harder—it’s about managing your time effectively. That’s where Ashdeck’s Task Manager comes in."
+        detail: "Feeling overwhelmed by endless to-do lists and scattered tasks? Productivity isn’t about working harder—it’s about managing your time effectively. That’s where Ashdeck’s Task Manager comes in.",
+        mobile_details: "Overwhelmed with tasks? Stay organized and get things done with ease."
     }
 
     const cta = {
@@ -107,7 +108,7 @@ function TaskManager({}) {
 
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-            <HeroSection headline={hero.headline} details={hero.detail} />
+            <HeroSection headline={hero.headline} details={hero.detail} mobile_details={hero.mobile_details} />
             <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
             <ForWhoSection forWhoItems={for_who} />
 			<SecuritySection />

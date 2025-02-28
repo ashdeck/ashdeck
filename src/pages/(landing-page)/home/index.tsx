@@ -72,7 +72,8 @@ function HomePage({}) {
 
   const hero = {
       headline: "Block Distractions and Boost Focus Instantly with Website Blocker",
-      detail: "Struggling to stay productive with endless tabs and distractions? Ashdeck’s website blocker and Pomodoro timer help you focus on what matters most—whether it’s finishing a project, studying for exams, or finally hitting those deadlines. —because, let’s face it, procrastination isn’t getting the job done."
+      detail: "Struggling to stay productive with endless tabs and distractions? Ashdeck’s website blocker and Pomodoro timer help you focus on what matters most—whether it’s finishing a project, studying for exams, or finally hitting those deadlines. —because, let’s face it, procrastination isn’t getting the job done.",
+      mobile_details: "Too many tabs? Ashdeck helps you focus by blocking distractions. Get more done."
   }
 
   const cta = {
@@ -159,7 +160,7 @@ function HomePage({}) {
 
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-			<HeroSection details={hero.detail} headline={hero.headline} />
+			<HeroSection details={hero.detail} headline={hero.headline} mobile_details={hero.mobile_details} />
 			<HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
 			<ForWhoSection forWhoItems={for_who} />
 			<SecuritySection />

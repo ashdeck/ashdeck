@@ -2,12 +2,16 @@ import Link from "../router/link"
 import CustomButton from "./CustomButton"
 import { FaGithub } from "react-icons/fa"
 
-export default function AddToChrome(){
+interface Props{
+    text?: string
+}
+
+export default function AddToChrome({text}: Props){
     return <Link href="https://chromewebstore.google.com/detail/ashdeck/ahdbmagpbepplcdlfodgilcljafooimc">
         <div className=" border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
-            <CustomButton className="w-[12rem]">
+            <CustomButton className="min-w-[12rem]">
                 <img width={30} src="/images/chrome-icon.png" alt="" />
-                <p className="ml-2">Add to Chrome</p>
+                <p className="ml-2">{text ? text: "Add to Chrome"}</p>
             </CustomButton>
         </div>
     </Link>
