@@ -35,7 +35,7 @@ export const useRouter = () => {
 
 export const setPageTitle = (title: string) => {
     return useEffect(() => {
-        document.title = `${title} - AIChatbot`
+        document.title = `${title} - Ashdeck`
     }, [])
 }
 
