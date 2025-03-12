@@ -1,7 +1,5 @@
 # About Us
-Ashdeck is open source productivity app for blocking distractions and boasting focus.
-It transforms every new tab into a personalised dashboard with the time, weather updates, beautiful backgrounds, a to-do list, and a motivational quote,
-helping to facilitate efficient work habits, tracks your progress, goals and boosts productivity, to regain control, productivity and focus.
+Ashdeck is an open-source productivity app that blocks distractions and enhances focus. It transforms your browser into a personalized dashboard to help you stay calm, track progress, set goals, and build efficient work habits—ultimately boosting productivity and control.
 
 # React + TypeScript + Vite
 
