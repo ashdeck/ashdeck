@@ -1,0 +1,15 @@
+6503807747f04005898ed8683aebc4e5
+
+Content-Type: application/json; charset=utf-8
+Host: api.indexnow.org
+{
+  "host": "www.example.org",
+  "key": "141368f9166d48f4a20e758480c1321a",
+  "keyLocation": "https://www.ashdeck.com/6503807747f04005898ed8683aebc4e5.txt",
+  "urlList": [
+      ""https://www.ashdeck.com",
+      "https://www.ashdeck.com/task-manager",
+      "https://www.ashdeck.com/pomodoro-timer",
+      "https://www.ashdeck.com/pomodoro-timer"
+      ]
+}
