@@ -59,6 +59,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 					</a>
 
 					<a href="https://startupfa.me/s/ashdeck?utm_source=ashdeck.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Ashdeck - Free Website Blocker for Focus | Startup Fame" width="224" height="36" /></a>
+
+					<a href="https://auraplusplus.com/projects/ashdeck-focus-goal-tracking-tool" target="_blank" rel="noopener">
+						<img src="https://auraplusplus.com/images/badges/featured-on-dark.svg" alt="Featured on Aura++" />
+					</a>
 				</div>
 
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
