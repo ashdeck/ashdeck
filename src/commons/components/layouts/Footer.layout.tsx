@@ -63,6 +63,8 @@ const FooterLayout = ({ className = "" }: Props) => {
 					<a href="https://auraplusplus.com/projects/ashdeck-focus-goal-tracking-tool" target="_blank" rel="noopener">
 						<img src="https://auraplusplus.com/images/badges/featured-on-dark.svg" alt="Featured on Aura++" />
 					</a>
+
+					<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-light.svg" alt="Featured on Twelve Tools" width="200" height="54"/></a>
 				</div>
 
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
