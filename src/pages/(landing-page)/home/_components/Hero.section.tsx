@@ -34,7 +34,7 @@ const HeroSection = ({ className, headline, details, mobile_details }: Props) =>
 				{mobile_details}
 			</p>
 
-			<AddToChrome text="Add to Chrome (It's Free)" />
+			<AddToChrome text="Add to Chrome" />
 
 			<div className="flex w-full bg-primary opacity-0 min-h-[20%]">
 
