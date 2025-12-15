@@ -104,7 +104,12 @@ const HeaderLayout = ({ className = "" }: Props) => {
             </div>
           )}
         </div>
-
+        <Link
+          href="/pricing"
+          className="text-md hover:text-primary transition duration-500"
+        >
+          Pricing
+        </Link>
         <Link
           href="/about"
           className="text-md hover:text-primary transition duration-500"

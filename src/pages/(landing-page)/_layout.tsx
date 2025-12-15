@@ -5,6 +5,23 @@ import { Outlet } from "react-router-dom"
 function LandingLayout({ children }) {
 	return (
 		<div className="relative min-h-screen">
+			<div className="text-center text-md font-medium bg-black text-white py-4 md:py-8 [word-spacing:0.1rem] px-8 sticky top-0 z-50">
+				<p>
+					<span className="font-bold">🎉 Get 35% off</span> Annual &
+					Lifetime subscriptions Use code 
+					<span className="font-semibold text-green-500 text-lg">
+						ASHDECK35
+					</span>
+					.
+					<span className="cursor-pointer font-semibold hover:scale-110 hover:duration-150">
+						<a href="/pricing" className="">
+						{"   "}
+						<span className="underline">Subscribe Now!</span>{" "}
+						</a>
+						🔥
+					</span>
+                </p>
+			</div>
 			<HeaderLayout />
 			{children ? children : <Outlet />}
 			<FooterLayout />
