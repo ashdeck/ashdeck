@@ -278,8 +278,10 @@ export default function Pricing() {
           <li>💬 Priority support – Get help when you need i</li>
         </ul>
       </div>
+      <div className="mt-16">
       <SecuritySection />
-      <FAQSection faqItems={pricingFaqItems} className="mt-8"/>
+      </div>
+      <FAQSection faqItems={pricingFaqItems} />
 
       </div>
     </div>

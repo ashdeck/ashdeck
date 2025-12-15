@@ -28,7 +28,7 @@ const FAQSection = ({ className, faqItems }: Props) => {
         Frequently Asked Questions
       </h2>
 
-      <div className="w-full max-w-4xl mx-auto">
+      <div className="w-full max-w-5xl lg:max-w-[90rem] mx-auto">
         {faqItems.map((item, index) => (
           <div key={index} className="mb-4">
             <button
