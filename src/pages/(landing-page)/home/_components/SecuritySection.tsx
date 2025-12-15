@@ -25,7 +25,7 @@ const SecuritySection = ({ className }: Props) => {
 				>
 				</Lottie>
 
-				<HeadingText className="text-centermax-w-[90%]  md:max-w-[40rem] text-2xl md:3xl lg:text-5xl drop-shadow-2xl shadow-primary">
+				<HeadingText className="text-centermax-w-[90%]  md:max-w-[40rem]] text-2xl md:3xl lg:text-5xl drop-shadow-2xl shadow-primary">
 					Our Dedication to Your Privacy
 				</HeadingText>
 				</div>
