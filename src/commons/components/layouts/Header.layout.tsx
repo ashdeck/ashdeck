@@ -149,6 +149,13 @@ const HeaderLayout = ({ className = "" }: Props) => {
           >
             About
           </Link>
+          <Link
+            href="/pricing"
+            className="block text-secondary text-lg py-2 border-b border-gray-300"
+            onClick={toggleMenu}
+          >
+            Pricing
+          </Link>
         </nav>
       )}
 
