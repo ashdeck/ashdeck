@@ -4,6 +4,7 @@ import HeroBgPattern from "@commons/assets/images/hero-bg-pattern.svg?react"
 import Link from "@router/link"
 import PenUnderline from "@commons/assets/images/pen-underline.svg?react"
 import AddToChrome from "@/src/commons/components/AddToChrome"
+import { Affiliates } from "@/src/commons/components/AddToChrome"
 
 type Props = {
 	className?: string
@@ -34,7 +35,10 @@ const HeroSection = ({ className, headline, details, mobile_details }: Props) =>
 				{mobile_details}
 			</p>
 
-			<AddToChrome text="Add to Chrome" />
+			<div className="flex gap-4 items-center justify-center">
+				<AddToChrome text="Add to Chrome" />
+				<Affiliates text="Join Our Affiliate Program" />
+			</div>
 
 			<div className="flex w-full bg-primary opacity-0 min-h-[20%]">
 

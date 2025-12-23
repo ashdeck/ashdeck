@@ -116,6 +116,12 @@ const HeaderLayout = ({ className = "" }: Props) => {
         >
           About
         </Link>
+        <Link
+          href="https://ashdeck.affonso.io"
+          className="text-md hover:text-primary transition duration-500"
+        >
+          Affiliates
+        </Link>
       </nav>
 
       {/* Mobile menu (flattened, no dropdown) */}
@@ -156,6 +162,12 @@ const HeaderLayout = ({ className = "" }: Props) => {
           >
             Pricing
           </Link>
+          <Link
+          href="https://ashdeck.affonso.io"
+          className="text-md hover:text-primary transition duration-500"
+        >
+          Affiliates
+        </Link>
         </nav>
       )}
 
