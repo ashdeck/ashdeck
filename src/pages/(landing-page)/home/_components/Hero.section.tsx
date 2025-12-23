@@ -37,7 +37,15 @@ const HeroSection = ({ className, headline, details, mobile_details }: Props) =>
 
 			<div className="flex gap-4 items-center justify-center">
 				<AddToChrome text="Add to Chrome" />
-				<Affiliates text="Join Our Affiliate Program" />
+				<div className="hidden sm:block">
+					<Affiliates text="Join Our Affiliate Program" />
+				</div>
+			</div>
+
+			<div className="absolute sm:hidden bottom-8 text-center w-full">
+				<a href="https://ashdeck.affonso.io" target="_blank">
+                	<p className="underline hover:scale-110 hover:duration-150 font-semibold">Join our affiliate program 🤝💼</p>
+				</a>
 			</div>
 
 			<div className="flex w-full bg-primary opacity-0 min-h-[20%]">
