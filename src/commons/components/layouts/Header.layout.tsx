@@ -40,7 +40,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
   return (
     <header className="md:p-10 z-40 w-full flex bg-[#eff9f1] items-center justify-between h-[10vh] sticky top-0 border-b-[1px] py-2">
       <a href="/">
-        <Logo className="text-white font-outfit w-[6rem] sm:w-[12rem] ml-8" />
+        <Logo className="text-white font-outfit w-[6rem] sm:w-[12rem] ml-6 lg:ml-8" />
       </a>
 
       {/* Hamburger for mobile */}
@@ -53,7 +53,7 @@ const HeaderLayout = ({ className = "" }: Props) => {
       </div>
 
       {/* Desktop links */}
-      <nav className="hidden md:flex w-full text-[#071a37] justify-center gap-12 relative">
+      <nav className="hidden md:flex w-full text-[#071a37] justify-center gap-4 lg:gap-6 xl:gap-12 relative">
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setFeaturesOpen(!featuresOpen)}
@@ -164,7 +164,8 @@ const HeaderLayout = ({ className = "" }: Props) => {
           </Link>
           <Link
           href="https://ashdeck.affonso.io"
-          className="text-md hover:text-primary transition duration-500"
+          className="block text-secondary text-lg py-2 border-b border-gray-300"
+          onClick={toggleMenu}
         >
           Affiliates
         </Link>

@@ -109,9 +109,9 @@ function PomodoroTimer({}) {
 
 	return (
 		<main className={"flex flex-col bg-white dark:bg-bg-dark"}>
-            <HeroSection headline={hero.headline} details={hero.detail} mobile_details={hero.mobile_details} />
-            <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
-            <ForWhoSection forWhoItems={for_who} />
+      <HeroSection headline={hero.headline} details={hero.detail} mobile_details={hero.mobile_details} />
+      <HowItWorksSection featured_items={how_it_works.features} title={how_it_works.title} details={how_it_works.details} />
+      <ForWhoSection forWhoItems={for_who} />
 			<SecuritySection />
 			<FAQSection faqItems={faqItems} />
 			<CtaSection headline={cta.headline} detail={cta.detail} />

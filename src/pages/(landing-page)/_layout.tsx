@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"
 function LandingLayout({ children }) {
 	return (
 		<div className="relative min-h-screen">
-			<div className="text-center text-md font-medium bg-black text-white py-4 md:py-8 [word-spacing:0.1rem] px-8 sticky top-0 z-50">
+			<div className="text-center text-md font-medium bg-black text-white py-4 md:py-8 [word-spacing:0.1rem] px-8 sticky top-0 z-50 w-full">
 				<p>
 					<span className="font-bold">🎉 Get 35% off</span> Annual &
 					Lifetime subscriptions Use code 

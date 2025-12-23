@@ -6,7 +6,8 @@ const routes = [
   "task-manager",
   "about",
   "website-blocker",
-  "pomodoro-timer"
+  "pomodoro-timer",
+  "pricing"
 ]; // Add all your app routes
 
 const generateSitemap = async () => {

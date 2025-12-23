@@ -11,7 +11,7 @@ interface Props{
 export default function AddToChrome({text, style}: Props){
     return <Link href="https://chromewebstore.google.com/detail/ashdeck/ahdbmagpbepplcdlfodgilcljafooimc">
         <div className=" border-0 hover-border-0 text-[.8rem] md:text-[1rem]">
-            <CustomButton className="min-w-[12rem]">
+            <CustomButton className={`min-w-[12rem] ${style ? style: ""}`}>
                 <img width={30} src="/images/chrome-icon.png" alt="" />
                 <p className="ml-2">{text ? text: "Add to Chrome"}</p>
             </CustomButton>

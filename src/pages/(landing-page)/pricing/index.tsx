@@ -162,7 +162,8 @@ export default function Pricing() {
   };
 
   return (
-    <div className="max-w-[90%] sm:max-w-[70%] mx-auto flex flex-col gap-12 xl:max-w-[70%] py-20">
+    <div>
+    <div className="max-w-[90%] mx-auto flex flex-col gap-12 xl:max-w-[70%] py-20">
       
       {/* -------------------- Header -------------------- */}
       <div>
@@ -180,7 +181,7 @@ export default function Pricing() {
           Choose your plan
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-3">
           
           {/* Monthly */}
           <div className="border rounded-xl p-6 flex flex-col justify-between">
@@ -248,11 +249,11 @@ export default function Pricing() {
         </div>
 
         {/* -------------------- Features -------------------- */}
-      <div>
+      <div className="mt-16">
         <h2 className="font-semibold mb-4 mt-12 text-2xl md:text-3xl">
           Everything included
         </h2>
-        <ul className="grid md:grid-cols-2 gap-4">
+        <ul className="grid md:grid-cols-2 gap-4 md:gap-8">
           <li>🌐 Unlimited website blocking – Block social media, news, and distracting sites
 </li>
           <li>🕒 Unlimited focus sessions & Pomodoro timers – Structure deep work hours
@@ -278,12 +279,13 @@ export default function Pricing() {
           <li>💬 Priority support – Get help when you need i</li>
         </ul>
       </div>
-      <div className="mt-16">
+
+      </div>
+    </div>
+    <div className="">
       <SecuritySection />
       </div>
       <FAQSection faqItems={pricingFaqItems} />
-
-      </div>
     </div>
   );
 }

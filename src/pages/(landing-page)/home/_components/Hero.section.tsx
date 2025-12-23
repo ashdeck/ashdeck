@@ -36,7 +36,7 @@ const HeroSection = ({ className, headline, details, mobile_details }: Props) =>
 			</p>
 
 			<div className="flex gap-4 items-center justify-center">
-				<AddToChrome text="Add to Chrome" />
+				<AddToChrome style={"lg:min-w-[14rem]"} text="Add to Chrome" />
 				<div className="hidden">
 					<Affiliates text="Join Our Affiliate Program" />
 				</div>

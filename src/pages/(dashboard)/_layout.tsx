@@ -8,7 +8,7 @@ function DashboardLayout({ children }) {
   	const contains_dashboard = current_location.includes("dashboard")
 	return (
 		<div className="relative min-h-screen">
-		{!contains_dashboard &&	<div className="text-center text-md font-medium bg-black text-white py-4 md:py-8 [word-spacing:0.1rem] px-8 sticky top-0 z-50">
+		{!contains_dashboard &&	<div className="text-center text-md font-medium bg-black text-white py-4 md:py-8 [word-spacing:0.1rem] px-8 sticky top-0 z-50 w-full">
 				<p>
 					<span className="font-bold">🎉 Get 35% off</span> Annual &
 					Lifetime subscriptions Use code 
