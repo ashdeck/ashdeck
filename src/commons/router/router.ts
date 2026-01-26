@@ -15,6 +15,7 @@ export type Path =
 	| `/home`
 	| `/join-our-waitlist`
 	| `/login`
+	| `/player`
 	| `/pomodoro-timer`
 	| `/pricing`
 	| `/privacy-policy`
