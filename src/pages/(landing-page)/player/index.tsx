@@ -91,7 +91,6 @@ export default function OfflinePlayerPage() {
 
         // Special case: load by videoId
         if (func === 'loadVideoById' && videoId) {
-          console.log('<<<<<<<<<<<<<<<<< Loaded here always >>>>>>>>>>>>>');
           loadAndPlay({
             videoId,
             volume: args?.[0] ?? 80,
@@ -121,8 +120,9 @@ export default function OfflinePlayerPage() {
   // LOAD + PLAY
   // ------------------------------------
   const loadAndPlay = ({ videoId, volume }: PendingLoad) => {
+    // Player not created yet → create it
     if (!playerRef.current) {
-      playerRef.current = new window.YT.Player('player', {
+      new window.YT.Player('player', {
         height: '0',
         width: '0',
         videoId,
@@ -133,18 +133,23 @@ export default function OfflinePlayerPage() {
         },
         events: {
           onReady: (e: any) => {
-            e.target.setVolume(volume ?? 80);
-            e.target.unMute();
-            e.target.playVideo();
+            // ✅ IMPORTANT: assign the REAL player here
+            playerRef.current = e.target;
+
+            playerRef.current.setVolume(volume ?? 80);
+            playerRef.current.unMute();
+            playerRef.current.playVideo();
           },
         },
       });
-    } else {
-      playerRef.current.loadVideoById(videoId);
-      playerRef.current.setVolume(volume ?? 80);
-      playerRef.current.unMute();
-      playerRef.current.playVideo();
+      return;
     }
+
+    // Player already exists
+    playerRef.current.loadVideoById(videoId);
+    playerRef.current.setVolume(volume ?? 80);
+    playerRef.current.unMute();
+    playerRef.current.playVideo();
   };
 
   // ------------------------------------
@@ -153,13 +158,8 @@ export default function OfflinePlayerPage() {
   const executeYouTubeCommand = (func: string, args: any[] = []) => {
     const player = playerRef.current;
 
-    if (!player) {
-      console.warn('Player not ready');
-      return;
-    }
-
-    if (typeof player[func] !== 'function') {
-      console.warn('⚠️ Invalid YT command:', func);
+    if (!player || typeof player[func] !== 'function') {
+      console.warn('⚠️ Player not ready or invalid YT command:', func);
       return;
     }
 
