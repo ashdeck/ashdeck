@@ -12,6 +12,7 @@ declare global {
 type PendingLoad = {
   videoId: string;
   volume?: number;
+  autoplay?: boolean;
 };
 
 export default function OfflinePlayerPage() {
@@ -58,12 +59,12 @@ export default function OfflinePlayerPage() {
       console.log("Received load", data)
 
       if (data.type === 'load') {
-        const { videoId, volume } = data;
+        const { videoId, volume, autoplay } = data;
 
         if (!ytReadyRef.current) {
-          pendingLoadRef.current = { videoId, volume };
+          pendingLoadRef.current = { videoId, volume, autoplay };
         } else {
-          loadAndPlay({ videoId, volume });
+          loadAndPlay({ videoId, volume, autoplay });
         }
         return;
       }
@@ -120,7 +121,7 @@ export default function OfflinePlayerPage() {
   // ------------------------------------
   // LOAD + PLAY
   // ------------------------------------
-  const loadAndPlay = ({ videoId, volume }: PendingLoad) => {
+  const loadAndPlay = ({ videoId, volume, autoplay }: PendingLoad) => {
     // Player not created yet → create it
     if (!playerRef.current) {
       new window.YT.Player('player', {
@@ -128,7 +129,7 @@ export default function OfflinePlayerPage() {
         width: '0',
         videoId,
         playerVars: {
-          autoplay: 1,
+          autoplay: autoplay ? 1: 0,
           controls: 0,
           playsinline: 1,
         },
@@ -139,7 +140,7 @@ export default function OfflinePlayerPage() {
 
             playerRef.current.setVolume(volume ?? 80);
             playerRef.current.unMute();
-            playerRef.current.playVideo();
+            autoplay && playerRef.current.playVideo();
           },
         },
       });
@@ -150,7 +151,7 @@ export default function OfflinePlayerPage() {
     playerRef.current.loadVideoById(videoId);
     playerRef.current.setVolume(volume ?? 80);
     playerRef.current.unMute();
-    playerRef.current.playVideo();
+    autoplay && playerRef.current.playVideo();
   };
 
   // ------------------------------------
