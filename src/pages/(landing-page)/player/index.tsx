@@ -20,6 +20,7 @@ export default function OfflinePlayerPage() {
   const ytReadyRef = useRef(false);
   const pendingLoadRef = useRef<PendingLoad | null>(null);
   const commandQueueRef = useRef<Array<{ func: string; args: any[] }>>([]);
+  const shouldAutoplayRef = useRef(false);
 
   useEffect(() => {
     // ------------------------------------
@@ -122,37 +123,48 @@ export default function OfflinePlayerPage() {
   // LOAD + PLAY
   // ------------------------------------
   const loadAndPlay = ({ videoId, volume, autoplay }: PendingLoad) => {
-    // Player not created yet → create it
-    if (!playerRef.current) {
-      new window.YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId,
-        playerVars: {
-          autoplay: autoplay ? 1: 0,
-          controls: 0,
-          playsinline: 1,
-        },
-        events: {
-          onReady: (e: any) => {
-            // ✅ IMPORTANT: assign the REAL player here
-            playerRef.current = e.target;
+  shouldAutoplayRef.current = !!autoplay;
 
-            playerRef.current.setVolume(volume ?? 80);
-            playerRef.current.unMute();
-            autoplay && playerRef.current.playVideo();
-          },
-        },
-      });
-      return;
-    }
+  // Player not created yet
+  if (!playerRef.current) {
+    new window.YT.Player('player', {
+      height: '0',
+      width: '0',
+      videoId,
+      playerVars: {
+        autoplay: 0, // 🚫 NEVER rely on iframe autoplay
+        controls: 0,
+        playsinline: 1,
+      },
+      events: {
+        onReady: (e: any) => {
+          playerRef.current = e.target;
 
-    // Player already exists
-    playerRef.current.loadVideoById(videoId);
-    playerRef.current.setVolume(volume ?? 80);
-    playerRef.current.unMute();
-    autoplay && playerRef.current.playVideo();
-  };
+          playerRef.current.setVolume(volume ?? 80);
+          playerRef.current.unMute();
+
+          // ⏱️ Delay play slightly to avoid offscreen race
+          if (shouldAutoplayRef.current) {
+            setTimeout(() => {
+              playerRef.current.playVideo();
+            }, 100);
+          }
+        },
+      },
+    });
+    return;
+  }
+
+  // Player already exists
+  playerRef.current.loadVideoById(videoId);
+  playerRef.current.setVolume(volume ?? 80);
+  playerRef.current.unMute();
+
+  if (autoplay) {
+    playerRef.current.playVideo();
+  }
+};
+
 
   // ------------------------------------
   // COMMAND EXECUTOR
