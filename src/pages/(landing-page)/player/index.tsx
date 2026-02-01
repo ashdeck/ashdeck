@@ -169,7 +169,7 @@ export default function OfflinePlayerPage() {
 
   return (
     <div>
-        lorem
+      ..
       <div id="player" />
     </div>
   );

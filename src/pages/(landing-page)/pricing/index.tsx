@@ -124,7 +124,7 @@ const subscribe = async (
 /* -------------------- Component -------------------- */
 
 export default function Pricing() {
-  const [discountCode] = useState<string>("ASHDECK35");
+  const [discountCode] = useState<string>(null);
   const [loading, setLoading] = useState<BillingCycle | null>(null);
 
   const handleSubscribe = async (

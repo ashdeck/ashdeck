@@ -23,6 +23,7 @@ export type Path =
 	| `/task-manager`
 	| `/terms-of-use`
 	| `/website-blocker`
+	| `/welcome`
 
 export type Params = {
 	"/extension/popup/:id": { id: string }
