@@ -58,6 +58,7 @@ export default function OfflinePlayerPage() {
 
       if (data.type === 'load') {
         const { videoId, volume } = data;
+        console.log("Received load", data)
 
         if (!ytReadyRef.current) {
           pendingLoadRef.current = { videoId, volume };
@@ -127,7 +128,7 @@ export default function OfflinePlayerPage() {
         width: '0',
         videoId,
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           controls: 0,
           playsinline: 1,
         },
