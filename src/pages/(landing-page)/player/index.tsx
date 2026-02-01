@@ -55,10 +55,10 @@ export default function OfflinePlayerPage() {
     // ------------------------------------
     const onMessage = (event: MessageEvent) => {
       const data = event.data || {};
+      console.log("Received load", data)
 
       if (data.type === 'load') {
         const { videoId, volume } = data;
-        console.log("Received load", data)
 
         if (!ytReadyRef.current) {
           pendingLoadRef.current = { videoId, volume };
