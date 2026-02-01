@@ -143,7 +143,7 @@ export default function OfflinePlayerPage() {
       playerRef.current.loadVideoById(videoId);
       playerRef.current.setVolume(volume ?? 80);
       playerRef.current.unMute();
-      // playerRef.current.playVideo();
+      playerRef.current.playVideo();
     }
   };
 
