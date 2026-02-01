@@ -127,7 +127,7 @@ export default function OfflinePlayerPage() {
         width: '0',
         videoId,
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           controls: 0,
           playsinline: 1,
         },
