@@ -127,7 +127,7 @@ export default function OfflinePlayerPage() {
         width: '0',
         videoId,
         playerVars: {
-          autoplay: 0,
+          autoplay: 1,
           controls: 0,
           playsinline: 1,
         },
@@ -143,7 +143,7 @@ export default function OfflinePlayerPage() {
       playerRef.current.loadVideoById(videoId);
       playerRef.current.setVolume(volume ?? 80);
       playerRef.current.unMute();
-      playerRef.current.playVideo();
+      // playerRef.current.playVideo();
     }
   };
 
