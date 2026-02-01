@@ -16,6 +16,7 @@ export type Path =
 	| `/join-our-waitlist`
 	| `/login`
 	| `/player`
+	| `/player/test`
 	| `/pomodoro-timer`
 	| `/pricing`
 	| `/privacy-policy`
