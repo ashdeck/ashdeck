@@ -93,12 +93,14 @@ export default function OfflinePlayerPage() {
 
       if (data.type === 'offscreen-youtube-command') {
         const { func, args = [], videoId } = data;
+        console.log("WE calling here I think")
 
         // Special case: load by videoId
         if (func === 'loadVideoById' && videoId) {
           loadAndPlay({
             videoId,
             volume: args?.[0] ?? 80,
+            autoplay: data.autoplay
           });
           return;
         }
