@@ -74,6 +74,7 @@ export default function OfflinePlayerPage() {
 
       if (data.type === 'play' && playerRef.current) {
         playerRef.current.unMute();
+        print("This is calling on start >/./././././.")
         playerRef.current.playVideo();
         return;
       }
