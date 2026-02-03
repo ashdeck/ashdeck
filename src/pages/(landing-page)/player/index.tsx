@@ -57,7 +57,9 @@ export default function OfflinePlayerPage() {
     // ------------------------------------
     const onMessage = (event: MessageEvent) => {
       const data = event.data || {};
-      console.log("Received load", data)
+      if (data.type === "offscreen-youtube-command"){
+        console.log("Received command", data)
+      }
 
       if (data.type === 'load') {
         const { videoId, volume, autoplay } = data;
