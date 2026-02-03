@@ -14,10 +14,10 @@ export default function Welcome(): JSX.Element {
             <p className="text-gray-700 leading-relaxed text-[1.2rem]">
               When you open a new tab, click the{" "}
               <span className="text-red-500 font-semibold text-lg">
-                "Keep it" button to prevent Chrome from disabling Ashdeck
-              </span>
+                "Keep it"
+              </span> button to prevent Chrome from disabling Ashdeck
             </p>
-            <p className="text-green-500 mt-6 text-lg font-medium">
+            <p className="text-red-500 mt-6 text-lg font-medium">
               Open Chrome to start (Ctrl + T / ⌘ + T)
             </p>
           </div>
