@@ -127,6 +127,8 @@ export default function OfflinePlayerPage() {
   const loadAndPlay = ({ videoId, volume, autoplay }: PendingLoad) => {
   shouldAutoplayRef.current = !!autoplay;
 
+  console.log("Autoplay check x.x.x.x.x.x", autoplay)
+
   // Player not created yet
   if (!playerRef.current) {
     new window.YT.Player('player', {
@@ -137,6 +139,7 @@ export default function OfflinePlayerPage() {
         autoplay: 0, // 🚫 NEVER rely on iframe autoplay
         controls: 0,
         playsinline: 1,
+        origin: "*"
       },
       events: {
         onReady: (e: any) => {
