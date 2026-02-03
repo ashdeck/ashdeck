@@ -94,8 +94,9 @@ export default function OfflinePlayerPage() {
 
       if (data.type === 'offscreen-youtube-command') {
         const { func, args = [], videoId } = data;
-        console.log("WE calling here I think", func, data, args)
-        if (func === "playVideo"){
+        console.log("WE calling here I think", func, data, args, playerRef.current)
+        if (func === "playVideo" && !playerRef.current){
+          console.log("Play is called")
           loadAndPlay({
             videoId,
             volume: args?.[0] ?? 80,
