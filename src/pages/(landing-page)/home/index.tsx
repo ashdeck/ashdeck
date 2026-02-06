@@ -71,7 +71,7 @@ function HomePage({}) {
   ];
 
   const hero = {
-      headline: "Your New Tab Should Be A Focus Timer, Not A Distraction",
+      headline: "Turn Every New Tab Into A Focus Timer Instead Of A Distraction",
       detail: `We’ve all fallen into the "quick check" trap that turns a study session or a work task into an hour of lost time. Ashdeck fixes this by turning your browser into a dedicated productivity workspace. With a built-in site blocker to silence the noise, it’s the easiest way to stay on track, hit your deadlines, and finally reclaim your day.`,
       mobile_details: "Too many tabs? Ashdeck helps you focus by blocking distractions. Get more done."
   }
