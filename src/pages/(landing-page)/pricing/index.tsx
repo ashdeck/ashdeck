@@ -231,7 +231,7 @@ export default function Pricing() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 Lifetime
               </h3>
-              <p className="text-3xl font-semibold mb-1">$108</p>
+              <p className="text-3xl font-semibold mb-1">$140</p>
               <p className="text-black/60">
                 One-time payment. No renewals.
               </p>
