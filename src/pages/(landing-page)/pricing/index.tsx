@@ -189,7 +189,7 @@ export default function Pricing() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 Monthly
               </h3>
-              <p className="text-3xl font-semibold mb-1">$6</p>
+              <p className="text-3xl font-semibold mb-1">$4</p>
               <p className="text-black/60">Billed monthly</p>
             </div>
 
@@ -212,7 +212,7 @@ export default function Pricing() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 Annual
               </h3>
-              <p className="text-3xl font-semibold mb-1">$3</p>
+              <p className="text-3xl font-semibold mb-1">$2</p>
               <p className="text-black/60">Per month, billed yearly</p>
             </div>
 
@@ -231,7 +231,7 @@ export default function Pricing() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 Lifetime
               </h3>
-              <p className="text-3xl font-semibold mb-1">$140</p>
+              <p className="text-3xl font-semibold mb-1">$96</p>
               <p className="text-black/60">
                 One-time payment. No renewals.
               </p>
