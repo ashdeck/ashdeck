@@ -66,10 +66,10 @@ const FooterLayout = ({ className = "" }: Props) => {
 
 					<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-light.svg" alt="Featured on Twelve Tools" width="200" height="54"/></a>
 					
-					<a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-dark.svg" alt="Featured on Wired Business" width="200" height="54"></a>
+					<a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-dark.svg" alt="Featured on Wired Business" width="200" height="54" /></a>
 
 
-					<a target="_blank" href="https://shinylaunch.com/product/ashdeck"><img src="https://shinylaunch.com/static/images/badge-dark.png" alt="Submit Your" height="54"></a>
+					<a target="_blank" href="https://shinylaunch.com/product/ashdeck"><img src="https://shinylaunch.com/static/images/badge-dark.png" alt="Submit Your" height="54" /></a>
 				</div>
 
 				<div className="w-full h-full grid grid-cols-2 place-items-center md:flex justify-center gap-4 p-8 pb-4 text-sm flex-col md:flex-row items-center">
