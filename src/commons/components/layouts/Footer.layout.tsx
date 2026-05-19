@@ -58,15 +58,15 @@ const FooterLayout = ({ className = "" }: Props) => {
 						<img src="/images/toolpilot.png" alt="featured-on-tool-pilot" width={150} />
 					</a>
 
-					<a href="https://startupfa.me/s/ashdeck?utm_source=ashdeck.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Ashdeck - Free Website Blocker for Focus | Startup Fame" width="224" height="36" /></a>
+					<a href="https://startupfa.me/s/ashdeck?utm_source=ashdeck.com" target="_blank"><img src="https://startupfa.me/badges/featured-badge-small.webp" alt="Ashdeck - Free Website Blocker for Focus | Startup Fame" width="150" height="36" /></a>
 
 					<a href="https://auraplusplus.com/projects/ashdeck-focus-goal-tracking-tool" target="_blank" rel="noopener">
-						<img src="https://auraplusplus.com/images/badges/featured-on-dark.svg" alt="Featured on Aura++" />
+						<img src="https://auraplusplus.com/images/badges/featured-on-dark.svg" width={150} alt="Featured on Aura++" />
 					</a>
 
-					<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-light.svg" alt="Featured on Twelve Tools" width="200" height="54"/></a>
+					<a href="https://twelve.tools" target="_blank"><img src="https://twelve.tools/badge0-light.svg" alt="Featured on Twelve Tools" width="150" height="54"/></a>
 					
-					<a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-dark.svg" alt="Featured on Wired Business" width="200" height="54" /></a>
+					<a href="https://wired.business" target="_blank"><img src="https://wired.business/badge0-dark.svg" alt="Featured on Wired Business" width="150" height="54" /></a>
 
 
 					<a target="_blank" href="https://shinylaunch.com/product/ashdeck"><img src="https://shinylaunch.com/static/images/badge-dark.png" alt="Submit Your" height="54" /></a>
